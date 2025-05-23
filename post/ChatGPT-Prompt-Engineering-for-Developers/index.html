@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6695R09FL"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+  
+        gtag('config', 'G-F6695R09FL');  
+      }
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var host = window.location.hostname;
+        if (host !== "localhost") {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c7be85317623071fc4ef1edd7169c279";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        }
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="change..."/>
+  <meta name="keyword" content="Blog"/>
+  <link rel="shortcut icon" href="/img/icon/icon_website.webp"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <script src="https://kit.fontawesome.com/ae2f9ab055.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="https://vinton.store/post/ChatGPT-Prompt-Engineering-for-Developers/">
+  <title>
+    
+      吴恩达 x ChatGPT提示工程教程 - Vint
+    
+  </title>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="feed.xml" title="/img/icon/icon_web.svg" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--dark">
+
+		<section class="background-box">
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+
+  i.light-mode {
+    display: var(--light-mode);
+  }
+
+  i.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'dark';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  window.onload = function () {
+    //setCookieValue
+    var toggleBtn = document.querySelector(".toggle");
+    toggleBtn.addEventListener("click", function () {
+      var e = document.body.classList.contains("body--dark");
+      var cookieString = e
+        ? "dark"
+        : "light";
+      var exp = new Date();
+      exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+      document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+    });
+  };
+</script>
+		
+
+		<!-- Gitter -->
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header page-scroll">
+    <a class="navbar-brand" href="/">
+      <!-- <iframe src="/img/icon/icon_web.svg" alt="logo" ></iframe> -->
+      <svg class="home-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300" viewBox="0 0 2000 2000">
+        <image id="V_i_n_t_o_n_·_L_i_n_·" data-name="V i n t o n · L i n ·" x="141" y="112" width="1718" height="1776" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQIAAAEKCAYAAAD5HFs9AAAMlUlEQVR4nO3dPZIjSRXA8TfD+BQXWMrE2RgZBBYRrQNsBMLFQROBT88JVpxA42FqOIEGA1u9J1BvxPrqAQ8MNZjrNFGQSeQ+MutbUn78fxG1M9vTPVOqqnyZ+fKjBIjMlyLyNxH5TkS+4uYAZdqLyIs5DjwDQHkqJwgQCK7odTGfFClYqXP8M3cNKM9etQgWPANAec5OEDhx/6+HrkE8mv7x2tSKB1MQml+3IlJn9DnXzmfbOLX+ylwD69PtThG4jXtVG/qObSb35uT5bCfP13W+AMhWUwPuOgKAe+wyuBDHnp91rVoIQPIqU8PtTJPY1nY6OfbiNJtDBSb1mrIyLSDfZ/cdB/P9OXWPUJiVeZD1A743/WNd2+uHvfYEhJySaDYv0reVcDRdJEYTkIx6QJN/3fKhqgL6z75g13XNTiYo0H1A9LoSgC+m2dtlmWGuwNIBc2++vjCtpq7Wwr77nwBua2Ue5ntT6/tqtb7cWvKc0X2979E6qlvyCgQCJEe3EDYDPsBW/Wwu/WRd43c19W1eYWeCAPkCJEfXaEMCwWrCz8ZKLzI68kjfBjMLr2vKIho90+5XqXzoFjrp+aeozg64kFBirC/dokg9Y64/D3MFUAy3Tzw06dcnsZYSugWRoGtwfQ/Ov1iZocG+dPfgLuHroLsFD4HvA7Kk5wQMXUzkDiOmPMtQr7EYEhCBLJwnNIlzGUbUswdxQ3QNbsNtBi8GJsm+Uf+/MrmCTc9ZirFwP/NjQucNzEbPMhyS9NNj7/pIpYXgnjeblN4YLYLb0ImxPkm/2vSru/ICKQ7BMWyIYg1dO+BbzqzXLaQ021BPLU59KBQYRSf9VqaPvwksMw4tuEl10w7fIqwNrYPbeFXih47EqmVm4bOI/ER9ren7fy0i35rkWg6be+4CLYFHc3x2vvZWzaR8EpF3VzhH4CKWPbfpKmVVnW4ZDTnoTiBZXQ/6scAHfNkjB1JysESG9J4EZ6eJXPq2W3YDkkPLdmVntQEsZkCO4PqaWuz3pv/7ick0AAAAAAAAwH8tTZa49Gw5UCx3iumJMWGgPHVgPJ1gABREb9flBgMWnQAFCc23JxAABak8wWDoRp4AZhDDFOOtGTn4ICLvIzgfYC4r80Yq3cp9NHtP5rCU/CqGbuwJxGDdsmhK7yrFUuoOayeByJ73SEE1cjn1kQrPb+G5WEROxGzhGRIfcjB8rrRd0JT27Uc5qpauwNE8t7ZVW5vfb5lLE9Z2Qe2xi/XkUSxfd+DcoxVbeV79di59yn3l2eJ65/ma3b2X9QmIwSrQChhSs2/Uzxf9whcdVd2aX0dNe7GHBoMV21xhZrqiGtu81894kTkxvce9r5D7drsdEnl15CZLi6nqGZPauluc8puuR1v2rOl9L8XoE4F9CUgCAabSlcvUwquf7yJbrivTV+pq7q8D2dZQJPYFAYYiMQfdt5/6yjn9glsS4x1CQ4y6gPsSkCm9HxBx04FgjolvxxlbGEVYBEYUbBQNjUIAc7lEINBJc/TgK+y2wOssLO/gx9x0joBAcEO+SRlzDDUCXfSowRzdTv3sYqBQMDgRBHBBc/bp5x6FKJbe6IS527g0PeQ3ZURKdwtCr81HC70PIkEA13JSz92YOSr3M05OKhZzBXBLuhIampPyTZSjWzCQb2t0ggCuTU+B7/Oujiowdb7YWYVjMVcAMfElrHeeQl2brkBoyT3P8EAEAcSmayi76+AZHkg3qY5JnT1ypmcc9j2Y/j4CE4YQs+WAjUyPbNA73poggAQsTOv1oJLaR9MNIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASJF9ceOWuweUaane0gqgAK/VR6y56UB5ugIB720HCnRQXQN77GktAOU4BgKBPTYiUvE8AElrWvmLtg+gWwG+YHAWkTXPAZCkrVOWV74PsFAFfmG6A6GAQP4ASI/b/d/5zn7VMnS4bOk2kD8ALqsyhfbQ1aTvwQ0EB9+3b1Rt79N0CU7kD4CrWquKt6/aVOL3pnzuVfk9+f6e+64mg1GZv/RM/gC4irUqY66FKewb0/8/9Ej6d04avB9Qs9cmYJA/AC5Lz/g9BCriMcdslsw/AC6qnqnQu62KjVtZv5rx7Jvmy9eBgv8HEfkgIs88L8AofWvvR1POml//6Xz9t6psfhSRd5e8FeQPgPm5/f6TaW1vTHd+2bPlvVFlsi0XOIuqI38wdQgEKE3n+H9Pa1UevZOK5rYI5A/OBANgELc2947/D7BXrYv/sQm/zQXuTaWmNbrzDgD0444cTN00SM8i/sr+gTvJYOqwn53AoCcv6IPhRWCYxYzlxi2Pf3wjIj+eMMRnZy69HXiSNqsJoL85y8yDU16/aALBl+obngI/WDmF/c78fsyU4uYE3jOUCNzUD8puEwh+qs7GBgK7ZvntgOEJzdb835hfHwgAwM1VOlnfBIIvnP9/NknDsf0QW9i/Nb+n+Q/ERycb/9r85y8jpynaSQ33JP6Aq6idBPyYyXmh+T2/bP7wu54F3w4vrlhuDNyEu0I4tFWAqzKV9NoEAN+M3//MSdBdA+tR9e1p4gO355ZD28evzWGT93e+HEBA8/f92v7Rv5zowFoAIF56OfKUY69b9jYQ6A0PAMRnSuE/mS7C/+X0mq7Bb0Tk5yLyiZsORO+5I0f3ZA67DNkuS37g1gL50JuP3vd5T0GXNzwgQFLcmb/PZsOfyfS7DwHE7bNzdrMN4xMIgLR8dM6WYX2gYHMuRwYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACWpRGQZ++dtTnItIltzrCM4JyAHCxE5iMiLc+xMmYtKc6JndaLNcYzxZIGELD3lKsryVQeCgD0OEZwjkKpTS9myLYMobDtO9MW0GAAMs+hRts5jrunrC9yIPoV8dYF/F8hdn2b/qK7BJQJBH883+neB3EVTtnY9mi91BOcJpKgrR7CJ5TN1JQu3EZwjkKpkRg3EnKwvGBAEgOlmn0fw6oI3pTJJQdsN+CgiTxf894DSVCYoPHDnAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4stq8UJQX9haiMi+PPMX0Jlnc1MZ5p+CJW1GGe88bZRelX5RCLcz95zX+BQq9xn0b2yumcVGbwKvG11z2ctSe10zbZuGy9IuTueb+njz3/kDLsEyrQI3wQu4gS5Vp9el7fTbdRRT6UPhqBfdAPkKtAHvQEiiUrhn2poVwokWQlcrc27aAbxPGKMzS0zR0k4TUDnlYBZLCTWCoPDkign9BfF2CVY+PX5uf2zG0FL1QK+Cs7nVNF6Fcesjo0PNK7Kg9knDf0QrQ9PNAF6EAC08N0bd292WbmYgUjynDwXpCESMImZt6w0MTUJiIdFuhVkDf+zKlgkBixnYJNF+tY1sHBIPr8iX8xk4Km+v5QMR8SaExEV+vUdAHU1Ovax2YCDY2INNFyNwciT7f+oSV83fTnLy+uQK85RtW5p5mQj8sY5eYto051zwwNzN3k14nhekiZEI357cjPpZek8B69bjM2aQfO88EkdMRfmgSqfJ0CVidGJe5s/5dM0+RIN2kH1qI9Qy1MS0KXN6luwh77mHa9AMypCD7ugTUDHHyNemnjOLQRciMLsx9m408COnxNemn8D07oYqA7mICdIHumhpceRJQNA3ToJv0U6eA667hTv25u3SdbmPkdE3hdhPcB6U2zUkdOEgWpcMG8fNMC8NCyeLQCkdEzjcLre+RYpdgG5h/P+U4FbrIypcr8l1b3VpApEJbV7cdqU4omTMAuEepy6/bdjk6kT9Kk50afFA309clSHXG4NytAXuUOv8+u5WnryI4h1jpJOJ7EfmQ6GdZ9shk36nv+Sgin1u+/8l8T0lqU2noa9lci3ci8lDY9cieL6GY+8YjupZjCOyHNrwIp0yhPe9zXVBEIPAL7XPAjlQF8e1/n+vNJxD4hfY5QGEqp1mY85AQgcDP3XuCVgCyRyAIq3O/Hm8iOAcgdk/myNZrHkEABAIABAIABAKgeEIgACAEAgBCIAAgBAIAwoQitPBNpX0WkUcuGpCv0GYbLLgpAF0DDHXHFcsPgQDWc88rQdcgQ2xVBlfXCjtyBAAAAACQrx9xb+Fo5g78zPxv3+QhgIzonXqZLwAUSE8cSvX1bhiBeQQACAQACAQII1lYEEYNYH0vIr8wv/5DRH4nIn/n6hRARP4NsqSC+dq8tsUAAAAASUVORK5CYII="/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+  <div id="huxblog_navbar">
+    <div class="navbar-collapse ">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+              
+          
+            <li>
+              <a href="/about/">
+                
+                  <p class="menu-about">
+                    关于
+                  </p>
+                  <i class="fa-regular fa-address-card menu-about-icon"></i>
+                
+              </a>
+            </li>
+            
+              
+          
+            <li>
+              <a href="/archive/">
+                
+                  <p class="menu-archives">
+                    归档
+                  </p>
+                  <i class="fa-regular fa-newspaper menu-archives-icon"></i>
+                
+              </a>
+            </li>
+            
+              
+                <li class="mode-icon icon">
+                  <a class="toggle" onclick="document.body.classList.toggle('body--dark')">
+                    <i class="fa-regular fa-sun light-mode"></i>
+                    <i class="fa-regular fa-moon dark-mode"></i>
+                  </a>
+                </li>
+
+                
+                  <li class="rss-icon icon">
+                    <a href="/feed.xml">
+                      <i class="fa-solid fa-square-rss"></i>
+                    </a>
+                  </li>
+                  
+
+
+                    
+                      <li class="search-icon icon">
+                        <a class="popup-trigger">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                      </li>
+                      
+
+                        <!-- LangSelect -->
+                        
+      </ul>
+    </div>
+  </div>
+  <!-- /.navbar-collapse -->
+  <!-- /.container -->
+
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+</script>
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div class="header-bar"></div>
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="
+        col-lg-8 col-lg-offset-2 
+        col-md-8 col-md-offset-2
+        ">
+          
+          <div class="post-heading">
+            <h1 class="fancy-undeline">吴恩达 x ChatGPT提示工程教程</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              May 18, 2023
+            </span>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="
+        col-lg-8 col-lg-offset-2 
+        col-md-8 col-md-offset-2
+        post-container">
+
+        <blockquote>
+<p>原教程： <a target="_blank" rel="noopener" href="https://learn.deeplearning.ai/">ChatGPT Prompt Engineering for Developers</a></p>
+<p>中文翻译： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Bo4y1A7FU/?share_source=copy_web">吴恩达 x OpenAI的Prompt Engineering课程专业翻译版</a></p>
+<p>中英字幕： <a target="_blank" rel="noopener" href="https://github.com/GitHubDaily/ChatGPT-Prompt-Engineering-for-Developers-in-Chinese">《ChatGPT提示工程》非官方版中英双语字幕</a></p>
+</blockquote>
+<p>本文是对ChatGPT Prompt Engineering for Developers课程内容的总结归档，另外课程中的英文Prompt也翻译为中文，方便理解和学习。</p>
+<h1>原则一：清楚和具体的指示</h1>
+<h2 id="策略1：使用分隔符">策略1：使用分隔符</h2>
+<ul>
+<li>三重引号: <code>&quot;&quot;&quot;</code></li>
+<li>三重反引号: <code>```</code></li>
+<li>三重破折号: <code>---</code></li>
+<li>尖括号: <code>&lt;&gt;</code></li>
+<li>XML标签: <code>&lt;tag&gt; &lt;/tag&gt;</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你应该尽可能清晰和具体地表达你希望模型做什么。\</span></span><br><span class="line"><span class="string">这将引导模型朝着期望的输出方向，\</span></span><br><span class="line"><span class="string">并减少收到无关或错误回应的机会。不要把写清晰的提示和写短的提示混淆。\</span></span><br><span class="line"><span class="string">在许多情况下，更长的提示为模型提供了更多的清晰度和上下文，\</span></span><br><span class="line"><span class="string">这可以导致更详细和相关的输出。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将由三重反引号括起的文本总结为一句话。</span></span><br><span class="line"><span class="string">```<span class="subst">&#123;text&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="策略2：要求结构化输出">策略2：要求结构化输出</h2>
+<ul>
+<li>JSON, HTML</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">生成一个包含三个虚构书名以及它们的作者和类型的列表。 </span></span><br><span class="line"><span class="string">以JSON格式提供，包含以下键： </span></span><br><span class="line"><span class="string">book_id, title, author, genre.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="策略3：检查条件是否满足检查完成任务所需的假设">策略3：检查条件是否满足检查完成任务所需的假设</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">text_1 = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">做一杯茶很简单！首先，你需要烧一些开水。在这个过程中，\</span></span><br><span class="line"><span class="string">拿一个杯子，放入一个茶包。一旦水热了，就把它倒在茶包上。\</span></span><br><span class="line"><span class="string">让它坐一会儿，让茶可以浸泡。几分钟后，取出茶包。如果你\</span></span><br><span class="line"><span class="string">喜欢，可以加一些糖或牛奶调味。\</span></span><br><span class="line"><span class="string">就这样！你就有了一杯美味的茶可以享用了。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你将得到由三重反引号括起的文本。</span></span><br><span class="line"><span class="string">如果它包含一系列的指示，\</span></span><br><span class="line"><span class="string">将这些指示重写为以下格式：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">步骤1 - ...</span></span><br><span class="line"><span class="string">步骤2 - ...</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">步骤N - ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如果文本中没有包含一系列的指示，\</span></span><br><span class="line"><span class="string">那么只需写\&quot;没有提供步骤。\&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;<span class="subst">&#123;text_1&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;对于文本1的完成：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">text_2 = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">今天阳光明媚，鸟儿在歌唱。这是一个美好的日子，适合在公园散步。花儿在盛开，\</span></span><br><span class="line"><span class="string">树木在微风中轻轻摇曳。人们都出来了，</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">享受着美好的天气。有些人在野餐，有些人在玩游戏，或者只是在草地上放松。这是一个完美的日子，可以在户外度过，欣赏大自然的美丽。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你将得到由三重引号括起的文本。</span></span><br><span class="line"><span class="string">如果它包含一系列的指示，\</span></span><br><span class="line"><span class="string">将这些指示重写为以下格式：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">步骤1 - ...</span></span><br><span class="line"><span class="string">步骤2 - ...</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">步骤N - ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如果文本中没有包含一系列的指示，\</span></span><br><span class="line"><span class="string">那么只需写\&quot;没有提供步骤。\&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;<span class="subst">&#123;text_2&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;对于文本2的完成：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="策略4：少样本提示。">策略4：少样本提示。</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是以一致的风格回答。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;child&gt;: 教我什么是耐心。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;grandparent&gt;: 深刻的河谷是由一股温和的泉水流出的；\</span></span><br><span class="line"><span class="string">宏伟的交响乐源于一个单音；\</span></span><br><span class="line"><span class="string">最复杂的挂毯始于一根孤独的线。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;child&gt;: 教我什么是韧性。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h1>原则二：给模型时间”思考”</h1>
+<h2 id="策略1：明确完成任务所需的步骤">策略1：明确完成任务所需的步骤</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">在一个迷人的村庄里，兄妹杰克和吉尔开始了\</span></span><br><span class="line"><span class="string">从山顶井里取水的任务。他们爬山时，欢快地唱歌，不幸的是\</span></span><br><span class="line"><span class="string">杰克在一块石头上绊倒，滚下了山，吉尔也跟着他。\</span></span><br><span class="line"><span class="string">尽管有些破碎，但这对兄妹回到家中，得到了\</span></span><br><span class="line"><span class="string">安慰的拥抱。尽管发生了这样的事故，\</span></span><br><span class="line"><span class="string">他们的冒险精神仍然未减，他们\</span></span><br><span class="line"><span class="string">继续兴奋地探索。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 示例 1</span></span><br><span class="line">prompt_1 = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">执行以下操作： </span></span><br><span class="line"><span class="string">1 - 用一句话总结以下由三重反引号\</span></span><br><span class="line"><span class="string">括起的文本。</span></span><br><span class="line"><span class="string">2 - 将摘要翻译成法语。</span></span><br><span class="line"><span class="string">3 - 列出法语摘要中的每个名字。</span></span><br><span class="line"><span class="string">4 - 输出一个包含以下\</span></span><br><span class="line"><span class="string">键的json对象：french_summary, num_names。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">用换行符分隔你的答案。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">文本:</span></span><br><span class="line"><span class="string">```<span class="subst">&#123;text&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt_1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;示例 1 的完成情况：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<p><strong>要求以指定格式输出</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">prompt_2 = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是执行以下操作： </span></span><br><span class="line"><span class="string">1 - 用一句话总结以下由&lt;&gt;括起的文本。</span></span><br><span class="line"><span class="string">2 - 将摘要翻译成法语。</span></span><br><span class="line"><span class="string">3 - 列出法语摘要中的每个名字。</span></span><br><span class="line"><span class="string">4 - 输出一个包含以下键的json对象：french_summary, num_names。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">使用以下格式：</span></span><br><span class="line"><span class="string">文本: &lt;需要总结的文本&gt;</span></span><br><span class="line"><span class="string">摘要: &lt;摘要&gt;</span></span><br><span class="line"><span class="string">翻译: &lt;摘要的翻译&gt;</span></span><br><span class="line"><span class="string">名字: &lt;意大利语摘要中的名字列表&gt;</span></span><br><span class="line"><span class="string">输出的 JSON: &lt;包含摘要和 num_names 的 json&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">文本: &lt;<span class="subst">&#123;text&#125;</span>&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt_2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n示例 2 的完成情况：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="策略2：在草率得出结论之前，要求模型自行找出解决方案">策略2：在草率得出结论之前，要求模型自行找出解决方案</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">判断学生的解答是否正确。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">问题：</span></span><br><span class="line"><span class="string">我正在建设一个太阳能发电设施，我需要\</span></span><br><span class="line"><span class="string">帮助计算财务问题。</span></span><br><span class="line"><span class="string">- 土地每平方英尺100美元</span></span><br><span class="line"><span class="string">- 我可以以每平方英尺250美元的价格购买太阳能电池板</span></span><br><span class="line"><span class="string">- 我谈判了一份维护合同，每年将花费我10万美元，以及每平方英尺10美元的额外费用</span></span><br><span class="line"><span class="string">第一年运营的总成本作为平方英尺数量的函数是多少。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">学生的解答：</span></span><br><span class="line"><span class="string">设x为安装设施的面积（平方英尺）。</span></span><br><span class="line"><span class="string">成本：</span></span><br><span class="line"><span class="string">1. 土地成本：100x</span></span><br><span class="line"><span class="string">2. 太阳能电池板成本：250x</span></span><br><span class="line"><span class="string">3. 维护成本：100,000 + 10x</span></span><br><span class="line"><span class="string">总成本：100x + 250x + 100,000 + 10x = 360x + 100,000</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;学生解答的判断：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<p><strong>注意，学生的解答实际上是不正确的。</strong></p>
+<p><strong>我们可以通过指导模型先自己解决问题来修复这个问题。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是判断学生的解答是否正确。</span></span><br><span class="line"><span class="string">为了解决这个问题，请按照以下步骤操作：</span></span><br><span class="line"><span class="string">- 首先，自己解决这个问题。</span></span><br><span class="line"><span class="string">- 然后，将你的解答与学生的解答进行比较，评估学生的解答是否正确。</span></span><br><span class="line"><span class="string">- 在你自己做完这个问题之前，不要判断学生的解答是否正确。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">使用以下格式：</span></span><br><span class="line"><span class="string">问题：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">这里是问题 </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">学生的解答：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">这里是学生的解答 </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">实际的解答：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">解答步骤和你的解答在这里 </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">学生的解答是否与刚刚计算出的实际解答相同：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">是或否 </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">学生的成绩：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">正确或错误 </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">问题：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">我正在建设一个太阳能发电设施，我需要帮助计算财务问题。 </span></span><br><span class="line"><span class="string">- 土地每平方英尺100美元</span></span><br><span class="line"><span class="string">- 我可以以每平方英尺250美元的价格购买太阳能电池板</span></span><br><span class="line"><span class="string">- 我谈判了一份维护合同，每年将花费我10万美元，以及每平方英尺10美元的额外费用</span></span><br><span class="line"><span class="string">第一年运营的总成本作为平方英尺数量的函数是多少。</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">学生的解答：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">设x为安装设施的面积（平方英尺）。</span></span><br><span class="line"><span class="string">成本：</span></span><br><span class="line"><span class="string">1. 土地成本：100x</span></span><br><span class="line"><span class="string">2. 太阳能电池板</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">成本：250x</span></span><br><span class="line"><span class="string">3. 维护成本：100,000 + 10x</span></span><br><span class="line"><span class="string">总成本：100x + 250x + 100,000 + 10x = 360x + 100,000</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">实际的解答：</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;实际解答：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h1>模型的缺陷：</h1>
+<h2 id="幻觉">幻觉</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">告诉我关于Boie的AeroGlide UltraSlim智能牙刷的信息</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关于Boie的AeroGlide UltraSlim智能牙刷的信息：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>对提示进行迭代（Iterative Prompt Development）</h1>
+<p><strong>🎯迭代流程：想法 → 实现（代码/数据） → 实验结果 → 错误分析 → 重复</strong></p>
+<h2 id="提示指南">提示指南</h2>
+<ul>
+<li>清晰且具体</li>
+<li>分析为什么结果没有得到期望的输出</li>
+<li>精炼想法和提示</li>
+<li>重复</li>
+</ul>
+<h2 id="迭代过程">迭代过程</h2>
+<ul>
+<li>尝试某些操作</li>
+<li>分析结果为何不符合你的期望</li>
+<li>明确指示，给予更多的思考时间</li>
+<li>用一批例子来精炼提示</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">fact_sheet_chair = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">概览</span></span><br><span class="line"><span class="string">- 是一系列美丽的中世纪风格办公家具的一部分，</span></span><br><span class="line"><span class="string">包括文件柜、书桌、书架、会议桌等。</span></span><br><span class="line"><span class="string">- 提供多种外壳颜色和底座饰面选项。</span></span><br><span class="line"><span class="string">- 提供塑料背面和前面的布艺（SWC-100） </span></span><br><span class="line"><span class="string">或全布艺（SWC-110）在10种布艺和6种皮革选项中选择。</span></span><br><span class="line"><span class="string">- 底座饰面选项有：不锈钢、哑光黑色、 </span></span><br><span class="line"><span class="string">光亮白色或铬。</span></span><br><span class="line"><span class="string">- 椅子可选择有或无扶手。</span></span><br><span class="line"><span class="string">- 适合家庭或商业环境。</span></span><br><span class="line"><span class="string">- 适合合同使用。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">构造</span></span><br><span class="line"><span class="string">- 5轮塑料涂层铝底座。</span></span><br><span class="line"><span class="string">- 气动椅子调节，方便升降。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">尺寸</span></span><br><span class="line"><span class="string">- 宽度 53 厘米 | 20.87”</span></span><br><span class="line"><span class="string">- 深度 51 厘米 | 20.08”</span></span><br><span class="line"><span class="string">- 高度 80 厘米 | 31.50”</span></span><br><span class="line"><span class="string">- 座位高度 44 厘米 | 17.32”</span></span><br><span class="line"><span class="string">- 座位深度 41 厘米 | 16.14”</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">选项</span></span><br><span class="line"><span class="string">- 软地板或硬地板脚轮选项。</span></span><br><span class="line"><span class="string">- 两种选择的座位泡沫密度： </span></span><br><span class="line"><span class="string"> 中等（1.8 磅/立方英尺）或高（2.8 磅/立方英尺）</span></span><br><span class="line"><span class="string">- 无扶手或8位置PU扶手 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">材料</span></span><br><span class="line"><span class="string">外壳底座滑轮</span></span><br><span class="line"><span class="string">- 铸铝，涂有改性尼龙PA6/PA66涂层。</span></span><br><span class="line"><span class="string">- 外壳厚度：10 毫米。</span></span><br><span class="line"><span class="string">座位</span></span><br><span class="line"><span class="string">- HD36泡沫</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">原产地</span></span><br><span class="line"><span class="string">- 意大利</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>以下方提示举例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是帮助营销团队根据技术规格表创建一个产品的</span></span><br><span class="line"><span class="string">零售网站描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">根据在由三重反引号括起的技术规格中提供的信息</span></span><br><span class="line"><span class="string">编写产品描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">技术规格：```<span class="subst">&#123;fact_sheet_chair&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="错误分析">错误分析</h2>
+<h3 id="问题-1-文本过长">问题 1. 文本过长</h3>
+<ul>
+<li>限制单词/句子/字符的数量。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是帮助营销团队根据技术规格表创建一个产品的</span></span><br><span class="line"><span class="string">零售网站描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">根据在由三重反引号括起的技术规格中提供的信息</span></span><br><span class="line"><span class="string">编写产品描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">最多使用50个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">技术规格：```<span class="subst">&#123;fact_sheet_chair&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="问题-2-文本关注了错误的细节">问题 2. 文本关注了错误的细节</h3>
+<ul>
+<li>让它关注对目标受众相关的方面。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是帮助营销团队根据技术规格表创建一个产品的</span></span><br><span class="line"><span class="string">零售网站描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">根据在由三重反引号括起的技术规格中提供的信息</span></span><br><span class="line"><span class="string">编写产品描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">描述面向家具零售商，</span></span><br><span class="line"><span class="string">所以应该具有技术性质，并关注产品的构造材料。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">最多使用50个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">技术规格：```<span class="subst">&#123;fact_sheet_chair&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是帮助营销团队根据技术规格表创建一个产品的</span></span><br><span class="line"><span class="string">零售网站描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">根据在由三重反引号括起的技术规格中提供的信息</span></span><br><span class="line"><span class="string">编写产品描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">描述面向家具零售商，</span></span><br><span class="line"><span class="string">所以应该具有技术性质，并关注产品的构造材料。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在描述的最后，包括技术规格中的每个7字符</span></span><br><span class="line"><span class="string">产品ID。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">最多使用50个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">技术规格：```<span class="subst">&#123;fact_sheet_chair&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="问题-3-描述需要一个尺寸表">问题 3. 描述需要一个尺寸表</h3>
+<ul>
+<li>要求它提取信息并将其组织成表格。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是帮助营销团队根据技术规格表创建一个产品的</span></span><br><span class="line"><span class="string">零售网站描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">根据在由三重反引号括起的技术规格中提供的信息</span></span><br><span class="line"><span class="string">编写产品描述。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">描述面向家具零售商，</span></span><br><span class="line"><span class="string">所以应该具有技术性质，并关注产品的构造材料。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在描述的最后，包括技术规格中的每个7字符</span></span><br><span class="line"><span class="string">产品ID。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在描述之后，包括一个给出产品尺寸的表格。表格应有两列。</span></span><br><span class="line"><span class="string">在第一列中包括尺寸的名称。 </span></span><br><span class="line"><span class="string">在第二列中只包括英寸的测量。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">给表格标题为&#x27;产品尺寸&#x27;。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">将所有内容格式化为可在网站中使用的HTML。 </span></span><br><span class="line"><span class="string">将描述放在&lt;div&gt;元素中。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">技术规格：```<span class="subst">&#123;fact_sheet_chair&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>案例一：总结文字（Summarizing）</h1>
+<h2 id="需要总结的文本">需要总结的文本</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">prod_review = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">为我女儿的生日买了这个熊猫毛绒玩具，\</span></span><br><span class="line"><span class="string">她非常喜欢，带着它去处处。它很软，\</span></span><br><span class="line"><span class="string">超级可爱，脸上的表情看起来很友好。不过我觉得\</span></span><br><span class="line"><span class="string">我付的钱买到的东西有点小。我觉得可能有\</span></span><br><span class="line"><span class="string">其他同样价格但更大的选项。它比预期的到货日期早了一天，\</span></span><br><span class="line"><span class="string">所以我在给她之前自己玩了一下。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="用词-句-字符限制进行总结">用词/句/字符限制进行总结</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是生成一个电子商务网站的产品评论的简短总结。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">总结下面由三重反引号括起的评论，最多用30个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论：```<span class="subst">&#123;prod_review&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="总结关注运输和交货的评论">总结关注运输和交货的评论</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是生成一个电子商务网站的产品评论的简短总结，以便给予\</span></span><br><span class="line"><span class="string">运输部门反馈。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">总结下面由三重反引号括起的评论，最多用30个词，并关注任何提及产品运输和交货的方面。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论：```<span class="subst">&#123;prod_review&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="总结关注价格和价值的评论">总结关注价格和价值的评论</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是生成一个电子商务网站的产品评论的简短总结，以便给予\</span></span><br><span class="line"><span class="string">负责确定产品价格的定价部门反馈。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">总结下面由三重反引号括起的评论，最多用30个词，并关注任何与价格和感知价值相关的方面。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论：```<span class="subst">&#123;prod_review&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>得到的总结中包括与关注主题无关的话题。</li>
+</ul>
+<h3 id="尝试-提取-而不是-总结">尝试&quot;提取&quot;而不是&quot;总结&quot;</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你的任务是从电子商务网站的产品评论中提取相关信息，以便给予运输部门反馈。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">从下面由三重引号括起的评论中提取与运输和交货相关的信息。限制为30个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论：```<span class="subst">&#123;prod_review&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="总结多个产品评论">总结多个产品评论</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">review_1 = prod_review </span><br><span class="line"></span><br><span class="line"><span class="comment"># 立式灯评论</span></span><br><span class="line">review_2 = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">我需要一个漂亮的卧室灯，这个灯还有额外的存储空间，价格也不高。</span></span><br><span class="line"><span class="string">快速到货 - 2天就到了。灯的拉绳在运输过程中断了，公司愉快地寄来了一个新的。也在几天内到了。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">很容易组装。然后我发现缺了一个零件，所以我联系了他们的客服，他们很快就给我寄来了缺失的零件！</span></span><br><span class="line"><span class="string">看起来这是一家非常关心他们的客户和产品的公司。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 电动牙刷评论</span></span><br><span class="line">review_3 = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">我的牙科卫生师推荐我使用电动牙刷，</span></span><br><span class="line"><span class="string">这就是我为什么会买这个。到目前为止，电池寿命似乎相当令人印象深刻。</span></span><br><span class="line"><span class="string">在初始充电和第一周内插入充电器以调整电池后，</span></span><br><span class="line"><span class="string">我已经拔掉了充电器，并在过去的3周内每天刷两次牙，都是用同一次充电。</span></span><br><span class="line"><span class="string">但是牙刷头太小了。我见过的婴儿牙刷比这个还大。</span></span><br><span class="line"><span class="string">我希望头部更大，刷毛长度不同，以便更好地进入牙齿之间，因为这个做不到。</span></span><br><span class="line"><span class="string">总的来说，如果你能以50美元左右的价格买到这个，那是个好交易。</span></span><br><span class="line"><span class="string">制造商的替换头相当贵，但你可以买到价格更合理的通用品牌。</span></span><br><span class="line"><span class="string">这款牙刷让我感觉每天都去过牙医。我的牙齿感觉闪闪发光的干净！</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搅拌机评论</span></span><br><span class="line">review_4 = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">所以，他们在11月份还有17件套系统的季节性销售，价格大约在49美元左右，</span></span><br><span class="line"><span class="string">大约半价，但是出于某种原因（称之为价格欺诈）在12月的第二周，</span></span><br><span class="line"><span class="string">同样的系统的价格都涨到了70-89美元之间。而11件套系统的价格也从之前的销售价格29美元涨了大约10美元左右。</span></span><br><span class="line"><span class="string">所以看起来还行，但如果你看底座，刀片锁定的部分看起来不如几年前的版本好，</span></span><br><span class="line"><span class="string">但我打算对它非常温柔（例如，我先在搅拌机中粉碎非常硬的物品，如豆子、冰块、大米等，</span></span><br><span class="line"><span class="string">然后在我想要的份量中将它们在搅拌机中粉碎，然后换用搅拌刀片进行更细的磨粉，</span></span><br><span class="line"><span class="string">并在制作奶昔时先使用交叉切割刀片，然后如果我需要它们更细/少浆糊，我会使用平刀片）。</span></span><br><span class="line"><span class="string">制作奶昔的特别提示，细切并冻结你打算使用的水果和蔬菜（如果使用菠菜-轻</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">炖软菠菜然后冻结直到准备使用-如果制作冰糕，使用小到中等大小的食品处理器）</span></span><br><span class="line"><span class="string">这样你就可以避免添加太多的冰，如果有的话-在制作你的奶昔时。 </span></span><br><span class="line"><span class="string">大约一年后，电机开始发出奇怪的噪音。 </span></span><br><span class="line"><span class="string">我打电话给客服，但保修期已经过了，所以我不得不再买一个。 </span></span><br><span class="line"><span class="string">FYI：这类产品的整体质量已经下降，所以他们有点依赖品牌认知度和消费者忠诚度来维持销售。大约两天就收到了。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">reviews = [review_1, review_2, review_3, review_4]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(reviews)):</span><br><span class="line">    prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    你的任务是生成一个电子商务网站的产品评论的简短总结。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    总结下面由三重反引号括起的评论，最多用20个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    评论：```<span class="subst">&#123;reviews[i]&#125;</span>```</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    response = get_completion(prompt)</span><br><span class="line">    <span class="built_in">print</span>(i, response, <span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1>案例二：推理（Inferring）</h1>
+<h2 id="产品评论文本">产品评论文本</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lamp_review = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">我需要一个漂亮的灯放在我的卧室，这个灯有额外的存储空间，价格也不高。\</span></span><br><span class="line"><span class="string">收到货很快。在运输过程中，灯的绳子断了，公司很高兴地送来了一个新的。\</span></span><br><span class="line"><span class="string">几天内就收到了。很容易组装。我缺了一个零件，所以我联系了他们的支持，他们很快就给我寄来了缺失的零件！\</span></span><br><span class="line"><span class="string">Lumina在我看来是一个非常好的公司，他们关心他们的客户和产品！！</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="判断情绪（积极-消极）">判断情绪（积极/消极）</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">以下产品评论的情绪是什么，\</span></span><br><span class="line"><span class="string">评论由三重反引号括起？</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论文本：&#x27;&#x27;&#x27;<span class="subst">&#123;lamp_review&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">以下产品评论的情绪是什么，\</span></span><br><span class="line"><span class="string">评论由三重反引号括起？</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">用一个词给出你的答案，要么是&quot;积极&quot;，要么是&quot;消极&quot;。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论文本：&#x27;&#x27;&#x27;<span class="subst">&#123;lamp_review&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="识别情绪的类型">识别情绪的类型</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">识别出评论作者表达的一系列情绪。列表中的项目不超过\</span></span><br><span class="line"><span class="string">五个。将你的答案格式化为由逗号分隔的小写单词列表。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论文本：&#x27;&#x27;&#x27;<span class="subst">&#123;lamp_review&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="识别愤怒">识别愤怒</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">评论作者是否表达了愤怒？\</span></span><br><span class="line"><span class="string">评论由三重反引号括起。 \</span></span><br><span class="line"><span class="string">给出你的答案，要么是是，要么是否。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论文本：&#x27;&#x27;&#x27;<span class="subst">&#123;lamp_review&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="从客户评论中提取产品和公司名称">从客户评论中提取产品和公司名称</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">从评论文本中识别以下项目：</span></span><br><span class="line"><span class="string">- 评论者购买的商品</span></span><br><span class="line"><span class="string">- 制造该商品的公司</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论由三重反引号括起。 \</span></span><br><span class="line"><span class="string">将你的回答格式化为一个JSON对象，\</span></span><br><span class="line"><span class="string">&quot;Item&quot;和&quot;Brand&quot;作为键。 </span></span><br><span class="line"><span class="string">如果信息不存在，使用&quot;unknown&quot; \</span></span><br><span class="line"><span class="string">作为值。</span></span><br><span class="line"><span class="string">使你的回答尽可能简短。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论文本：&#x27;&#x27;&#x27;<span class="subst">&#123;lamp_review&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="同时进行多项任务">同时进行多项任务</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">从评论文本中识别以下项目：</span></span><br><span class="line"><span class="string">- 判断情绪（积极或消极）</span></span><br><span class="line"><span class="string">- 评论者是否表达了愤怒？（真或假）</span></span><br><span class="line"><span class="string">- 评论者购买的商品</span></span><br><span class="line"><span class="string">- 制造商品的公司</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论以三重反引号为界限。\</span></span><br><span class="line"><span class="string">将你的回答格式化为一个JSON对象，\</span></span><br><span class="line"><span class="string">&quot;Sentiment&quot;, &quot;Anger&quot;, &quot;Item&quot; 和 &quot;Brand&quot; 作为键。</span></span><br><span class="line"><span class="string">如果信息不存在，使用 &quot;unknown&quot; \</span></span><br><span class="line"><span class="string">作为值。</span></span><br><span class="line"><span class="string">尽可能简短地回答。</span></span><br><span class="line"><span class="string">将 &quot;Anger&quot; 的值格式化为布尔值。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">评论文本：&#x27;&#x27;&#x27;<span class="subst">&#123;lamp_review&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="推断主题">推断主题</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">story = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">在政府最近进行的一项调查中，</span></span><br><span class="line"><span class="string">公共部门的员工被要求对他们所在的部门</span></span><br><span class="line"><span class="string">进行满意度评价。</span></span><br><span class="line"><span class="string">结果显示，NASA是最受欢迎的</span></span><br><span class="line"><span class="string">部门，满意度评分为95%。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">一位NASA的员工，John Smith，对这个发现进行了评论，</span></span><br><span class="line"><span class="string">他说：&quot;我并不惊讶NASA会名列前茅。</span></span><br><span class="line"><span class="string">这是一个有着出色的人才和</span></span><br><span class="line"><span class="string">难以置信的机会的工作场所。我为能成为</span></span><br><span class="line"><span class="string">这样一个创新组织的一部分而感到自豪。&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">这个结果也受到了NASA管理团队的欢迎，</span></span><br><span class="line"><span class="string">总监Tom Johnson表示：&quot;我们很高兴</span></span><br><span class="line"><span class="string">听到我们的员工对在NASA的工作感到满意。</span></span><br><span class="line"><span class="string">我们有一个才华横溢且全心投入的团队，他们不懈努力</span></span><br><span class="line"><span class="string">实现我们的目标，看到他们的辛勤工作得到回报真是太好了。&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">调查还显示，社会保障局的满意度</span></span><br><span class="line"><span class="string">评分最低，只有45%的员工表示他们对自己的工作感到满意。政府已经承诺</span></span><br><span class="line"><span class="string">解决员工在调查中提出的问题，并</span></span><br><span class="line"><span class="string">致力于提高所有部门的工作满意度。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="推断5个主题">推断5个主题</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">确定以下文本中正在讨论的五个主题，</span></span><br><span class="line"><span class="string">文本以三重反引号为界限。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">每个项目长度为一到两个词。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">将你的回答格式化为一个由逗号分隔的项目列表。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">文本样本：&#x27;&#x27;&#x27;<span class="subst">&#123;story&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.split(sep=<span class="string">&#x27;,&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">topic_list = [</span><br><span class="line">    <span class="string">&quot;nasa&quot;</span>, <span class="string">&quot;地方政府&quot;</span>, <span class="string">&quot;工程&quot;</span>, </span><br><span class="line">    <span class="string">&quot;员工满意度&quot;</span>, <span class="string">&quot;联邦政府&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="为特定主题制作新闻警报">为特定主题制作新闻警报</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">确定以下主题列表中的每个项目是否在下面的文本中是一个主题，</span></span><br><span class="line"><span class="string">文</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">本以三重反引号为界限。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">将你的答案以列表形式给出，每个主题对应0或1。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">主题列表：<span class="subst">&#123;<span class="string">&quot;, &quot;</span>.join(topic_list)&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">文本样本：&#x27;&#x27;&#x27;<span class="subst">&#123;story&#125;</span>&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">topic_dict = &#123;i.split(<span class="string">&#x27;: &#x27;</span>)[<span class="number">0</span>]: <span class="built_in">int</span>(i.split(<span class="string">&#x27;: &#x27;</span>)[<span class="number">1</span>]) <span class="keyword">for</span> i <span class="keyword">in</span> response.split(sep=<span class="string">&#x27;\n&#x27;</span>)&#125;</span><br><span class="line"><span class="keyword">if</span> topic_dict[<span class="string">&#x27;nasa&#x27;</span>] == <span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;警告：新的NASA故事！&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1>案例三：转换（Transforming）</h1>
+<h2 id="翻译">翻译</h2>
+<p>ChatGPT接受了多种语言的训练。这使得该模型具有翻译能力。以下是一些如何使用这种能力的例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将以下英文文本翻译为西班牙语： \ </span></span><br><span class="line"><span class="string">```Hi, I would like to order a blender```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">告诉我这是什么语言： </span></span><br><span class="line"><span class="string">```Combien coûte le lampadaire?```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将以下文本翻译为法语、西班牙语</span></span><br><span class="line"><span class="string">和英语海盗语： \</span></span><br><span class="line"><span class="string">```I want to order a basketball```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将以下文本翻译为西班牙语的正式和非正式形式： </span></span><br><span class="line"><span class="string">&#x27;Would you like to order a pillow?&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="通用翻译器">通用翻译器</h3>
+<p>假设你负责一家大型跨国电商公司的IT部门。用户用他们的母语向你发送IT问题。你的员工来自世界各地，只会说他们的母语。你需要一个通用翻译器！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">user_messages = [</span><br><span class="line">  <span class="string">&quot;La performance du système est plus lente que d&#x27;habitude.&quot;</span>,  <span class="comment"># 系统性能比平时慢         </span></span><br><span class="line">  <span class="string">&quot;Mi monitor tiene píxeles que no se iluminan.&quot;</span>,              <span class="comment"># 我的显示器有像素不亮</span></span><br><span class="line">  <span class="string">&quot;Il mio mouse non funziona&quot;</span>,                                 <span class="comment"># 我的鼠标不工作</span></span><br><span class="line">  <span class="string">&quot;Mój klawisz Ctrl jest zepsuty&quot;</span>,                             <span class="comment"># 我的键盘的Ctrl键坏了</span></span><br><span class="line">  <span class="string">&quot;我的屏幕在闪烁&quot;</span>                                               <span class="comment"># 我的屏幕在闪烁</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> issue <span class="keyword">in</span> user_messages:</span><br><span class="line">    prompt = <span class="string">f&quot;告诉我这是什么语言： ```<span class="subst">&#123;issue&#125;</span>```&quot;</span></span><br><span class="line">    lang = get_completion(prompt)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;原始信息 (<span class="subst">&#123;lang&#125;</span>): <span class="subst">&#123;issue&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    将以下文本翻译为英语 \</span></span><br><span class="line"><span class="string">    和韩语： ```<span class="subst">&#123;issue&#125;</span>```</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    response = get_completion(prompt)</span><br><span class="line">    <span class="built_in">print</span>(response, <span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="语气转换">语气转换</h2>
+<p>写作可以根据预期的受众而变化。ChatGPT可以产生不同的语气。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将以下的俚语翻译为商业信函的形式： </span></span><br><span class="line"><span class="string">&#x27;Dude, This is Joe, check out this spec on this standing lamp.&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="格式转换">格式转换</h2>
+<p>ChatGPT可以在格式之间进行转换。提示应描述输入和输出的格式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data_json = &#123; <span class="string">&quot;resturant employees&quot;</span> :[ </span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Shyam&quot;</span>, <span class="string">&quot;email&quot;</span>:<span class="string">&quot;shyamjaiswal@gmail.com&quot;</span>&#125;,</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;email&quot;</span>:<span class="string">&quot;bob32@gmail.com&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Jai&quot;</span>, <span class="string">&quot;email&quot;</span>:<span class="string">&quot;jai87@gmail.com&quot;</span>&#125;</span><br><span class="line">]&#125;</span><br><span class="line"></span><br><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将以下的python字典从JSON格式转换为带有列标题和标题的HTML \</span></span><br><span class="line"><span class="string">表格： <span class="subst">&#123;data_json&#125;</span></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display, Markdown, Latex, HTML, JSON</span><br><span class="line">display(HTML(response))</span><br></pre></td></tr></table></figure>
+<h2 id="拼写检查-语法检查。">拼写检查/语法检查。</h2>
+<p>以下是一些常见的语法和拼写问题以及LLM的回应。</p>
+<p>要向LLM指示你希望它校对你的文本，你可以指示模型进行’proofread’或’proofread and correct’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">text = [ </span><br><span class="line">  <span class="string">&quot;The girl with the black and white puppies have a ball.&quot;</span>,  <span class="comment"># 那个女孩有一个球。</span></span><br><span class="line">  <span class="string">&quot;Yolanda has her notebook.&quot;</span>, <span class="comment"># ok</span></span><br><span class="line">  <span class="string">&quot;Its going to be a long day. Does the car need it’s oil changed?&quot;</span>,  <span class="comment"># 同音异义词</span></span><br><span class="line">  <span class="string">&quot;Their goes my freedom. There going to bring they’re suitcases.&quot;</span>,  <span class="comment"># 同音异义词</span></span><br><span class="line">  <span class="string">&quot;Your going to need you’re notebook.&quot;</span>,  <span class="comment"># 同音异义词</span></span><br><span class="line">  <span class="string">&quot;That medicine effects my ability to sleep. Have you heard of the butterfly affect?&quot;</span>, <span class="comment"># 同音异义词</span></span><br><span class="line">  <span class="string">&quot;This phrase is to cherck chatGPT for speling abilitty&quot;</span>  <span class="comment"># 拼写</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> text:</span><br><span class="line">    prompt = <span class="string">f&quot;&quot;&quot;校对并纠正以下文本</span></span><br><span class="line"><span class="string">    并重写纠正后的版本。如果你没有找到</span></span><br><span class="line"><span class="string">    任何错误，只需说&quot;No errors found&quot;。不要在文本周围</span></span><br><span class="line"><span class="string">    使用任何标点符号：</span></span><br><span class="line"><span class="string">    ```<span class="subst">&#123;t&#125;</span>```&quot;&quot;&quot;</span></span><br><span class="line">    response = get_completion(prompt)</span><br><span class="line">    <span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Got this for my daughter for her birthday cuz she keeps taking \</span></span><br><span class="line"><span class="string">mine from my room.  Yes, adults also like pandas too.  She takes \</span></span><br><span class="line"><span class="string">it everywhere with her, and it&#x27;s super soft and cute.  One of the \</span></span><br><span class="line"><span class="string">ears is a bit lower than the other, and I don&#x27;t think that was \</span></span><br><span class="line"><span class="string">designed to be asymmetrical. It&#x27;s a bit small for what I paid for it \</span></span><br><span class="line"><span class="string">though. I think there might be other options that are bigger for \</span></span><br><span class="line"><span class="string">the same price.  It arrived a day earlier than expected, so I got \</span></span><br><span class="line"><span class="string">to play with it myself before I gave it to my daughter.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">prompt = <span class="string">f&quot;校对并纠正这个评论： ```<span class="subst">&#123;text&#125;</span>```&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> redlines <span class="keyword">import</span> Redlines</span><br><span class="line"></span><br><span class="line">diff = Redlines(text,response)</span><br><span class="line">display(Markdown(diff.output_markdown))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">校对并纠正这个评论。使它更有吸引力。 </span></span><br><span class="line"><span class="string">确保它遵循APA风格指南并针对高级读者。 </span></span><br><span class="line"><span class="string">以markdown格式输出。</span></span><br><span class="line"><span class="string">文本： ```<span class="subst">&#123;text&#125;</span>```</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">display(Markdown(response))</span><br></pre></td></tr></table></figure>
+<h1>案例四：扩展（Expanding）</h1>
+<p>在这个课程中，你将生成针对每个客户评论的定制客户服务邮件。</p>
+<h3 id="定制自动回复客户邮件">定制自动回复客户邮件</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据“推断”课程中的情绪，</span></span><br><span class="line"><span class="comment"># 和原始的客户信息，定制邮件</span></span><br><span class="line">sentiment = <span class="string">&quot;negative&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对于一款搅拌机的评论</span></span><br><span class="line">review = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">所以，他们在11月份的季节性销售中仍然有17件套装系统，</span></span><br><span class="line"><span class="string">大约49美元，大约半价，但是出于某种原因（称之为价格欺诈）</span></span><br><span class="line"><span class="string">在12月的第二周，同样的系统的价格都涨到了大约70-89美元之间。</span></span><br><span class="line"><span class="string">而11件套装系统的价格也从之前的销售价格29美元涨了大约10美元左右。</span></span><br><span class="line"><span class="string">所以它看起来还可以，但是如果你看看底座，那部分</span></span><br><span class="line"><span class="string">刀片锁定的地方看起来并不如几年前的版本那么好，但是我</span></span><br><span class="line"><span class="string">打算对它非常温柔（例如，我先在</span></span><br><span class="line"><span class="string">搅拌机中粉碎非常硬的物品，如豆子、冰块、大米等，然后在我想要的份量中</span></span><br><span class="line"><span class="string">在搅拌机中将它们粉碎成我想要的份量，然后切换到搅拌</span></span><br><span class="line"><span class="string">刀片以获得更细的面粉，当制作冰沙时，我首先使用交叉切割刀片</span></span><br><span class="line"><span class="string">然后如果我需要它们更细/少浆糊的话，我会使用平刀片）。制作冰沙的特别提示，</span></span><br><span class="line"><span class="string">精细切割并冷冻你打算使用的水果和</span></span><br><span class="line"><span class="string">蔬菜（如果使用菠菜-轻炖软化菠菜然后冷冻直到准备使用-如果制作</span></span><br><span class="line"><span class="string">冰糕，使用一个小到中等大小的食品处理器）</span></span><br><span class="line"><span class="string">这样你就可以避免添加太多的冰，如果有的话-当制作你的冰沙时。</span></span><br><span class="line"><span class="string">大约一年后，电机开始发出奇怪的噪音。</span></span><br><span class="line"><span class="string">我打电话给客户服务，但是保修期已经过了，</span></span><br><span class="line"><span class="string">所以我不得不再买一个。FYI：这类产品的整体质量已经下降，</span></span><br><span class="line"><span class="string">所以他们有点依赖品牌认知和</span></span><br><span class="line"><span class="string">消费者的忠诚度来维持销售。大约</span></span><br><span class="line"><span class="string">两天就收到了。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是一个客户服务AI助手。</span></span><br><span class="line"><span class="string">你的任务是向一位重要客户发送电子邮件回复。</span></span><br><span class="line"><span class="string">给出由```界定的客户电子邮件，</span></span><br><span class="line"><span class="string">生成一个回复，感谢客户的评论。</span></span><br><span class="line"><span class="string">如果情绪是积极</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">的或中性的，感谢他们的评论。</span></span><br><span class="line"><span class="string">如果情绪是消极的，道歉并建议他们可以联系客户服务。</span></span><br><span class="line"><span class="string">确保使用评论中的具体细节。</span></span><br><span class="line"><span class="string">以简洁、专业的语气写作。</span></span><br><span class="line"><span class="string">以`AI客户代理`签署邮件。</span></span><br><span class="line"><span class="string">客户评论：```<span class="subst">&#123;review&#125;</span>```</span></span><br><span class="line"><span class="string">评论情绪：<span class="subst">&#123;sentiment&#125;</span></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h3 id="提醒模型使用客户电子邮件中的细节">提醒模型使用客户电子邮件中的细节</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是一个客户服务AI助手。</span></span><br><span class="line"><span class="string">你的任务是向一位重要客户发送电子邮件回复。</span></span><br><span class="line"><span class="string">给出由```界定的客户电子邮件，</span></span><br><span class="line"><span class="string">生成一个回复，感谢客户的评论。</span></span><br><span class="line"><span class="string">如果情绪是积极的或中性的，感谢他们的评论。</span></span><br><span class="line"><span class="string">如果情绪是消极的，道歉并建议他们可以联系客户服务。</span></span><br><span class="line"><span class="string">确保使用评论中的具体细节。</span></span><br><span class="line"><span class="string">以简洁、专业的语气写作。</span></span><br><span class="line"><span class="string">以`AI客户代理`签署邮件。</span></span><br><span class="line"><span class="string">客户评论：```<span class="subst">&#123;review&#125;</span>```</span></span><br><span class="line"><span class="string">评论情绪：<span class="subst">&#123;sentiment&#125;</span></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">response = get_completion(prompt, temperature=<span class="number">0.7</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h1>案例五：聊天机器人</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">messages =  [  </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;你是一个会说莎士比亚语的助手。&#x27;</span>&#125;,    </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;给我讲个笑话&#x27;</span>&#125;,   </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;assistant&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;为什么鸡要过马路&#x27;</span>&#125;,   </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;我不知道&#x27;</span>&#125;  ]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response = get_completion_from_messages(messages, temperature=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">messages =  [  </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;你是友好的聊天机器人。&#x27;</span>&#125;,    </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;嗨，我叫Isa&#x27;</span>&#125;  ]</span><br><span class="line">response = get_completion_from_messages(messages, temperature=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">messages =  [  </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;你是友好的聊天机器人。&#x27;</span>&#125;,    </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;是的，你能提醒我，我的名字是什么？&#x27;</span>&#125;  ]</span><br><span class="line">response = get_completion_from_messages(messages, temperature=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">messages =  [  </span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;你是友好的聊天机器人。&#x27;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;嗨，我叫Isa&#x27;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;assistant&#x27;</span>, <span class="string">&#x27;content&#x27;</span>: <span class="string">&quot;嗨，Isa！很高兴认识你。\</span></span><br><span class="line"><span class="string">有什么我可以帮你的吗？&quot;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;是的，你能提醒我，我的名字是什么？&#x27;</span>&#125;  ]</span><br><span class="line">response = get_completion_from_messages(messages, temperature=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+<h2 id="点单机器人">点单机器人</h2>
+<p>我们可以自动收集用户提示和助手回应，以建立一个点单机器人。点单机器人将在披萨餐厅接受订单。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">collect_messages</span>(<span class="params">_</span>):</span><br><span class="line">    prompt = inp.value_input</span><br><span class="line">    inp.value = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    context.append(&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">f&quot;<span class="subst">&#123;prompt&#125;</span>&quot;</span>&#125;)</span><br><span class="line">    response = get_completion_from_messages(context) </span><br><span class="line">    context.append(&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;assistant&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">f&quot;<span class="subst">&#123;response&#125;</span>&quot;</span>&#125;)</span><br><span class="line">    panels.append(</span><br><span class="line">        pn.Row(<span class="string">&#x27;User:&#x27;</span>, pn.pane.Markdown(prompt, width=<span class="number">600</span>)))</span><br><span class="line">    panels.append(</span><br><span class="line">        pn.Row(<span class="string">&#x27;Assistant:&#x27;</span>, pn.pane.Markdown(response, width=<span class="number">600</span>, style=&#123;<span class="string">&#x27;background-color&#x27;</span>: <span class="string">&#x27;#F6F6F6&#x27;</span>&#125;)))</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> pn.Column(*panels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> panel <span class="keyword">as</span> pn  <span class="comment"># GUI</span></span><br><span class="line">pn.extension()</span><br><span class="line"></span><br><span class="line">panels = [] <span class="comment"># collect display </span></span><br><span class="line"></span><br><span class="line">context = [ &#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是OrderBot，一个自动收集披萨餐厅订单的服务。 \</span></span><br><span class="line"><span class="string">你首先向客户问好，然后收集订单， \</span></span><br><span class="line"><span class="string">然后询问是自取还是送货。 \</span></span><br><span class="line"><span class="string">你等待收集整个订单，然后总结它并最后检查一次 \</span></span><br><span class="line"><span class="string">如果客户想要添加其他东西。 \</span></span><br><span class="line"><span class="string">如果是送货，你会询问地址。 \</span></span><br><span class="line"><span class="string">最后你收集付款。\</span></span><br><span class="line"><span class="string">确保澄清所有选项，额外的和大小以唯一 \</span></span><br><span class="line"><span class="string">从菜单中识别出项目。\</span></span><br><span class="line"><span class="string">你以简短，非常会话友好的风格回应。 \</span></span><br><span class="line"><span class="string">菜单包括 \</span></span><br><span class="line"><span class="string">pepperoni pizza  12.95, 10.00, 7.00 \</span></span><br><span class="line"><span class="string">cheese pizza   10.95, 9.25, 6.50 \</span></span><br><span class="line"><span class="string">eggplant pizza   11.95, 9.75, 6.75 \</span></span><br><span class="line"><span class="string">fries 4.50, 3.50 \</span></span><br><span class="line"><span class="string">greek salad 7.25 \</span></span><br><span class="line"><span class="string">Toppings: \</span></span><br><span class="line"><span class="string">extra cheese 2.00, \</span></span><br><span class="line"><span class="string">mushrooms 1.50 \</span></span><br><span class="line"><span class="string">sausage 3.00 \</span></span><br><span class="line"><span class="string">canadian bacon 3.50 \</span></span><br><span class="line"><span class="string">AI sauce 1.50 \</span></span><br><span class="line"><span class="string">peppers 1.00 \</span></span><br><span class="line"><span class="string">Drinks: \</span></span><br><span class="line"><span class="string">coke 3.00, 2.00, 1.00 \</span></span><br><span class="line"><span class="string">sprite 3.00, 2.00, 1.00 \</span></span><br><span class="line"><span class="string">bottled water 5.00 \</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>&#125; ]  <span class="comment"># accumulate messages</span></span><br><span class="line"></span><br><span class="line">inp = pn.widgets.TextInput(value=<span class="string">&quot;Hi&quot;</span>, placeholder=<span class="string">&#x27;Enter text here…&#x27;</span>)</span><br><span class="line">button_conversation = pn.widgets.Button(name=<span class="string">&quot;Chat!&quot;</span>)</span><br><span class="line"></span><br><span class="line">interactive_conversation = pn.bind(collect_messages,</span><br><span class="line"></span><br><span class="line">button_conversation)</span><br><span class="line"></span><br><span class="line">dashboard = pn.Column(</span><br><span class="line">    inp,</span><br><span class="line">    pn.Row(button_conversation),</span><br><span class="line">    pn.panel(interactive_conversation, loading_indicator=<span class="literal">True</span>, height=<span class="number">300</span>),</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">dashboard</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">messages =  context.copy()</span><br><span class="line">messages.append(</span><br><span class="line">&#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;content&#x27;</span>:<span class="string">&#x27;创建上一个食品订单的json摘要。为每个项目明细价格\</span></span><br><span class="line"><span class="string"> 字段应为1) 披萨，包括大小 2) 配料列表 3) 饮料列表，包括大小   4) 侧菜列表，包括大小  5)总价格 &#x27;</span>&#125;,    </span><br><span class="line">)</span><br><span class="line"> <span class="comment">#字段应为1) 披萨，价格 2) 配料列表 3) 饮料列表，包括大小，包括价格  4) 侧菜列表，包括大小，包括价格，5)总价格 &#x27;&#125;,    </span></span><br><span class="line"></span><br><span class="line">response = get_completion_from_messages(messages, temperature=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li>
+            <a class="non-border" href="/post/About-A-Friend-On-A-Voyage/" title="结束的话语，停留在风中">
+              <span>&gt; </span>
+              结束的话语，停留在风中
+            </a>
+          </li>
+          
+          
+          <li>
+            <a class="non-border" href="/post/Anti-Wasteman-System/" title="如何规划个人目标并为之行动？">
+              <span>&gt; </span> 
+              如何规划个人目标并为之行动？
+            </a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或觉得它对您有用，则欢迎对此发表评论。 也欢迎您分享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与我联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-8 col-md-offset-2
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+
+        <!-- Friends Blog -->
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '#'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      float: left;
+      margin-top: 0.125em;
+      margin-left: -1.2em;
+      padding-right: 0.5em;
+      font-size: .85em;
+      opacity: 0;
+      text-decoration: none;
+      border: 0!important;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+        <p class="copyright text-muted">
+          <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="color: inherit;">CC BY-NC-SA 4.0</a>
+          2023-PRESENT &copy;
+          Vint
+          2025
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("https://vinton.store/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#4969ed' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+
+		<!-- Search -->
+		
+		<div class="popup search-page">
+
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 local-search-content">
+        <input autocomplete="off" placeholder="搜索..." type="text" id="search-input">
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+      <script src="/js/ziploader.js"></script>
+      
+        <script>
+          // Popup Window;
+          var isfetched = false;
+          var isXml = true;
+          // Search DB path;
+          var search_path = "search.json";
+          if (search_path.length === 0) {
+            search_path = "search.xml";
+          } else if (/json$/i.test(search_path)) {
+            isXml = false;
+          }
+          // monitor main search box;
+          var onPopupClose = function (e) {
+            $('.popup').fadeOut(300);
+            $('#search-input').val('');
+            $('.search-results').remove();
+            $('#no-result').remove();
+            $('body').css('overflow', '');
+          }
+
+          function proceedsearch() {
+            $('.popup').fadeIn(300);
+            var $localSearchInput = $('#search-input');
+            $localSearchInput.attr("autocapitalize", "none");
+            $localSearchInput.attr("autocorrect", "off");
+            $localSearchInput.focus();
+          }
+          // get search zip version
+          $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+            if (localStorage.getItem('searchVersion') !== res) {
+              localStorage.setItem('searchVersion', res);
+              initSearchJson();
+            }
+          });
+
+          function initSearchJson() {
+            initLoad(['/search.flv'], {
+              loadOptions: {
+                success: function (obj) {
+                  localStorage.setItem('searchJson', obj['search.json'])
+                },
+                error: function (e) {
+                  return console.log(e)
+                }
+              },
+              returnOptions: {
+                'json': TYPE_TEXT
+              },
+              mimeOptions: {
+                'json': 'application/json'
+              }
+            })
+          }
+          // search function;
+          var searchFunc = function (search_id, content_id) {
+            'use strict';
+            isfetched = true;
+            var datas = JSON.parse(localStorage.getItem('searchJson'));
+            // console.log(search_id)
+            var input = document.getElementById(search_id);
+            var resultContent = document.getElementById(content_id);
+            var inputEventFunction = function () {
+              var searchText = input.value.trim().toLowerCase();
+              var keywords = searchText.split(/[\s\-]+/);
+              if (keywords.length > 1) {
+                keywords.push(searchText);
+              }
+              var resultItems = [];
+              if (searchText.length > 0) {
+                // perform local searching
+                datas.forEach(function (data) {
+                  var isMatch = false;
+                  var hitCount = 0;
+                  var searchTextCount = 0;
+                  var subtitle = data.subtitle
+                    ? data.subtitle.trim()
+                    : '';
+                  var title = data.title
+                    ? data.title.trim()
+                    : '';
+                  var titleInLowerCase = title.toLowerCase();
+                  var content = data.content
+                    ? data.content.trim().replace(/<[^>]+>/g, "")
+                    : '';
+                  var contentInLowerCase = content.toLowerCase();
+                  var articleUrl = decodeURIComponent(data.url);
+
+                  var date = new Date(data.date);
+                  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+                  ];
+                  const month = monthNames[date.getMonth()];
+                  const day = date.getDate();
+                  const year = date.getFullYear();
+                  const dateTime = `${month} ${day}, ${year}`;
+
+                  var imgUrl = data.header_img;
+                  var indexOfTitle = [];
+                  var indexOfContent = [];
+                  // only match articles with not empty titles
+                  keywords.forEach(function (keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0,
+                        position = [],
+                        index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({ position: position, word: word });
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                  // show search results
+                  if (isMatch) {
+                    // sort index by position of keyword
+                    [indexOfTitle, indexOfContent].forEach(function (index) {
+                      index.sort(function (itemLeft, itemRight) {
+                        if (itemRight.position !== itemLeft.position) {
+                          return itemRight.position - itemLeft.position;
+                        } else {
+                          return itemLeft.word.length - itemRight.word.length;
+                        }
+                      });
+                    });
+                    // merge hits into slices
+                    function mergeIntoSlice(text, start, end, index) {
+                      var item = index[index.length - 1];
+                      var position = item.position;
+                      var word = item.word;
+                      var hits = [];
+                      var searchTextCountInSlice = 0;
+                      while (position + word.length <= end && index.length != 0) {
+                        if (word === searchText) {
+                          searchTextCountInSlice++;
+                        }
+                        hits.push({ position: position, length: word.length });
+                        var wordEnd = position + word.length;
+                        // move to next position of hit
+                        index.pop();
+                        while (index.length != 0) {
+                          item = index[index.length - 1];
+                          position = item.position;
+                          word = item.word;
+                          if (wordEnd > position) {
+                            index.pop();
+                          } else {
+                            break;
+                          }
+                        }
+                      }
+                      searchTextCount += searchTextCountInSlice;
+                      return { hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice };
+                    }
+                    var slicesOfTitle = [];
+                    if (indexOfTitle.length != 0) {
+                      slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                    }
+                    var slicesOfContent = [];
+                    while (indexOfContent.length != 0) {
+                      var item = indexOfContent[indexOfContent.length - 1];
+                      var position = item.position;
+                      var word = item.word;
+                      // cut out 100 characters
+                      var start = position - 20;
+                      var end = position + 80;
+                      if (start < 0) {
+                        start = 0;
+                      }
+                      if (end < position + word.length) {
+                        end = position + word.length;
+                      }
+                      if (end > content.length) {
+                        end = content.length;
+                      }
+                      slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                    }
+                    // sort slices in content by search text's count and hits' count
+                    slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                      if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                        return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                      } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                        return sliceRight.hits.length - sliceLeft.hits.length;
+                      } else {
+                        return sliceLeft.start - sliceRight.start;
+                      }
+                    });
+                    // select top N slices in content
+                    var upperBound = parseInt('-1');
+                    if (upperBound >= 0) {
+                      slicesOfContent = slicesOfContent.slice(0, upperBound);
+                    }
+                    // highlight title and content
+                    function highlightKeyword(text, slice) {
+                      var result = '';
+                      var prevEnd = slice.start;
+                      slice.hits.forEach(function (hit) {
+                        result += text.substring(prevEnd, hit.position);
+                        var end = hit.position + hit.length;
+                        result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                        prevEnd = end;
+                      });
+                      result += text.substring(prevEnd, slice.end);
+                      return result;
+                    }
+                    var resultItem = '';
+
+                    // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+                    // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+                    // "...</p></a>"; }); resultItem += "</li>";
+                    resultItem += "<div class='post-preview item'><a target='_blank' href='" + articleUrl + "'><h2 class='post-title'>" + title + "</h2><h3 class='post-subtitle'>" + dateTime + "</h3></a></div>";
+                    resultItems.push({ item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length });
+                  }
+                })
+              };
+
+              if (keywords.length === 1 && keywords[0] === "") {
+                resultContent.innerHTML = '<div id="no-result"></div>'
+              } else if (resultItems.length === 0) {
+                resultContent.innerHTML = '<div id="no-result"></div>'
+              } else {
+                resultItems.sort(function (resultLeft, resultRight) {
+                  if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                    return resultRight.searchTextCount - resultLeft.searchTextCount;
+                  } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                    return resultRight.hitCount - resultLeft.hitCount;
+                  } else {
+                    return resultRight.id - resultLeft.id;
+                  }
+                });
+                var searchResultList = '<div class=\"search-results mini-post-list\">';
+                resultItems.forEach(function (result) {
+                  searchResultList += result.item;
+                })
+                searchResultList += "</div>";
+                resultContent.innerHTML = searchResultList;
+              }
+            }
+            if ('auto' === 'auto') {
+              input.addEventListener('input', inputEventFunction);
+            } else {
+              $('.search-icon').click(inputEventFunction);
+              input.addEventListener('keypress', function (event) {
+                if (event.keyCode === 13) {
+                  inputEventFunction();
+                }
+              });
+            }
+            // remove loading animation
+            $('body').css('overflow', '');
+            proceedsearch();
+          }
+          // handle and trigger popup window;
+          $('.popup-trigger').click(function (e) {
+            e.stopPropagation();
+            if (isfetched === false) {
+              searchFunc('search-input', 'local-search-result');
+            } else {
+              proceedsearch();
+            };
+          });
+          $('.popup-btn-close').click(onPopupClose);
+          $('.popup').click(function (e) {
+            e.stopPropagation();
+          });
+          $(document).on('keyup', function (event) {
+            var shouldDismissSearchPopup = event.which === 27 && $('.search-page').is(':visible');
+            if (shouldDismissSearchPopup) {
+              onPopupClose();
+            }
+          });
+
+          document.addEventListener('mouseup', (e) => {
+            var _con = document.querySelector(".local-search-content");
+            if (_con) {
+              if (!_con.contains(e.target)) {
+                onPopupClose();
+              }
+            }
+          });
+        </script>
+        
+		
+	</section>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
