@@ -181,6 +181,7 @@ a:hover,
 }
 
 .post-container a {
+  line-height: normal;
   padding-bottom: 0.2em;
   border-bottom: 1px solid rgba(125, 125, 125, .3);
 }
