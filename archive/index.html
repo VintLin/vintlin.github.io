@@ -339,12 +339,16 @@
     Blog
   </a>
   
-    <a data-encode="Essay" class="tag-button" title="Essay" rel="5"> 
+    <a data-encode="Essay" class="tag-button" title="Essay" rel="3"> 
       Essay
     </a>  
   
     <a data-encode="Notes" class="tag-button" title="Notes" rel="3"> 
       Notes
+    </a>  
+  
+    <a data-encode="AI" class="tag-button" title="AI" rel="2"> 
+      AI
     </a>  
   
     <a data-encode="System" class="tag-button" title="System" rel="2"> 
@@ -361,7 +365,7 @@
         <span class="tag-text">2025</span>
       </div>
       
-      <div class="post-preview item" data-tags="Essay">
+      <div class="post-preview item" data-tags="AI">
         <a href="/post/12-High-Quality-Information/">
           <h2 class="post-title">
             优质信息
@@ -372,7 +376,7 @@
         </a>
       </div>
       
-      <div class="post-preview item" data-tags="Essay">
+      <div class="post-preview item" data-tags="AI">
         <a href="/post/11-Commonly-Used-Tools/">
           <h2 class="post-title">
             常用工具
@@ -921,20 +925,5 @@ start: '#bbbbee', end: '#4969ed' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
         
 		
 	</section>
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>

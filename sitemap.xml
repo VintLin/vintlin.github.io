@@ -128,6 +128,13 @@
 
   
   <url>
+    <loc>https://vinton.store/tags/AI/</loc>
+    <lastmod>2025-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://vinton.store/tags/Essay/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -151,14 +158,7 @@
 
   
   <url>
-    <loc>https://vinton.store/categories/AI/</loc>
-    <lastmod>2025-07-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/</loc>
+    <loc>https://vinton.store/categories/Tools/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -172,7 +172,14 @@
   </url>
   
   <url>
-    <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://vinton.store/categories/Infos/</loc>
+    <lastmod>2025-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -180,6 +187,13 @@
   
   <url>
     <loc>https://vinton.store/categories/%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2025-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

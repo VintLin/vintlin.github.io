@@ -331,14 +331,17 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
-    <!-- NO SIDEBAR -->
-    <!-- Post Container -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-      
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="
+        col-lg-8 col-lg-offset-2 
+        col-md-8 col-md-offset-2
+        post-container">
+
         <blockquote>
 <p>以下汇总我经常使用的信息源</p>
 </blockquote>
@@ -409,10 +412,6 @@
   margin: 0 0 5px 0;
 }
 
-.tool-name a:hover {
-  color: #007bff;
-}
-
 .tool-tags {
   font-size: 12px;
   margin-bottom: 10px;
@@ -441,10 +440,7 @@
 }
 
 .subsection-title {
-  font-size: 20px;
-  font-weight: bold;
   margin: 25px 0 15px 0;
-  color: #444;
 }
 </style>
 <h1 class="section-title">AI 模型排行榜</h1>
@@ -1172,20 +1168,123 @@
 </div>
 <h1 class="section-title">行业人物关系图谱 </h1>
 <img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jQEDj8dlP1/img/798a2e4a-ddc3-4dfc-bd17-0d24dd453caa.png" alt="WechatIMG84" style="width: 100%; height: auto;">
-      
-    </div>
-    <!-- Sidebar Container -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 sidebar-container">
 
-      <!-- Featured Tags -->
-      
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li>
+            <a class="non-border" href="/post/11-Commonly-Used-Tools/" title="常用工具">
+              <span>&gt; </span> 
+              常用工具
+            </a>
+          </li>
+          
+        </ul>
 
-      <!-- Friends Blog -->
-      
-    </div>
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
     
-  </div>
+      如果您喜欢此博客或觉得它对您有用，则欢迎对此发表评论。 也欢迎您分享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与我联系以将其删除。 谢谢 ！
+    
+  </p>
 </div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-8 col-md-offset-2
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+
+        <!-- Friends Blog -->
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '#'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      float: left;
+      margin-top: 0.125em;
+      margin-left: -1.2em;
+      padding-right: 0.5em;
+      font-size: .85em;
+      opacity: 0;
+      text-decoration: none;
+      border: 0!important;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
@@ -1602,20 +1701,5 @@ start: '#bbbbee', end: '#4969ed' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
         
 		
 	</section>
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
