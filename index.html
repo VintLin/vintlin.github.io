@@ -221,12 +221,12 @@
               
           
             <li>
-              <a href="/archive/">
+              <a href="/about/">
                 
-                  <p class="menu-archives">
-                    归档
+                  <p class="menu-about">
+                    关于
                   </p>
-                  <i class="fa-regular fa-newspaper menu-archives-icon"></i>
+                  <i class="fa-regular fa-address-card menu-about-icon"></i>
                 
               </a>
             </li>
@@ -234,12 +234,12 @@
               
           
             <li>
-              <a href="/about/">
+              <a href="/archive/">
                 
-                  <p class="menu-about">
-                    关于
+                  <p class="menu-archives">
+                    归档
                   </p>
-                  <i class="fa-regular fa-address-card menu-about-icon"></i>
+                  <i class="fa-regular fa-newspaper menu-archives-icon"></i>
                 
               </a>
             </li>
@@ -1016,5 +1016,20 @@ start: '#bbbbee', end: '#4969ed' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
         
 		
 	</section>
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
