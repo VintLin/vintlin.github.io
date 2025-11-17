@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://vinton.store/post/A-brief-explanation-of-various-AI-terms/</loc>
+    
+    <lastmod>2025-08-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vinton.store/post/How-to-improve-work-efficiency/</loc>
+    
+    <lastmod>2025-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://vinton.store/404.html</loc>
     
     <lastmod>2025-05-23</lastmod>
@@ -23,6 +41,15 @@
     <loc>https://vinton.store/post/11-Commonly-Used-Tools/</loc>
     
     <lastmod>2025-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vinton.store/post/How-to-conduct-a-better-review/</loc>
+    
+    <lastmod>2024-09-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -166,6 +193,13 @@
   
   <url>
     <loc>https://vinton.store/categories/Infos/</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vinton.store/categories/Notes/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

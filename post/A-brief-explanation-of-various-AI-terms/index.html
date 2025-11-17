@@ -128,10 +128,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://vinton.store/categories/Tools/">
+  <link rel="canonical" href="https://vinton.store/post/A-brief-explanation-of-various-AI-terms/">
   <title>
     
-      Vint
+      一文理解各种 AI 名词 - Vint
     
   </title>
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="feed.xml" title="/img/icon/icon_web.svg" type="application/atom+xml">
@@ -302,6 +302,14 @@
         col-md-8 col-md-offset-2
         ">
           
+          <div class="post-heading">
+            <h1 class="fancy-undeline">一文理解各种 AI 名词</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Aug 31, 2025
+            </span>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -324,238 +332,452 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="
+        col-lg-8 col-lg-offset-2 
+        col-md-8 col-md-offset-2
+        post-container">
+
+        <p>最近在网上冲浪的时候看到大家在说各种 AI 名词什么 Agent、MCP、Context Engineering、A2A 听的头都大了，而且每个人对一个名词的解释都有点模棱两可，所以这几周完整的学习和梳理了一下，写了这篇文章，希望通过这篇文章总结一下我最近的发现。</p>
+<p>在这篇文章里会依次介绍大语言模型、提示词工程、RAG、微调、Function Calling、MCP 等最近大家常常提到的 AI 名词，并且为大家梳理一个基础框架，方便之后继续跟进和学习 AI 的相关内容。</p>
+<h1>大语言模型（LLM）</h1>
+<p>大语言模型这词在过去两年里有两次破圈，第一次是 2022 年12 月 OpenAI 推出 ChatGPT 3.5，第二次是 2025 年年初 DeepSeek-R1 横空出世。大部分人是从这两次破圈中意识到原来有一个名叫大语言模型的东西可以“口吐人言”。</p>
+<p>而我们通常使用它的方式也是通过浏览器或者桌面应用的聊天框和大模型发送对话来进行交互。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/86b80397-2998-4a20-89f9-f4afed5db821.jpeg" alt="Xnip2025-08-31_03-17-03.jpeg" title="ChatGPT 聊天框"></p>
+<p>这边简单提一嘴大语言模型的原理，大语言模型实际上是在计算概率来生成文本，当你输入 “The best thing about AI is its ability to”（关于 AI 最厉害的能力是），大语言模型会基于训练它时使用的语料，来计算那个词和你输入的话最相关。例如：出现 “learn”（学习）的概率是 4.5 %、“predict”（预测）的概率是 3.5% 等，而每输出一个新的词时又会使用之前输出词和用户的输入合并再进行类似的概率计算。然后为了保持输出的创意性，并不会直接输出概率最高的词，而是从最相关的几个词里随机选择一个进行输出。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/2159da18-067e-41a2-897d-5f885bf566d0.jpeg" alt="这就是 ChatGPT-概率.jpeg" title="概率最高的五个词"></p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/c674e78b-f159-47dd-ac3f-b5bf3604e050.jpeg" alt="这就是 ChatGPT-温度.jpeg" title="所有可能的词和概率分布"></p>
+<p>通过它的原理以及我们自己日常和 AI 沟通的过程中的经验也能意识到 LLM 还是有许多局限性存在的。首先，大语言模型是根据过去某一个时刻的知识训练而成的，会有一个<strong>知识截止日期</strong>，在这个日期之后的知识大语言模型自己是不知道的；其次，大语言模型存在<strong>幻觉</strong>可能会出现“一本正经地胡说八道”的情况；另外，对于特别专业或细分的领域，通用的大语言模型知识深度可能不够充分，难以给出专家级的见解；最后，大语言模型只能进行文本的输入和输出，它无法直接调用外部工具。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/0e59eb5b-e81d-4c61-913b-e99b532afb4f.png" alt="页面 2.png" title="大语言模型的局限性"></p>
+<p>为了解决上述大语言模型的局限性问题，行业前沿的专家钻研出许多技术手段。接下里就会对这些技术手段进行一一介绍。</p>
+<p>不过，为了更好的理解接下来的内容我们需要简单了解一下我们和大模型的交互流程，其实我们是通过大模型服务商提供的网页（你要打开 <a target="_blank" rel="noopener" href="https://chatgpt.com/c/68b34e15-7e18-8332-8413-a59dbda6efbb">https://chatgpt.com/</a> 这个网页才可以和 ChatGPT 聊天）或者桌面应用（例如 <a target="_blank" rel="noopener" href="https://claude.ai/download">Claude</a> 桌面应用）才可以和大语言模型沟通，我们暂且叫这个介于用户和大模型之间的网页或应用叫<strong>代理程序</strong>。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/421490b2-0a04-4e90-b37a-07b5291fe097.png" alt="页面 1.png" title="用户使用大语言模型的流程"></p>
+<p>整个流程是：</p>
+<ol>
+<li>
+<p>你在网页上输入你想说的话（提示词）。</p>
+</li>
+<li>
+<p>由网页将你说的话通过网络发送给服务器上的大语言模型。</p>
+</li>
+<li>
+<p>大语言模型生成文本来回应你说的话，并将其返回给网页。</p>
+</li>
+<li>
+<p>网页上跳出一个个字，显示大语言模型的回应。</p>
+</li>
+</ol>
+<p>有了以上简单的认知我们开始接下来的内容吧。</p>
+<h1>解决文本生成的问题</h1>
+<p>为了解决前面说到的<strong>知识截止日期、幻觉、专业领域知识不足</strong>的问题，业内公认的解决方案有三种：<strong>提示词工程、检索增强生成、大模型微调</strong>。</p>
+<h3 id="说清楚——提示词工程">说清楚——提示词工程</h3>
+<p><strong>提示词工程</strong>就是通过优化提示词内容的方式让大语言模型输出符合我们预期的答案**。<strong>其中可能会涉及到提示词编写技巧和基础结构。可以在一定程度上优化</strong>幻觉**、<strong>领域知识不足</strong>的问题。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/6a2354e8-d4bc-4b5b-b73a-84314cb5fc71.png" alt="页面 4.png" title="提示词工程"></p>
+<h3 id="查数据——检索增强生成">查数据——检索增强生成</h3>
+<p>**检索增强生成（RAG，<strong><strong>Retrieval-Augmented Generation</strong></strong>）**是通过检索外部知识库中的最新、最相关信息来补充给大语言模型，从而在生成回答时提高准确性、相关性和上下文的准确性，并减少模型生成幻觉（虚假信息）的几率。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/e6ff84e7-a2c8-4501-bcc5-1185cf0629a0.png" alt="页面 5.png" title="检索增强生成"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p>用户发起提问。</p>
+</li>
+<li>
+<p>代理程序搜索外部知识库找到与问题最相关的数据。</p>
+</li>
+<li>
+<p>将用户提示和相关数据发送给大语言模型。</p>
+</li>
+<li>
+<p>大语言模型结合提问和相关数据回答提问。</p>
+</li>
+<li>
+<p>代理程序向用户返回最终答案。</p>
+</li>
+</ol>
+<h3 id="再教育——大模型微调">再教育——大模型微调</h3>
+<p><strong>微调（Fine-tuning）<strong>是在基础大模型之上使用</strong>较小的专门数据集</strong>上对其进行重新训练，以使其适应特定任务的过程 。这是一个对大模型进行再教育的方式，它允许开发人员利用现有模型的一般知识，同时针对独特的问题定制回答。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/eafc95cd-6154-40ab-acf7-f8430cf1d417.png" alt="页面 6.png" title="微调"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p>准备好数据集（其中包括多组问题和答案文本）。</p>
+</li>
+<li>
+<p>使用微调技术对大模型进行微调，获取到微调后的模型。</p>
+</li>
+<li>
+<p>用户发送问题。</p>
+</li>
+<li>
+<p>如果问题与用于微调训练的数据集有关，则会以其特定风格和回答进行回复。</p>
+</li>
+</ol>
+<h3 id="提示词工程-vs-检索增强生成-vs-微调">提示词工程 vs 检索增强生成 vs 微调</h3>
+<p>提示词工程是解决行动成本最低的方案，对大模型的所有需求都可以从提示词工程开始，如果经过一定程度的调试后，发现无法解决问题，再考虑使用 RAG 和大模型微调。</p>
+<p>而 Fine-tuning 使用较小的数据集对大模型进行微调的方式让大模型更有效的执行特定领域的任务（明确大语言模型应该如何行动），能够解决诸如<strong>文风、格式、逻辑、专业词汇等细微且隐性</strong>的问题。</p>
+<p>其中 RAG 通过提供外部知识库的方式确保大模型了解某个领域的专业知识或最新信息（明确大语言模型应该知道什么），能够很好的解决<strong>知识截止时间、幻觉、专业领域知识不足</strong>的问题。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/1fcf2396-b4f7-4ec1-98d5-ded129c3c3bd.png" alt="页面 7.png"></p>
+<p>如果把大语言模型比做人类客服来说：</p>
+<ul>
+<li>
+<p><strong>微调（Fine-tuning）</strong>：就像公司对这位客服进行<strong>为期数月的深度内训</strong>。通过学习的内部资料和对话记录，他不仅掌握了知识，还内化了公司的行话、语气和处理流程，因此能够自信、流畅地用公司特有的风格与客户沟通。</p>
+</li>
+<li>
+<p><strong>RAG（检索增强生成）</strong>：则像是在这位客服的桌子上放了一台<strong>联网的、随时可查阅的电脑</strong>，里面存储着公司最新的、最全面的所有信息。当客户提问时，他能迅速在电脑中检索相关文档，并结合这些最新信息给出准确、及时的回答。他不需要记住所有细节，只需要知道如何高效地查找和利用信息。</p>
+</li>
+</ul>
+<p>不过上述的技术并不是非此即彼的关系，挺多情况下会同时运用以上三种技术来解决问题。</p>
+<h1>解决工具调用的问题</h1>
+<p>大语言模型本身只是一个文本生成器，它无法执行订票、发邮件、查天气等现实世界的操作。为了解决大语言模型无法调用外部工具的问题，业界提出了不同的解决方案。其中，ChatGPT 的母公司 OpenAI 提供了 Function-Calling 来解决模型端的适配； Claude 的母公司 Anthropic 则提出了 MCP 来解决工具端的适配。</p>
+<h3 id="模型端适配——Function-Calling">模型端适配——Function-Calling</h3>
+<p><strong>Function-Calling</strong>（函数调用）是 OpenAI 等大模型提供商推出的一项功能，它允许开发者在与大模型交互时，向模型描述可用的外部工具（函数）。当用户提出一个需要使用这些工具才能完成的请求时，模型不会直接回答，而是会生成一个包含结构化数据（JSON 格式）的对象，告诉你的应用程序应该调用哪个函数以及需要传入什么参数。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/57b001c2-b993-4210-8f81-616a812dfde6.png" alt="页面 9.png"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>开发者定义工具</strong>：开发者在代码中定义一组可用的工具，比如 <code>get_weather(location)</code>（获取当前天气）或 <code>get_date(location)</code>（获取当前时间）发送给大语言模型。</p>
+</li>
+<li>
+<p><strong>用户提出请求</strong>：用户输入一个指令，例如“帮我查一下新加坡今天的天气怎么样？”。</p>
+</li>
+<li>
+<p><strong>模型识别意图并生成调用指令</strong>：大模型理解用户的意图，并判断需要调用 <code>get_weather</code> 函数。于是，它不会直接生成文本答案，而是输出一个 JSON 对象，类似：<code>&#123;&quot;function_name&quot;: &quot;get_weather&quot;, &quot;arguments&quot;: &#123;&quot;location&quot;: &quot;Singapore&quot;&#125;&#125;</code>。</p>
+</li>
+<li>
+<p><strong>代理程序执行工具</strong>：我们之前提到的<strong>代理程序</strong>接收到这个 JSON 对象后，解析它，并实际执行本地的 <code>get_weather(&quot;Singapore&quot;)</code> 函数。这个函数会去调用一个真实的天气 API。</p>
+</li>
+<li>
+<p><strong>将结果返回给模型</strong>：代理程序将执行函数后得到的结果（例如，“新加坡今天晴，32摄氏度”）再次发送给大语言模型。</p>
+</li>
+<li>
+<p><strong>模型生成最终答复</strong>：大模型收到工具返回的结果后，会用自然语言组织并回复用户：“新加坡今天的天气是晴天，气温为32摄氏度。”</p>
+</li>
+</ol>
+<p>Function-Calling 是一种<strong>模型驱动</strong>的方案，核心在于模型足够“聪明”，能够理解何时以及如何使用开发者提供的工具。</p>
+<h3 id="工具端适配——MCP（Model-Context-Protocol）">工具端适配——MCP（Model Context Protocol）</h3>
+<p><strong>MCP（Model Context Protocol，模型上下文协议）</strong> 是由 Anthropic 提出的一种开放标准，旨在让外部工具或服务能够主动地、标准化地向 AI 系统描述自己的能力。它的目标是创建一个生态，让任何工具都能“自报家门”，而 AI 系统则能轻松地发现和使用它们。</p>
+<p>如果说 Function-Calling 是 AI 模型在问“你（开发者）有什么工具可以给我用？”，那么 MCP 则是工具在主动说“嘿，AI，我能做这些事，你可以用我！”。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/b3c2fdab-4ab3-4372-af6d-87450f979875.png" alt="页面 10.png"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>工具提供清单</strong>：每个遵循 MCP 的工具都会提供一个标准的“清单”文件（manifest file），用标准格式描述自己的功能、如何调用、需要什么权限等。</p>
+</li>
+<li>
+<p><strong>AI 系统发现并注册工具</strong>：AI 系统（比如一个聊天应用）可以发现这些工具的清单，并将其注册到自己的可用工具库中。</p>
+</li>
+<li>
+<p><strong>用户提出请求</strong>：用户提出请求，例如“帮我订一张明天去上海的机票”。</p>
+</li>
+<li>
+<p><strong>AI 系统提供上下文</strong>：AI 系统将用户的请求连同已注册的订票工具的“清单”信息一起，作为上下文提供给大语言模型。</p>
+</li>
+<li>
+<p><strong>模型决策并执行</strong>：大模型根据上下文，决定使用订票工具，并生成调用指令。代理程序随后执行该工具。</p>
+</li>
+</ol>
+<p>MCP 是一种<strong>工具驱动</strong>的方案，它的愿景是创建一个像“App Store”一样的工具生态，让 AI 可以即插即用各种第三方能力，而不需要每个开发者都去为特定的模型做适配。</p>
+<h1>Agent 的兴起</h1>
+<p>当我们把 RAG、微调、Function-Calling、MCP 这些技术组合在一起，赋予大语言模型记忆、规划和使用工具的能力时，一个更高级的概念就诞生了——<strong>AI Agent</strong>（人工智能代理）。</p>
+<p>Agent 不再仅仅是一个问答机器人，它更像一个能够自主理解、规划、执行并完成复杂任务的智能实体。</p>
+<h3 id="Agent-的能力">Agent 的能力</h3>
+<p>一个典型的 AI Agent 通常具备以下几个核心能力：</p>
+<ul>
+<li>
+<p><strong>大脑（Brain）</strong>：核心是强大的大语言模型，负责推理、理解和决策。</p>
+</li>
+<li>
+<p><strong>规划（Planning）</strong>：能将一个复杂的大任务（如“帮我策划一次为期五天的东京旅行”）分解成一系列可执行的子任务（查询航班、预订酒店、规划每日行程等）。</p>
+</li>
+<li>
+<p><strong>记忆（Memory）</strong>：拥有短期和长期记忆。短期记忆用于记住当前的对话上下文，长期记忆则通过外部数据库（如向量数据库）来存储关键信息和过往经验。</p>
+</li>
+<li>
+<p><strong>工具使用（Tool Use）</strong>：通过 Function-Calling 或 MCP 等机制，能够调用外部 API 或工具来执行无法通过语言模型自身完成的任务（如搜索、计算、代码执行等）。</p>
+</li>
+</ul>
+<h3 id="如何编排-Agent？">如何编排 Agent？</h3>
+<p><strong>编排（Orchestration）</strong> 就是设计和管理 Agent 工作流程的过程。就像电影导演需要安排每个场景、演员和道具一样，开发者需要编排 Agent 的各个组件（LLM、记忆、工具），让它们协同工作以完成最终目标。</p>
+<p>目前，业界已经有许多成熟的框架来帮助开发者进行 Agent 编排，最著名的就是 <strong>LangChain</strong> 和 <strong>LlamaIndex</strong>。这些框架提供了一系列标准化的接口和组件，让开发者可以像“搭积木”一样，快速构建出强大的 Agent。</p>
+<p>在众多编排模式中，有两种基础且经典的 Agent 架构值得了解：<strong>ReAct</strong> 和 <strong>Plan-and-Execute</strong>。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/56405f85-51c0-4d57-9111-a219ce56b3f2.png" alt="页面 13.png"></p>
+<p><strong>ReAct (Reason and Act)</strong>：这是一种将<strong>推理</strong>和<strong>行动</strong>紧密结合的框架。Agent 在这个模式下会进行“思考-行动-观察”的循环。</p>
+<ul>
+<li>
+<p><strong>思考 (Thought)</strong>：Agent 首先会基于当前任务和已有信息进行推理，思考下一步应该做什么。</p>
+</li>
+<li>
+<p><strong>行动 (Action)</strong>：根据思考结果，决定调用哪个工具，以及使用什么参数。</p>
+</li>
+<li>
+<p><strong>观察 (Observation)</strong>：执行工具后，Agent 会观察返回的结果，并将这个新信息作为下一步“思考”的输入。 这个循环会一直持续，直到任务完成。ReAct 模式非常灵活，适合处理那些需要根据实时反馈不断调整策略的动态任务。</p>
+</li>
+</ul>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/dc147070-4689-4332-9e45-ab723d68758a.png" alt="页面 14.png"></p>
+<p>**Plan-and-Execute (计划并执行)：<strong>这是一种将</strong>思考过程（规划）与行动（执行）**明确分开的架构。它通过一个结构化的方法来处理复杂任务。</p>
+<ul>
+<li>
+<p>**规划阶段 (Planning Phase)：**一个 Planner 模型会首先分析用户的请求，并将其分解成一个详细的、分步骤的计划。这个初始计划作为实现最终目标的蓝图。</p>
+</li>
+<li>
+<p>**执行阶段 (Execution Phase)：**一个 Executor Agent 会接收这个计划，并按顺序执行每一步。在执行过程中，Agent 会使用可用的工具来完成具体操作。</p>
+</li>
+<li>
+<p>**适应与重新规划 (Adaptation and Re-planning)：**在完成一个步骤后，Replan 模型会评估结果。如果情况发生变化或初始计划不再有效，Replan 模型可以动态地调整、修改当前计划，甚至创建一个全新的计划，以确保任务成功完成。这种动态适应性使其非常灵活和强大。</p>
+</li>
+</ul>
+<h3 id="Context-Engineering（上下文工程）">Context Engineering（上下文工程）</h3>
+<p><strong>上下文工程</strong>是构建高质量 Agent 的核心技术之一。它指的是<strong>设计、管理和优化提供给大语言模型的所有信息（即上下文）的过程</strong>，以确保模型能够做出最准确、最相关的决策。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/2714620e-159b-4c63-8874-ff2cb3b2b452.png" alt="页面 15.png"></p>
+<p>上下文不仅包括用户的原始提示词，还可能包括：</p>
+<ul>
+<li>
+<p><strong>对话历史</strong>：让 Agent 记住之前的交流内容。</p>
+</li>
+<li>
+<p><strong>RAG 检索结果</strong>：从外部知识库中提取的最新信息。</p>
+</li>
+<li>
+<p><strong>工具的输出</strong>：调用 API 后返回的数据。</p>
+</li>
+<li>
+<p><strong>Agent 的“内心独白”</strong>：Agent 的思考链（Chain-of-Thought），即它为了得出结论所做的推理步骤。</p>
+</li>
+<li>
+<p><strong>示例（Examples）</strong>：提供一些高质量的问答范例，引导模型输出特定格式或风格的答案。</p>
+</li>
+</ul>
+<p>一个优秀的上下文工程师就像一位出色的“投喂员”，总能精确地在恰当的时机，将最有用的信息喂给大语言模型这个“大脑”，从而引导 Agent 高效地完成任务。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/84277f46-6659-49dc-a62a-54547650a1f1.png" alt="页面 16.png"></p>
+<p>为了高效地利用有限的上下文窗口并向模型提供最相关的信息，上下文工程通常涉及以下几种管理策略：</p>
+<ul>
+<li>
+<p><strong>保存 (Saving)</strong>：为了让 Agent 拥有记忆，上下文需要被持久化保存。短期记忆可以直接保存在对话历史中，而长期记忆和知识则通常存储在外部系统中，如<strong>向量数据库</strong>，以便未来可以快速检索。</p>
+</li>
+<li>
+<p><strong>选择 (Selection)</strong>：在每次与模型交互时，我们不可能把所有历史信息都塞进上下文。因此，需要有策略地<strong>选择</strong>最相关的信息。这通常通过 RAG 技术实现，即根据当前用户的查询，从数据库中检索出最相关的“记忆片段”或文档。</p>
+</li>
+<li>
+<p><strong>压缩 (Compression)</strong>：当上下文信息过长时，就需要对其进行<strong>压缩</strong>以适应模型的输入限制。常见的方法包括：对早期的对话进行总结、移除不重要的细节、或者使用更高级的算法来提炼核心信息。</p>
+</li>
+<li>
+<p><strong>隔离 (Isolation)</strong>：在多用户或多任务场景下，必须对上下文进行<strong>隔离</strong>，确保一个 Agent 的知识和对话历史不会泄露给另一个不相关的任务或用户，避免信息混淆和隐私问题。</p>
+</li>
+</ul>
+<h3 id="A2A：Agent-间的通信方式">A2A：Agent 间的通信方式</h3>
+<p><strong>A2A（Agent-to-Agent）协议</strong>是一种开放的通信标准，它允许来自不同提供商和平台的独立 AI Agent 相互发现、沟通和协作。这是 AI 系统发展的一个关键演进，旨在打破由不同公司开发的 AI Agent 之间的“孤岛”，使它们能够无缝地协同工作，处理单个 Agent 难以应对的复杂工作流。</p>
+<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/f440e718-27a6-4cbc-beb5-18e6bf728a13.png" alt="页面 17.png"></p>
+<h3 id="A2A-工作流示例：规划一次旅行">A2A 工作流示例：规划一次旅行</h3>
+<p>一个使用 A2A 的多 Agent 系统可以协调不同领域的专家 Agent 来完成一个复杂任务，例如规划一次旅行：</p>
+<ol>
+<li>
+<p><strong>用户请求</strong>：用户向一个面向客户的“礼宾 Agent”提出请求：“帮我计划一个为期一周的海滩假期”。</p>
+</li>
+<li>
+<p><strong>任务委托</strong>：作为 A2A 客户端的礼宾 Agent，通过查阅 Agent 名片来发现并确定分别负责航班、酒店和本地活动的专家 Agent。</p>
+</li>
+<li>
+<p><strong>跨 Agent 通信</strong>：</p>
+<ul>
+<li>
+<p>礼宾 Agent 将航班预订任务委托给航空公司的 Agent。</p>
+</li>
+<li>
+<p>将酒店预订任务委托给酒店预订 Agent。</p>
+</li>
+<li>
+<p>将本地活动规划任务委托给本地向导 Agent。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>后端操作</strong>：每个专家 Agent 使用自己的工具执行任务，可能会利用像 MCP 这样的内部协议来访问航班数据、酒店库存或本地评论的 API。</p>
+</li>
+<li>
+<p><strong>状态与完成</strong>：当每个子任务完成时，专家 Agent 会向礼宾 Agent 提供更新和结果（“交付物”）。</p>
+</li>
+<li>
+<p><strong>最终结果</strong>：礼宾 Agent 汇总所有协作 Agent 的信息，并向用户呈现一份完整的、协商好的假期行程。</p>
+</li>
+</ol>
+<h1>核心名词表</h1>
+<table>
+<thead>
+<tr>
+<th><strong>名词</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLM</strong></td>
+<td>大语言模型，通过计算概率来生成文本的AI模型。</td>
+</tr>
+<tr>
+<td><strong>提示词工程</strong></td>
+<td>优化输入给模型的指令，以获得更理想输出的技术。</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>检索增强生成，通过外部知识库为模型提供最新信息以增强回答。</td>
+</tr>
+<tr>
+<td><strong>微调</strong></td>
+<td>使用特定数据集对大模型进行再训练，使其适应特定任务或风格。</td>
+</tr>
+<tr>
+<td><strong>Function Calling</strong></td>
+<td>模型驱动的工具调用方法，模型生成调用指令，由外部程序执行。</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td>工具驱动的工具调用协议，工具主动向模型“宣告”自己的能力。</td>
+</tr>
+<tr>
+<td><strong>AI Agent</strong></td>
+<td>集成了规划、记忆和工具使用能力的智能实体，能自主完成复杂任务。</td>
+</tr>
+<tr>
+<td><strong>ReAct</strong></td>
+<td>一种 Agent 架构，通过“思考-行动-观察”的循环来动态完成任务。</td>
+</tr>
+<tr>
+<td><strong>Plan-and-Execute</strong></td>
+<td>一种 Agent 架构，先制定完整计划，然后按部就班地执行。</td>
+</tr>
+<tr>
+<td><strong>上下文工程</strong></td>
+<td>设计、管理和优化提供给模型的所有信息（上下文）的过程。</td>
+</tr>
+<tr>
+<td><strong>A2A</strong></td>
+<td>Agent间的开放通信协议，旨在打破平台壁垒，实现多 Agent 协作。</td>
+</tr>
+</tbody>
+</table>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li>
+            <a class="non-border" href="/post/How-to-improve-work-efficiency/" title="如何提高工作效率？">
+              <span>&gt; </span> 
+              如何提高工作效率？
+            </a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
     
-    <!-- NO SIDEBAR -->
-    <!-- Post Container -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-      
-        <!-- Main Content -->
-
-
-<!-- 标签云 -->
-<div id='tag_cloud' class="tags tags-sup js-tags">
-  <a data-encode="" class="tag-button--all"> 
-    Blog
-  </a>
-  
-    <a data-encode="System" class="tag-button" title="System" rel="4"> 
-      System
-    </a>  
-  
-    <a data-encode="AI" class="tag-button" title="AI" rel="3"> 
-      AI
-    </a>  
-  
-    <a data-encode="Essay" class="tag-button" title="Essay" rel="3"> 
-      Essay
-    </a>  
-  
-    <a data-encode="Notes" class="tag-button" title="Notes" rel="3"> 
-      Notes
-    </a>  
-  
+      如果您喜欢此博客或觉得它对您有用，则欢迎对此发表评论。 也欢迎您分享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与我联系以将其删除。 谢谢 ！
+    
+  </p>
 </div>
+<!-- tip end -->
 
-<!-- 归档列表 -->
-<div class="mini-post-list js-result">
-  
-    <section class="mini-post-list">
-      <div class="listing-seperator" id="2025">
-        <span class="tag-text">2025</span>
-      </div>
-      
-      <div class="post-preview item" data-tags="AI">
-        <a href="/post/A-brief-explanation-of-various-AI-terms/">
-          <h2 class="post-title">
-            一文理解各种 AI 名词
-          </h2>
-          <h3 class="post-subtitle">
-            Aug 31, 2025
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="System">
-        <a href="/post/How-to-improve-work-efficiency/">
-          <h2 class="post-title">
-            如何提高工作效率？
-          </h2>
-          <h3 class="post-subtitle">
-            Jul 8, 2025
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="AI">
-        <a href="/post/12-High-Quality-Information/">
-          <h2 class="post-title">
-            优质信息
-          </h2>
-          <h3 class="post-subtitle">
-            May 23, 2025
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="AI">
-        <a href="/post/11-Commonly-Used-Tools/">
-          <h2 class="post-title">
-            常用工具
-          </h2>
-          <h3 class="post-subtitle">
-            May 13, 2025
-          </h3>
-        </a>
-      </div>
-      
-    </section>
-    
-    <section class="mini-post-list">
-      <div class="listing-seperator" id="2024">
-        <span class="tag-text">2024</span>
-      </div>
-      
-      <div class="post-preview item" data-tags="System">
-        <a href="/post/How-to-conduct-a-better-review/">
-          <h2 class="post-title">
-            如何更好的复盘？
-          </h2>
-          <h3 class="post-subtitle">
-            Sep 8, 2024
-          </h3>
-        </a>
-      </div>
-      
-    </section>
-    
-    <section class="mini-post-list">
-      <div class="listing-seperator" id="2023">
-        <span class="tag-text">2023</span>
-      </div>
-      
-      <div class="post-preview item" data-tags="Essay">
-        <a href="/post/Poem/">
-          <h2 class="post-title">
-            微光集
-          </h2>
-          <h3 class="post-subtitle">
-            May 31, 2023
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="System">
-        <a href="/post/Documenting-My-Life/">
-          <h2 class="post-title">
-            如何记录自己的生活？
-          </h2>
-          <h3 class="post-subtitle">
-            May 31, 2023
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="Essay">
-        <a href="/post/About-A-Friend-On-A-Voyage/">
-          <h2 class="post-title">
-            结束的话语，停留在风中
-          </h2>
-          <h3 class="post-subtitle">
-            May 27, 2023
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="Notes">
-        <a href="/post/ChatGPT-Prompt-Engineering-for-Developers/">
-          <h2 class="post-title">
-            吴恩达 x ChatGPT提示工程教程
-          </h2>
-          <h3 class="post-subtitle">
-            May 18, 2023
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="System">
-        <a href="/post/Anti-Wasteman-System/">
-          <h2 class="post-title">
-            如何规划个人目标并为之行动？
-          </h2>
-          <h3 class="post-subtitle">
-            May 17, 2023
-          </h3>
-        </a>
-      </div>
-      
-      <div class="post-preview item" data-tags="Notes">
-        <a href="/post/How-to-pull-request-on-Github/">
-          <h2 class="post-title">
-            如何在Github上发起一个 Pull Request ？
-          </h2>
-          <h3 class="post-subtitle">
-            May 11, 2023
-          </h3>
-        </a>
-      </div>
-      
-    </section>
-    
-    <section class="mini-post-list">
-      <div class="listing-seperator" id="2022">
-        <span class="tag-text">2022</span>
-      </div>
-      
-      <div class="post-preview item" data-tags="Notes">
-        <a href="/post/Factfulness/">
-          <h2 class="post-title">
-            十种思维错误及应对建议
-          </h2>
-          <h3 class="post-subtitle">
-            May 11, 2022
-          </h3>
-        </a>
-      </div>
-      
-    </section>
-    
-    <section class="mini-post-list">
-      <div class="listing-seperator" id="2021">
-        <span class="tag-text">2021</span>
-      </div>
-      
-      <div class="post-preview item" data-tags="Essay">
-        <a href="/post/Grandpa‘s-Room/">
-          <h2 class="post-title">
-            外公的房间
-          </h2>
-          <h3 class="post-subtitle">
-            Mar 28, 2021
-          </h3>
-        </a>
-      </div>
-      
-    </section>
-    
-</div>
+        <!-- tip end -->
+        
 
-      
+        
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-8 col-md-offset-2
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+
+        <!-- Friends Blog -->
+        
+      </div>
     </div>
-    <!-- Sidebar Container -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 sidebar-container">
-
-      <!-- Featured Tags -->
-      
-
-      <!-- Friends Blog -->
-      
-    </div>
-    
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '#'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      float: left;
+      margin-top: 0.125em;
+      margin-left: -1.2em;
+      padding-right: 0.5em;
+      font-size: .85em;
+      opacity: 0;
+      text-decoration: none;
+      border: 0!important;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
