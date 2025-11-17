@@ -162,14 +162,14 @@
   </url>
   
   <url>
-    <loc>https://vinton.store/tags/Essay/</loc>
+    <loc>https://vinton.store/tags/System/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vinton.store/tags/System/</loc>
+    <loc>https://vinton.store/tags/Essay/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -192,13 +192,6 @@
   </url>
   
   <url>
-    <loc>https://vinton.store/categories/Infos/</loc>
-    <lastmod>2025-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vinton.store/categories/Notes/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -206,7 +199,7 @@
   </url>
   
   <url>
-    <loc>https://vinton.store/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>https://vinton.store/categories/Infos/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -220,6 +213,13 @@
   </url>
   
   <url>
+    <loc>https://vinton.store/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -227,14 +227,14 @@
   </url>
   
   <url>
-    <loc>https://vinton.store/categories/%E9%98%85%E8%AF%BB/</loc>
+    <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vinton.store/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%90%86/</loc>
+    <loc>https://vinton.store/categories/%E9%98%85%E8%AF%BB/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -222,12 +222,12 @@
               
           
             <li>
-              <a href="/archive/">
+              <a href="/about/">
                 
-                  <p class="menu-archives">
-                    归档
+                  <p class="menu-about">
+                    关于
                   </p>
-                  <i class="fa-regular fa-newspaper menu-archives-icon"></i>
+                  <i class="fa-regular fa-address-card menu-about-icon"></i>
                 
               </a>
             </li>
@@ -235,12 +235,12 @@
               
           
             <li>
-              <a href="/about/">
+              <a href="/archive/">
                 
-                  <p class="menu-about">
-                    关于
+                  <p class="menu-archives">
+                    归档
                   </p>
-                  <i class="fa-regular fa-address-card menu-about-icon"></i>
+                  <i class="fa-regular fa-newspaper menu-archives-icon"></i>
                 
               </a>
             </li>
@@ -348,15 +348,15 @@
 <h1>大语言模型（LLM）</h1>
 <p>大语言模型这词在过去两年里有两次破圈，第一次是 2022 年12 月 OpenAI 推出 ChatGPT 3.5，第二次是 2025 年年初 DeepSeek-R1 横空出世。大部分人是从这两次破圈中意识到原来有一个名叫大语言模型的东西可以“口吐人言”。</p>
 <p>而我们通常使用它的方式也是通过浏览器或者桌面应用的聊天框和大模型发送对话来进行交互。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/86b80397-2998-4a20-89f9-f4afed5db821.jpeg" alt="Xnip2025-08-31_03-17-03.jpeg" title="ChatGPT 聊天框"></p>
+<p><img src="86b80397-2998-4a20-89f9-f4afed5db821.jpeg" alt="Xnip2025-08-31_03-17-03.jpeg" title="ChatGPT 聊天框"></p>
 <p>这边简单提一嘴大语言模型的原理，大语言模型实际上是在计算概率来生成文本，当你输入 “The best thing about AI is its ability to”（关于 AI 最厉害的能力是），大语言模型会基于训练它时使用的语料，来计算那个词和你输入的话最相关。例如：出现 “learn”（学习）的概率是 4.5 %、“predict”（预测）的概率是 3.5% 等，而每输出一个新的词时又会使用之前输出词和用户的输入合并再进行类似的概率计算。然后为了保持输出的创意性，并不会直接输出概率最高的词，而是从最相关的几个词里随机选择一个进行输出。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/2159da18-067e-41a2-897d-5f885bf566d0.jpeg" alt="这就是 ChatGPT-概率.jpeg" title="概率最高的五个词"></p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/c674e78b-f159-47dd-ac3f-b5bf3604e050.jpeg" alt="这就是 ChatGPT-温度.jpeg" title="所有可能的词和概率分布"></p>
+<p><img src="2159da18-067e-41a2-897d-5f885bf566d0.jpeg" alt="这就是 ChatGPT-概率.jpeg" title="概率最高的五个词"></p>
+<p><img src="c674e78b-f159-47dd-ac3f-b5bf3604e050.jpeg" alt="这就是 ChatGPT-温度.jpeg" title="所有可能的词和概率分布"></p>
 <p>通过它的原理以及我们自己日常和 AI 沟通的过程中的经验也能意识到 LLM 还是有许多局限性存在的。首先，大语言模型是根据过去某一个时刻的知识训练而成的，会有一个<strong>知识截止日期</strong>，在这个日期之后的知识大语言模型自己是不知道的；其次，大语言模型存在<strong>幻觉</strong>可能会出现“一本正经地胡说八道”的情况；另外，对于特别专业或细分的领域，通用的大语言模型知识深度可能不够充分，难以给出专家级的见解；最后，大语言模型只能进行文本的输入和输出，它无法直接调用外部工具。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/0e59eb5b-e81d-4c61-913b-e99b532afb4f.png" alt="页面 2.png" title="大语言模型的局限性"></p>
+<p><img src="0e59eb5b-e81d-4c61-913b-e99b532afb4f.png" alt="页面 2.png" title="大语言模型的局限性"></p>
 <p>为了解决上述大语言模型的局限性问题，行业前沿的专家钻研出许多技术手段。接下里就会对这些技术手段进行一一介绍。</p>
 <p>不过，为了更好的理解接下来的内容我们需要简单了解一下我们和大模型的交互流程，其实我们是通过大模型服务商提供的网页（你要打开 <a target="_blank" rel="noopener" href="https://chatgpt.com/c/68b34e15-7e18-8332-8413-a59dbda6efbb">https://chatgpt.com/</a> 这个网页才可以和 ChatGPT 聊天）或者桌面应用（例如 <a target="_blank" rel="noopener" href="https://claude.ai/download">Claude</a> 桌面应用）才可以和大语言模型沟通，我们暂且叫这个介于用户和大模型之间的网页或应用叫<strong>代理程序</strong>。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/421490b2-0a04-4e90-b37a-07b5291fe097.png" alt="页面 1.png" title="用户使用大语言模型的流程"></p>
+<p><img src="421490b2-0a04-4e90-b37a-07b5291fe097.png" alt="页面 1.png" title="用户使用大语言模型的流程"></p>
 <p>整个流程是：</p>
 <ol>
 <li>
@@ -377,10 +377,10 @@
 <p>为了解决前面说到的<strong>知识截止日期、幻觉、专业领域知识不足</strong>的问题，业内公认的解决方案有三种：<strong>提示词工程、检索增强生成、大模型微调</strong>。</p>
 <h3 id="说清楚——提示词工程">说清楚——提示词工程</h3>
 <p><strong>提示词工程</strong>就是通过优化提示词内容的方式让大语言模型输出符合我们预期的答案**。<strong>其中可能会涉及到提示词编写技巧和基础结构。可以在一定程度上优化</strong>幻觉**、<strong>领域知识不足</strong>的问题。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/6a2354e8-d4bc-4b5b-b73a-84314cb5fc71.png" alt="页面 4.png" title="提示词工程"></p>
+<p><img src="6a2354e8-d4bc-4b5b-b73a-84314cb5fc71.png" alt="页面 4.png" title="提示词工程"></p>
 <h3 id="查数据——检索增强生成">查数据——检索增强生成</h3>
 <p>**检索增强生成（RAG，<strong><strong>Retrieval-Augmented Generation</strong></strong>）**是通过检索外部知识库中的最新、最相关信息来补充给大语言模型，从而在生成回答时提高准确性、相关性和上下文的准确性，并减少模型生成幻觉（虚假信息）的几率。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/e6ff84e7-a2c8-4501-bcc5-1185cf0629a0.png" alt="页面 5.png" title="检索增强生成"></p>
+<p><img src="e6ff84e7-a2c8-4501-bcc5-1185cf0629a0.png" alt="页面 5.png" title="检索增强生成"></p>
 <p>流程如下：</p>
 <ol>
 <li>
@@ -401,7 +401,7 @@
 </ol>
 <h3 id="再教育——大模型微调">再教育——大模型微调</h3>
 <p><strong>微调（Fine-tuning）<strong>是在基础大模型之上使用</strong>较小的专门数据集</strong>上对其进行重新训练，以使其适应特定任务的过程 。这是一个对大模型进行再教育的方式，它允许开发人员利用现有模型的一般知识，同时针对独特的问题定制回答。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/eafc95cd-6154-40ab-acf7-f8430cf1d417.png" alt="页面 6.png" title="微调"></p>
+<p><img src="eafc95cd-6154-40ab-acf7-f8430cf1d417.png" alt="页面 6.png" title="微调"></p>
 <p>流程如下：</p>
 <ol>
 <li>
@@ -421,7 +421,7 @@
 <p>提示词工程是解决行动成本最低的方案，对大模型的所有需求都可以从提示词工程开始，如果经过一定程度的调试后，发现无法解决问题，再考虑使用 RAG 和大模型微调。</p>
 <p>而 Fine-tuning 使用较小的数据集对大模型进行微调的方式让大模型更有效的执行特定领域的任务（明确大语言模型应该如何行动），能够解决诸如<strong>文风、格式、逻辑、专业词汇等细微且隐性</strong>的问题。</p>
 <p>其中 RAG 通过提供外部知识库的方式确保大模型了解某个领域的专业知识或最新信息（明确大语言模型应该知道什么），能够很好的解决<strong>知识截止时间、幻觉、专业领域知识不足</strong>的问题。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/1fcf2396-b4f7-4ec1-98d5-ded129c3c3bd.png" alt="页面 7.png"></p>
+<p><img src="1fcf2396-b4f7-4ec1-98d5-ded129c3c3bd.png" alt="页面 7.png"></p>
 <p>如果把大语言模型比做人类客服来说：</p>
 <ul>
 <li>
@@ -436,7 +436,7 @@
 <p>大语言模型本身只是一个文本生成器，它无法执行订票、发邮件、查天气等现实世界的操作。为了解决大语言模型无法调用外部工具的问题，业界提出了不同的解决方案。其中，ChatGPT 的母公司 OpenAI 提供了 Function-Calling 来解决模型端的适配； Claude 的母公司 Anthropic 则提出了 MCP 来解决工具端的适配。</p>
 <h3 id="模型端适配——Function-Calling">模型端适配——Function-Calling</h3>
 <p><strong>Function-Calling</strong>（函数调用）是 OpenAI 等大模型提供商推出的一项功能，它允许开发者在与大模型交互时，向模型描述可用的外部工具（函数）。当用户提出一个需要使用这些工具才能完成的请求时，模型不会直接回答，而是会生成一个包含结构化数据（JSON 格式）的对象，告诉你的应用程序应该调用哪个函数以及需要传入什么参数。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/57b001c2-b993-4210-8f81-616a812dfde6.png" alt="页面 9.png"></p>
+<p><img src="57b001c2-b993-4210-8f81-616a812dfde6.png" alt="页面 9.png"></p>
 <p>流程如下：</p>
 <ol>
 <li>
@@ -462,7 +462,7 @@
 <h3 id="工具端适配——MCP（Model-Context-Protocol）">工具端适配——MCP（Model Context Protocol）</h3>
 <p><strong>MCP（Model Context Protocol，模型上下文协议）</strong> 是由 Anthropic 提出的一种开放标准，旨在让外部工具或服务能够主动地、标准化地向 AI 系统描述自己的能力。它的目标是创建一个生态，让任何工具都能“自报家门”，而 AI 系统则能轻松地发现和使用它们。</p>
 <p>如果说 Function-Calling 是 AI 模型在问“你（开发者）有什么工具可以给我用？”，那么 MCP 则是工具在主动说“嘿，AI，我能做这些事，你可以用我！”。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/b3c2fdab-4ab3-4372-af6d-87450f979875.png" alt="页面 10.png"></p>
+<p><img src="b3c2fdab-4ab3-4372-af6d-87450f979875.png" alt="页面 10.png"></p>
 <p>流程如下：</p>
 <ol>
 <li>
@@ -505,7 +505,7 @@
 <p><strong>编排（Orchestration）</strong> 就是设计和管理 Agent 工作流程的过程。就像电影导演需要安排每个场景、演员和道具一样，开发者需要编排 Agent 的各个组件（LLM、记忆、工具），让它们协同工作以完成最终目标。</p>
 <p>目前，业界已经有许多成熟的框架来帮助开发者进行 Agent 编排，最著名的就是 <strong>LangChain</strong> 和 <strong>LlamaIndex</strong>。这些框架提供了一系列标准化的接口和组件，让开发者可以像“搭积木”一样，快速构建出强大的 Agent。</p>
 <p>在众多编排模式中，有两种基础且经典的 Agent 架构值得了解：<strong>ReAct</strong> 和 <strong>Plan-and-Execute</strong>。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/56405f85-51c0-4d57-9111-a219ce56b3f2.png" alt="页面 13.png"></p>
+<p><img src="56405f85-51c0-4d57-9111-a219ce56b3f2.png" alt="页面 13.png"></p>
 <p><strong>ReAct (Reason and Act)</strong>：这是一种将<strong>推理</strong>和<strong>行动</strong>紧密结合的框架。Agent 在这个模式下会进行“思考-行动-观察”的循环。</p>
 <ul>
 <li>
@@ -518,7 +518,7 @@
 <p><strong>观察 (Observation)</strong>：执行工具后，Agent 会观察返回的结果，并将这个新信息作为下一步“思考”的输入。 这个循环会一直持续，直到任务完成。ReAct 模式非常灵活，适合处理那些需要根据实时反馈不断调整策略的动态任务。</p>
 </li>
 </ul>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/dc147070-4689-4332-9e45-ab723d68758a.png" alt="页面 14.png"></p>
+<p><img src="dc147070-4689-4332-9e45-ab723d68758a.png" alt="页面 14.png"></p>
 <p>**Plan-and-Execute (计划并执行)：<strong>这是一种将</strong>思考过程（规划）与行动（执行）**明确分开的架构。它通过一个结构化的方法来处理复杂任务。</p>
 <ul>
 <li>
@@ -533,7 +533,7 @@
 </ul>
 <h3 id="Context-Engineering（上下文工程）">Context Engineering（上下文工程）</h3>
 <p><strong>上下文工程</strong>是构建高质量 Agent 的核心技术之一。它指的是<strong>设计、管理和优化提供给大语言模型的所有信息（即上下文）的过程</strong>，以确保模型能够做出最准确、最相关的决策。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/2714620e-159b-4c63-8874-ff2cb3b2b452.png" alt="页面 15.png"></p>
+<p><img src="2714620e-159b-4c63-8874-ff2cb3b2b452.png" alt="页面 15.png"></p>
 <p>上下文不仅包括用户的原始提示词，还可能包括：</p>
 <ul>
 <li>
@@ -553,7 +553,7 @@
 </li>
 </ul>
 <p>一个优秀的上下文工程师就像一位出色的“投喂员”，总能精确地在恰当的时机，将最有用的信息喂给大语言模型这个“大脑”，从而引导 Agent 高效地完成任务。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/84277f46-6659-49dc-a62a-54547650a1f1.png" alt="页面 16.png"></p>
+<p><img src="84277f46-6659-49dc-a62a-54547650a1f1.png" alt="页面 16.png"></p>
 <p>为了高效地利用有限的上下文窗口并向模型提供最相关的信息，上下文工程通常涉及以下几种管理策略：</p>
 <ul>
 <li>
@@ -571,7 +571,7 @@
 </ul>
 <h3 id="A2A：Agent-间的通信方式">A2A：Agent 间的通信方式</h3>
 <p><strong>A2A（Agent-to-Agent）协议</strong>是一种开放的通信标准，它允许来自不同提供商和平台的独立 AI Agent 相互发现、沟通和协作。这是 AI 系统发展的一个关键演进，旨在打破由不同公司开发的 AI Agent 之间的“孤岛”，使它们能够无缝地协同工作，处理单个 Agent 难以应对的复杂工作流。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/ybEnB5jRXD9B3lP1/img/f440e718-27a6-4cbc-beb5-18e6bf728a13.png" alt="页面 17.png"></p>
+<p><img src="f440e718-27a6-4cbc-beb5-18e6bf728a13.png" alt="页面 17.png"></p>
 <h3 id="A2A-工作流示例：规划一次旅行">A2A 工作流示例：规划一次旅行</h3>
 <p>一个使用 A2A 的多 Agent 系统可以协调不同领域的专家 Agent 来完成一个复杂任务，例如规划一次旅行：</p>
 <ol>
