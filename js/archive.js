@@ -3,6 +3,16 @@ Credits: this script is shamelessly borrowed from
 https://github.com/kitian616/jekyll-TeXt-theme
 */
 (function() {
+  function initArchiveTagFilter() {
+    var $tags = $('.js-tags');
+    var $result = $('.js-result');
+
+    if (!$tags.length || !$result.length || $result.data('archive-initialized')) {
+      return;
+    }
+
+    $result.data('archive-initialized', true);
+
   function queryString() {
     // This function is anonymous, is executed immediately and
     // the return value is assigned to QueryString!
@@ -36,11 +46,8 @@ https://github.com/kitian616/jekyll-TeXt-theme
     };
   })();
 
-  $(document).ready(function() {
-    var $tags = $('.js-tags');
     var $articleTags = $tags.find('.tag-button');
     var $tagShowAll = $tags.find('.tag-button--all');
-    var $result = $('.js-result');
     var $sections = $result.find('section');
     var sectionArticles = []
     var $lastFocusButton = null;
@@ -138,6 +145,11 @@ https://github.com/kitian616/jekyll-TeXt-theme
     $tags.on('click', 'a', function() {   /* only change */
       tagSelect($(this).data('encode'), $(this));
     });
+  }
 
+  window.initArchiveTagFilter = initArchiveTagFilter;
+
+  $(document).ready(function() {
+    initArchiveTagFilter();
   });
 })();

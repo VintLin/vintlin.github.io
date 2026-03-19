@@ -1,5 +1,6 @@
 .iconfont {
-  color: #787878;
+  color: var(--common-color, #787878);
+  opacity: 0.5;
   margin-top: -1px;
   font-size: 1rem !important;
   padding: 0 0.2rem;
@@ -14,7 +15,8 @@
 }
 
 .top .iconfont {
-  color: #f46267;
+  color: var(--active-color, #f46267);
+  opacity: 1;
   font-size: 4.5rem !important;
 }
 
@@ -27,7 +29,8 @@
 }
 
 .top-tag .iconfont {
-  color: #f46267;
+  color: var(--active-color, #f46267);
+  opacity: 1;
   font-size: 5rem !important;
 }
 

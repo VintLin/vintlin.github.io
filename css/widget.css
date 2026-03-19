@@ -1,13 +1,13 @@
 .widget {
-  color: #bfbfbf;
+  color: var(--common-color, #bfbfbf);
   background: transparent;
 }
 .widget a {
-  color: #bfbfbf;
+  color: var(--common-color, #bfbfbf);
   text-decoration: none;
 }
 .widget a:hover {
-  color: #4969ed;
+  color: var(--active-color, #4969ed);
   text-decoration: none;
 }
 .widget ul ul,

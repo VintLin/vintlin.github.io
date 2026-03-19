@@ -32,23 +32,41 @@ e+g);break;case sa.M:m=(new I(this.input,{index:e,bufferSize:k.J})).r();break;de
 k.p.toString(16)+", data=0x"+p.toString(16)))}return m};t.L=function(a){this.j=a};function wa(a,b,c){c^=a.s(b);a.k(b,c);return c}t.k=U.prototype.k;t.S=U.prototype.T;t.s=U.prototype.s;v("Zlib.Unzip",V);v("Zlib.Unzip.prototype.decompress",V.prototype.r);v("Zlib.Unzip.prototype.getFilenames",V.prototype.Y);v("Zlib.Unzip.prototype.setPassword",V.prototype.L);}).call(window);
 
 function requestArrayBuffer(url, success, error) {
-    var xhr
-    if (window.FormData && window.ArrayBuffer) {
-        xhr = new XMLHttpRequest()
-        xhr.addEventListener('load', function() {
-            var successd = xhr.status >= 200 && xhr.status < 300 || xhr.status === 304;
-            if (success&&successd) {
-                success(xhr.response)
-            } else {
-                error(xhr.statusText);
-            }
-        })
-        xhr.addEventListener('progress',progressSegment)
-        xhr.open('GET', url, true);
-        xhr.responseType = 'arraybuffer'
-        xhr.send(null)
-        return xhr;
+    var xhr, retryCount = 0, maxRetries = 2;
+
+    function attemptLoad() {
+        if (window.FormData && window.ArrayBuffer) {
+            xhr = new XMLHttpRequest();
+            xhr.addEventListener('load', function() {
+                var successd = xhr.status >= 200 && xhr.status < 300 || xhr.status === 304;
+                if (success && successd) {
+                    success(xhr.response);
+                } else if (retryCount < maxRetries) {
+                    retryCount++;
+                    setTimeout(attemptLoad, 1000 * retryCount);
+                } else {
+                    error('Failed to load search data: ' + (xhr.statusText || 'Network error'));
+                }
+            });
+            xhr.addEventListener('error', function() {
+                if (retryCount < maxRetries) {
+                    retryCount++;
+                    setTimeout(attemptLoad, 1000 * retryCount);
+                } else {
+                    error('Network error loading search data');
+                }
+            });
+            xhr.addEventListener('progress', progressSegment);
+            xhr.open('GET', url, true);
+            xhr.responseType = 'arraybuffer';
+            xhr.send(null);
+            return xhr;
+        } else {
+            error('Browser does not support required features');
+        }
     }
+
+    return attemptLoad();
 }
 
 //return types
@@ -136,15 +154,14 @@ function initLoad(urls, options) {
         return v + crosTail;
     }).forEach(function(url) {
         requestArrayBuffer(url,function(data){
-                // wrap arrayBuffer with Uint8Array buffer view
-                var bufferView = new Uint8Array(data)
-                //record execute start time
-                // var now = performance.now()
-                //create unzip object
-                var unzip = new Zlib.Unzip(bufferView)
+                try {
+                    // wrap arrayBuffer with Uint8Array buffer view
+                    var bufferView = new Uint8Array(data)
+                    //create unzip object
+                    var unzip = new Zlib.Unzip(bufferView)
 
-                //get file names from zip
-                var files = unzip.getFilenames()
+                    //get file names from zip
+                    var files = unzip.getFilenames()
 
                 //parse all files outside folders
                 var baseFiles = files.filter(function(v) {
@@ -189,8 +206,9 @@ function initLoad(urls, options) {
                 // console.log(baseFolders)
                 success($.extend({}, baseFiles, baseFolders))
                 progressSegment(url,true)
-
-                // console.log(performance.now() - now)
+                } catch(e) {
+                    error('Failed to decompress search data: ' + e.message)
+                }
         },function(errorText){
             error(errorText)
         })

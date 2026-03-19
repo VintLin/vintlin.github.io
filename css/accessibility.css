@@ -1,0 +1,94 @@
+/* Accessibility Enhancements — uses design tokens from themecolor.css */
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators — keyboard only via :focus-visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--active-color, #4969ed);
+  outline-offset: 2px;
+}
+
+.navbar-nav a:focus-visible,
+.popup-trigger:focus-visible,
+.search-icon-close:focus-visible {
+  outline: 3px solid var(--active-color, #4969ed);
+  outline-offset: 3px;
+}
+
+/* Suppress default :focus outline for mouse/touch users */
+*:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Skip to main content — hidden until keyboard focused */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  height: auto;
+  padding: 8px 16px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--active-color, #4969ed);
+  color: var(--background-color, #fff);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode */
+@media (forced-colors: active) {
+  .skip-link:focus {
+    border: 2px solid ButtonText;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 3px solid Highlight;
+  }
+}

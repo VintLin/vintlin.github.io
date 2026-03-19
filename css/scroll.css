@@ -10,7 +10,7 @@
 #progress .line {
   width: 0%;
   height: 0.3rem;
-  background-color: #09f;
+  background-color: var(--active-color, #09f);
 }
 
 ::-webkit-scrollbar {

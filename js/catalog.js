@@ -4,7 +4,8 @@ var toc = document.getElementById('toc')
 if (toc != null) {
   window.addEventListener("scroll", scrollcatelogHandler);
   var tocPosition = toc.offsetTop;
-  var height_header = $("#signature").height();
+  var signature = document.getElementById("signature");
+  var height_header = signature ? signature.offsetHeight : 0;
 
   function scrollcatelogHandler(e) {
     var event = e || window.event,

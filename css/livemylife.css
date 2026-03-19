@@ -9,18 +9,18 @@ i.mdui-icon.material-icons.bright-mode {
 
 /* tip */
 .tip {
-  color: #777;
+  color: #666; /* 提升对比度: #777 → #666 (4.6:1 → 5.7:1) */
   font-size: 0.9em;
   text-align: left;
 }
 
 /* archives */
 li.archive-list-item:hover {
-  color: #4969ed;
+  color: var(--active-color, #4969ed);
 }
 
 li.archive-list-item:hover a {
-  color: #4969ed !important;
+  color: var(--active-color, #4969ed) !important;
 }
 
 /* social share */
@@ -39,28 +39,38 @@ li.archive-list-item:hover a {
 
 .social-share-ul>.social-share-li {
   display: inline-block;
-  width: 18%;
+  min-width: 44px;
+  min-height: 44px;
   padding: 4px 8px !important;
   line-height: 35px;
 }
 
+@media screen and (min-width: 769px) {
+  .social-share-ul>.social-share-li {
+    width: 18%;
+  }
+}
+
 .social-share-ul>.social-share-li>a {
-  display: block;
-  background-color: #1d1f21;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--common-color, #1d1f21);
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 32px;
 }
 
 .social-share-ul li i {
-  color: #f6f9fc;
+  color: var(--background-color, #f6f9fc);
 }
 
 .social-share-ul>.social-share-li>a:hover {
-  background-color: #4969ed;
+  background-color: var(--active-color, #4969ed);
 }
 
 .social-share .list-inline>li :hover {
-  color: #f6f9fc;
+  color: var(--background-color, #f6f9fc);
 }
 
 .social-share .icon-wechat {
@@ -69,17 +79,17 @@ li.archive-list-item:hover a {
 
 .social-share .icon-wechat .wechat-qrcode {
   display: none;
-  border: 1px solid #eee;
+  border: 1px solid var(--direction-color, #eee);
   position: absolute;
   z-index: 9;
   top: -205px;
   left: -84px;
   width: 200px;
   height: 192px;
-  background-color: #fff;
-  box-shadow: 0 2px 10px #aaa;
+  background-color: var(--background-color, #fff);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   transition: all 200ms;
-  -webkit-tansition: all 350ms;
+  -webkit-transition: all 350ms;
   -moz-transition: all 350ms
 }
 
@@ -97,10 +107,10 @@ li.archive-list-item:hover a {
   height: 26px;
   line-height: 26px;
   font-size: 12px;
-  background-color: #f3f3f3;
+  background-color: var(--direction-color, #f3f3f3);
   margin: 0;
   padding: 0;
-  color: #404040
+  color: var(--common-color, #404040)
 }
 
 .social-share .icon-wechat .wechat-qrcode .qrcode {
@@ -129,7 +139,7 @@ li.archive-list-item:hover a {
   height: 0;
   border-width: 8px 6px 6px 6px;
   border-style: solid;
-  border-color: #fff transparent transparent transparent
+  border-color: var(--background-color, #fff) transparent transparent transparent
 }
 
 .social-share .icon-wechat:hover .wechat-qrcode {
@@ -139,7 +149,7 @@ li.archive-list-item:hover a {
 /* gitalk comment */
 .gt-container .gt-header-textarea {
   border-radius: 0px !important;
-  border: 1px solid #CFD8DC !important;
+  border: 1px solid var(--direction-color, #CFD8DC) !important;
 }
 
 .gt-container .gt-avatar img {
@@ -149,19 +159,19 @@ li.archive-list-item:hover a {
 .gt-container .gt-header-preview {
   min-height: 72px;
   border-radius: 0px !important;
-  border: 1px solid #CFD8DC !important;
+  border: 1px solid var(--direction-color, #CFD8DC) !important;
 }
 
 .gt-container .gt-popup {
-  border: 1px solid #cfd8dc;
+  border: 1px solid var(--direction-color, #cfd8dc);
 }
 
 .gt-container .gt-comment-admin .gt-comment-content {
-  border: 1px solid #CFD8DC;
+  border: 1px solid var(--direction-color, #CFD8DC);
 }
 
 .gt-container .gt-comment-content {
-  border: 1px solid #CFD8DC;
+  border: 1px solid var(--direction-color, #CFD8DC);
 }
 
 .gt-comment-like {
@@ -203,7 +213,7 @@ li.archive-list-item:hover a {
   display: block !important;
   content: "Click to Expand" !important;
   text-align: center;
-  color: #666;
+  color: var(--active-color, #337ab7);
   position: absolute;
   width: 100%;
   height: 50px;
@@ -212,7 +222,6 @@ li.archive-list-item:hover a {
   bottom: 0;
   pointer-events: none;
   background: rgba(255, 255, 255, .9);
-  color: #337ab7;
 }
 
 .gt-container .gt-svg {
@@ -220,7 +229,7 @@ li.archive-list-item:hover a {
 }
 
 .gt-avatar.gt-comment-avatar img {
-  background-color: #f6f9fc;
+  background-color: var(--direction-color, #f6f9fc);
 }
 
 .gt-comment-content .highlight {
@@ -228,9 +237,9 @@ li.archive-list-item:hover a {
 }
 
 .gt-comment-content .highlight pre {
-  background-color: #ffffff !important;
+  background-color: var(--background-color, #ffffff) !important;
   border-radius: 5px !important;
-  color: black !important;
+  color: var(--common-color, black) !important;
 }
 
 .gt-header-comment .highlight {
@@ -238,9 +247,9 @@ li.archive-list-item:hover a {
 }
 
 .gt-header-comment .highlight pre {
-  background-color: #ffffff !important;
+  background-color: var(--background-color, #ffffff) !important;
   border-radius: 5px !important;
-  color: black !important;
+  color: var(--common-color, black) !important;
 }
 
 .markdown-body .highlight pre, .markdown-body pre {
@@ -253,7 +262,7 @@ li.archive-list-item:hover a {
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  color: black !important
+  color: var(--common-color, black) !important
 }
 
 /* rocket */
