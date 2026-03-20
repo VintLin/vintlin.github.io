@@ -1,0 +1,743 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
+  !function () {
+    const storageKey = "vint-color-scheme";
+    const darkThemeColor = "#050505";
+    const lightThemeColor = "#fafaf9";
+
+    const resolveMode = () => localStorage.getItem(storageKey) || "dark";
+
+    const resolveIsDark = (mode) => {
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return mode === "dark" || (mode === "auto" && prefersDark);
+    };
+
+    const applyThemeToDocument = (doc, mode) => {
+      const isDark = resolveIsDark(mode);
+      doc.documentElement.classList.toggle("dark", isDark);
+      doc.documentElement.dataset.themeMode = mode;
+      const themeColor = doc.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+      }
+    };
+
+    applyThemeToDocument(document, resolveMode());
+
+    document.addEventListener("astro:before-swap", (event) => {
+      applyThemeToDocument(event.newDocument, resolveMode());
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+      applyThemeToDocument(document, resolveMode());
+    });
+  }();
+</script><title>如何提高工作效率？ | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v6.0.6"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/icon_website.webp"><link rel="shortcut icon" href="/img/icon/icon_website.webp"><link rel="apple-touch-icon" href="/img/icon/icon_website.webp"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="如何提高工作效率？ | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vinton.store/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="如何提高工作效率？ | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vinton.store/og-default.svg"><link rel="canonical" href="https://vinton.store/posts/how-to-improve-work-efficiency/"><script defer data-domain="vinton.store" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何提高工作效率？","datePublished":"2025-07-08T11:15:00.000Z","inLanguage":"zh-CN","url":"https://vinton.store/posts/how-to-improve-work-efficiency/","image":["https://vinton.store/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vinton.store/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmQZLfuR.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.CIAsUspC.css"></head> <body> <div class="noise-drift-background" aria-hidden="true" data-astro-cid-jhygxfeg> <canvas data-noise-drift-background data-astro-cid-jhygxfeg></canvas> </div> <script type="module">const Y=document.querySelector("[data-noise-drift-background]");if(Y){window.__noiseDriftBackground?.destroy?.();const g=Y,T=g.getContext("2d");if(T){let Z=function(n){let o=n>>>0;return()=>{o+=1831565813;let t=o;return t=Math.imul(t^t>>>15,t|1),t^=t+Math.imul(t^t>>>7,t|61),((t^t>>>14)>>>0)/4294967296}},B=function(n){const o=Z(n),t=new Uint8Array(512),c=new Uint8Array(256);for(let e=0;e<256;e+=1)c[e]=e;for(let e=255;e>0;e-=1){const i=Math.floor(o()*(e+1)),a=c[e];c[e]=c[i],c[i]=a}for(let e=0;e<512;e+=1)t[e]=c[e&255];const v=e=>e*e*e*(e*(e*6-15)+10),s=(e,i,a)=>e+(i-e)*a,r=(e,i,a,f)=>{const d=e&15,w=d<8?i:a,b=d<4?a:d===12||d===14?i:f;return((d&1)===0?w:-w)+((d&2)===0?b:-b)};return(e,i,a)=>{const f=Math.floor(e),d=Math.floor(i),w=Math.floor(a),b=f&255,I=d&255,A=w&255,l=e-f,u=i-d,h=a-w,E=v(l),W=v(u),ot=v(h),q=t[b]+I,U=t[q]+A,V=t[q+1]+A,j=t[b+1]+I,K=t[j]+A,X=t[j+1]+A;return(s(s(s(r(t[U],l,u,h),r(t[K],l-1,u,h),E),s(r(t[V],l,u-1,h),r(t[X],l-1,u-1,h),E),W),s(s(r(t[U+1],l,u,h-1),r(t[K+1],l-1,u,h-1),E),s(r(t[V+1],l,u-1,h-1),r(t[X+1],l-1,u-1,h-1),E),W),ot)+1)/2}},D=function(){const n=getComputedStyle(document.documentElement),o=n.getPropertyValue("--noise-dot-rgb").trim(),t=Number.parseFloat(n.getPropertyValue("--noise-dot-alpha").trim()),c=o.split(/\s+/).map(Number).filter(Number.isFinite).slice(0,3);c.length===3?P=[c[0],c[1],c[2]]:P=[24,24,27],z=Number.isFinite(t)?t:.22},J=function(){L=[];for(let n=-p/2;n<y+p;n+=p)for(let o=-p/2;o<M+p;o+=p)L.push({x:n,y:o,opacity:Math.random()*.5+.5})},S=function(){y=window.innerWidth,M=window.innerHeight;const n=window.devicePixelRatio||1;g.width=Math.round(y*n),g.height=Math.round(M*n),g.style.width=`${y}px`,g.style.height=`${M}px`,m.setTransform(n,0,0,n,0,0),J()},Q=function(n,o,t){return(N(n/x,o/x,t)-.5)*2*et},_=function(n){m.clearRect(0,0,y,M);const o=n/1e4,[t,c,v]=P;for(const s of L){const r=Q(s.x,s.y,o),e=(N(s.x/x,s.y/x,o*2)+.5)*tt,i=s.x+Math.cos(r)*e,a=s.y+Math.sin(r)*e,f=Math.cos(r)*k*.5,d=Math.sin(r)*k*.5,w=(Math.abs(Math.cos(r))*.5+.5)*s.opacity*z;m.strokeStyle=`rgba(${t}, ${c}, ${v}, ${w})`,m.lineWidth=.9,m.beginPath(),m.moveTo(i-f,a-d),m.lineTo(i+f,a+d),m.stroke()}F.matches||(C=window.requestAnimationFrame(_))},$=function(){window.cancelAnimationFrame(C),N=B(Date.now()),D(),S(),_(performance.now())};const m=T,x=200,tt=10,k=2.2,p=15,et=Math.PI*2,F=window.matchMedia("(prefers-reduced-motion: reduce)");let y=0,M=0,P=[24,24,27],z=.22,C=0,L=[],N=B(Date.now());const O=()=>S(),nt=()=>D(),R=()=>$(),G=new MutationObserver(nt),H=()=>{window.cancelAnimationFrame(C),window.removeEventListener("resize",O),F.removeEventListener("change",R),G.disconnect()};window.__noiseDriftBackground={destroy:H},$(),window.addEventListener("resize",O,{passive:!0}),F.addEventListener("change",R),G.observe(document.documentElement,{attributes:!0,attributeFilter:["class","style"]}),document.addEventListener("astro:before-swap",H,{once:!0})}}</script> <header class="site-header" data-pagefind-ignore data-astro-transition-persist="site-header"> <a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&#34;/img/icon/icon_web.svg&#34;)"> <span class="brand-mark-icon" aria-hidden="true"></span> </a> <nav class="site-nav" aria-label="Primary"> <div class="site-nav-spacer"></div> <div class="site-nav-links"> <a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/posts/&#34;,&#34;/notes/&#34;]"> Post </a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/photos/&#34;]"> Photo </a><a href="https://github.com/VintLin" target="_blank" rel="noreferrer" class="nav-link"> GitHub </a> <a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check> <i class="fa-solid fa-square-rss" aria-hidden="true"></i> </a> <button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="light" aria-label="Toggle color scheme"> <i class="fa-regular fa-sun light-mode" aria-hidden="true"></i> <i class="fa-regular fa-moon dark-mode" aria-hidden="true"></i> </button> <button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"> <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> </button> </div> </nav> </header> <script>
+  const storageKey = "vint-color-scheme";
+  const root = document.documentElement;
+  const themeTransitionTimings = {
+    light: {
+      duration: 720,
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+    },
+    dark: {
+      duration: 620,
+      easing: "cubic-bezier(0.7, 0, 0.22, 1)"
+    }
+  };
+
+  const normalizePathname = (pathname) => {
+    if (!pathname || pathname === "/") {
+      return "/";
+    }
+
+    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  };
+
+  const bindHeaderLinkGuards = () => {
+    const headerLinks = document.querySelectorAll("[data-header-nav-check]");
+
+    headerLinks.forEach((link) => {
+      if (link.dataset.headerNavBound === "true") {
+        return;
+      }
+
+      link.dataset.headerNavBound = "true";
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        const targetUrl = new URL(href, window.location.href);
+        const currentPath = normalizePathname(window.location.pathname);
+        const targetPath = normalizePathname(targetUrl.pathname);
+
+        if (targetUrl.origin === window.location.origin && currentPath === targetPath) {
+          event.preventDefault();
+        }
+      });
+    });
+  };
+
+  const syncHeaderActiveState = () => {
+    const currentPath = normalizePathname(window.location.pathname);
+    const homeLink = document.querySelector("[data-header-home-link]");
+    const navLinks = document.querySelectorAll("[data-header-nav-link]");
+
+    if (homeLink) {
+      if (currentPath === "/") {
+        homeLink.setAttribute("aria-current", "page");
+      } else {
+        homeLink.removeAttribute("aria-current");
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const rawMatches = link.getAttribute("data-nav-match");
+      const matches = rawMatches ? JSON.parse(rawMatches) : [];
+      const isActive = matches.some((href) => {
+        const normalizedHref = normalizePathname(href);
+        return normalizedHref === "/"
+          ? currentPath === normalizedHref
+          : currentPath.startsWith(normalizedHref);
+      });
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const bindThemeButtons = () => {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+
+    buttons.forEach((button) => {
+      if (button.dataset.themeBound === "true") {
+        return;
+      }
+
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(storageKey, next);
+        animateThemeTransition(button, next);
+      });
+    });
+  };
+
+  const initializeHeader = () => {
+    bindHeaderLinkGuards();
+    bindThemeButtons();
+    syncHeaderActiveState();
+  };
+
+  const applyTheme = (mode) => {
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+
+    root.classList.toggle("dark", isDark);
+    root.dataset.themeMode = mode;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("data-theme-state", isDark ? "dark" : "light");
+      button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    });
+  };
+
+  const resolveThemeTransitionOrigin = (button) => {
+    const rect = button.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+  };
+
+  const resolveThemeTransitionRadius = ({ x, y }) =>
+    Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+  const animateThemeTransition = (button, nextMode) => {
+    const supportsViewTransition =
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsViewTransition || !(button instanceof HTMLElement)) {
+      applyTheme(nextMode);
+      return;
+    }
+
+    const origin = resolveThemeTransitionOrigin(button);
+    const radius = resolveThemeTransitionRadius(origin);
+    const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
+    const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
+    const isExpanding = nextMode === "light";
+    const timing = themeTransitionTimings[nextMode];
+
+    button.disabled = true;
+
+    const transition = document.startViewTransition(() => {
+      applyTheme(nextMode);
+    });
+
+    transition.ready
+      .then(() =>
+        document.documentElement.animate(
+          {
+            clipPath: isExpanding ? [from, to] : [to, from]
+          },
+          {
+            duration: timing.duration,
+            easing: timing.easing,
+            fill: "both",
+            pseudoElement: isExpanding
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)"
+          }
+        ).finished
+      )
+      .catch(() => {})
+      .finally(() => {
+        button.disabled = false;
+      });
+  };
+
+  initializeHeader();
+
+  document.addEventListener("astro:page-load", initializeHeader);
+
+  const stored = localStorage.getItem(storageKey) || "dark";
+  applyTheme(stored);
+</script> <main class="page-main" data-pagefind-body>  <article class="page-shell page-section"> <header class="prose"> <h1 class="page-title slide-enter" data-pagefind-meta="title">如何提高工作效率？</h1> <p class="article-meta slide-enter"> 2025年7月8日 · 10min ·
+中文 </p>  </header> <div class="prose slide-enter-content"> <p>你有没有过这样的经历：大脑里同时转着十几个想法，每个都在争夺你的注意力，结果什么都做不好？这种心理负担不仅让人焦虑，更会严重拖累工作效率。</p>
+<p>这正是效率专家大卫·艾伦（David Allen）的所提出的 GTD（“Getting Things Done”，意为“把事情搞定”）方法要解决的核心问题。经过数十年的实践验证，这套方法论已经帮助数百万人重新掌控了工作节奏。</p>
+<p><img alt="GTD 流程.png" loading="lazy" decoding="async"  width="2296" height="2520" src="/_astro/42d44b57-9223-41bc-a8c7-c3ce03d2ab3a.DCIQ9QnL_Z1he57D.webp" ></p>
+<h2 id="为什么选择gtd">  为什么选择 GTD ？</h2>
+<p>GTD的核心理念极其简单：<strong>你的大脑是用来产生想法的，而不是存储想法的。</strong></p>
+<p>想象一下，你的大脑就像一块白板。如果上面写满了各种待办事项以及“千万别忘了”的标签，哪里还有空间用来构思新的想法或解决方案？GTD 的价值在于，通过建立一个你完全可信赖的外部系统，将所有事务都移出大脑，让你的大脑从繁重的记忆负担中解脱出来。</p>
+<p>这种转变带来的好处是立竿见影的：<strong>消除犹豫不决</strong>、<strong>减少认知负荷</strong>、<strong>集中精力处理要事</strong>。</p>
+<h2 id="gtd的关键工具">  GTD 的关键工具</h2>
+<p>建立 GTD 系统需要以下几个关键工具，这些工具可以用<strong>任务管理软件</strong>、<strong>纸质笔记本</strong>，甚至<strong>电脑文件夹</strong>等任何你喜欢的方式来实现，关键在于选择你最容易坚持使用的方式。</p>
+<ul>
+<li>
+<p><strong>收集箱</strong>：这是你所有任务、想法、笔记的临时存放点。无论是纸质的笔记本还是电子应用程序，你需要一个可靠的工具来捕获一切，确保没有任何内容遗漏。</p>
+</li>
+<li>
+<p><strong>下一步行动清单</strong>：用于记录那些推动任务前进的、具体的、可见的物理步骤。</p>
+</li>
+<li>
+<p><strong>项目清单</strong>：任何需要超过一个步骤才能完成的成果，都算作一个“项目”。这个清单用来追踪所有这些多步骤任务的进展。</p>
+</li>
+<li>
+<p><strong>等待清单</strong>：记录那些已经委派给他人或需要等待外部条件才能继续推进的任务。</p>
+</li>
+<li>
+<p><strong>日程表</strong>：只存放有明确日期和时间要求的“硬性”任务、约会和承诺。</p>
+</li>
+<li>
+<p><strong>某天/也许清单</strong>：存放那些你可能想做，但不是现在，也没有做出承诺的事项。例如“学一门新语言”或“计划一次长途旅行”。</p>
+</li>
+<li>
+<p><strong>参考资料</strong>：存放不需执行但有查阅价值的信息，例如报告、文章、手册等。</p>
+</li>
+</ul>
+<h2 id="gtd的5个步骤">  GTD 的 5 个步骤</h2>
+<p>GTD 通过五个连贯的步骤来构建一个高效、无压力的工作流程：</p>
+<p><img alt="GTD 方法五个步骤.png" loading="lazy" decoding="async"  width="1400" height="637" src="/_astro/7d8e7a74-c4ea-449d-821f-f073e1cc0168.X6I0Zz-__1O15FP.webp" ></p>
+<h4 id="步骤一收集capture">步骤一：收集（Capture）</h4>
+<p><strong>目标</strong>：将所有吸引你注意力的事情（无论大小）从大脑中清空，记录到<strong>收集箱</strong>中。</p>
+<p><strong>操作要点</strong>：</p>
+<ul>
+<li>
+<p>选择最合适的工具作为<strong>收集箱</strong>（例如笔记本、电子文档、应用程序等）。</p>
+</li>
+<li>
+<p>无条件记录任何想法，暂时不做任何判断或整理。</p>
+</li>
+<li>
+<p>确保<strong>收集箱</strong>工具能够随时随地使用。</p>
+</li>
+<li>
+<p>尽量减少<strong>收集箱</strong>的数量（最好一两个），避免信息分散。</p>
+</li>
+</ul>
+<p><strong>最佳实践</strong>：养成习惯，当想法或任务出现时立即记录，而不是依赖记忆。</p>
+<h4 id="步骤二理清clarify">步骤二：理清（Clarify）</h4>
+<p><strong>目标</strong>：定期处理<strong>收集箱</strong>中的每一项内容，明确其含义并决定如何处理。这是 GTD 的核心决策环节。</p>
+<p>对于收集箱里的每一项，依次问自己以下问题：</p>
+<ol>
+<li>
+<p><strong>这是什么？</strong></p>
+</li>
+<li>
+<p><strong>它是否可以执行？</strong></p>
+<ul>
+<li>
+<p><strong>否</strong>：如果它无法执行，你有三个选择：</p>
+<ul>
+<li>
+<p><strong>垃圾</strong>：没有价值，直接删除。</p>
+</li>
+<li>
+<p><strong>参考资料</strong>：未来可能有价值，存入参考资料系统。</p>
+</li>
+<li>
+<p><strong>某天/也许</strong>：现在不想做，但未来可能想做，放入<strong>某天/也许清单</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>是</strong>：如果它可以执行，那么下一步是什么？</p>
+<ul>
+<li>
+<p><strong>2 分钟原则</strong>：如果这个行动能在 2 分钟内完成，<strong>立即就做</strong>。这是最快的处理方式。</p>
+</li>
+<li>
+<p><strong>委派</strong>：如果这件事应该由别人来做，把它<strong>委派</strong>出去，然后将它记录到你的<strong>等待清单</strong>中，以便后续跟踪。</p>
+</li>
+<li>
+<p><strong>延后</strong>：如果这件事需要你自己稍后处理（且耗时超过2分钟），则将其放入相应的清单中。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>它是否是一个“项目”？</strong></p>
+<ul>
+<li>如果完成这件事需要多个步骤，那么就在你的<strong>项目清单</strong>里记录下这个目标，并将它的<strong>下一步行动</strong>放入<strong>下一步行动清单</strong>中。</li>
+</ul>
+</li>
+</ol>
+<h4 id="步骤三整理organize">步骤三：整理（Organize）</h4>
+<p><img alt="组 3.png" loading="lazy" decoding="async"  width="1400" height="780" src="/_astro/914a47b6-243a-42fc-be6c-e0754d6e40f0.C9mi20hG_Z23Ue15.webp" ></p>
+<p><strong>目标</strong>：将“理清”步骤中处理过的内容，分门别类地存放到各个正确的清单中。</p>
+<p><strong>主要清单系统</strong>：</p>
+<ul>
+<li>
+<p><strong>下一步行动清单</strong>：存放所有下一步要做的具体行动。最好按情境（见下文）分类，如“#办公室”、“#电脑前”、“#外出”。</p>
+</li>
+<li>
+<p><strong>项目清单</strong>：概览所有需要多个步骤才能完成的任务，并确保每个项目都有一个对应的“下一步行动”。</p>
+</li>
+<li>
+<p><strong>等待清单</strong>：跟踪所有已委派给他人的任务，并注明委派日期和对象。</p>
+</li>
+<li>
+<p><strong>某天/也许清单</strong>：存放所有暂时不需行动但将来可能要做的想法或项目。</p>
+</li>
+<li>
+<p><strong>日程表</strong>：只存放有特定日期或时间的任务（如会议、约会、截止日期）。</p>
+</li>
+<li>
+<p><strong>参考资料</strong>：存放所有非行动性但有用的支持信息。</p>
+</li>
+</ul>
+<h4 id="步骤四回顾reflect">步骤四：回顾（Reflect）</h4>
+<p><strong>目标</strong>：定期检视和更新整个系统，确保其完整和可靠，让你对它保持信心。</p>
+<p><strong>核心是每周回顾 (Weekly Review)</strong>：</p>
+<ul>
+<li>
+<p>清空所有<strong>收集箱</strong>。</p>
+</li>
+<li>
+<p>回顾<strong>下一步行动清单</strong>和<strong>日程表</strong>。</p>
+</li>
+<li>
+<p>检查<strong>项目清单</strong>，确保每个项目都有明确的下一步行动，并回顾项目进展。</p>
+</li>
+<li>
+<p>更新<strong>等待清单</strong>，跟进需要推动的事项。</p>
+</li>
+<li>
+<p>浏览<strong>某天/也许清单</strong>，看是否有项目可以启动。</p>
+</li>
+</ul>
+<p>研究表明，缺乏定期的回顾是导致 GTD 系统失效的首要原因。</p>
+<h4 id="步骤五执行engage">步骤五：执行（Engage）</h4>
+<p><strong>目标</strong>：在清空大脑、整理好任务后，你可以基于当下的情况，充满信心地选择并执行最合适的行动。</p>
+<p><strong>执行的四层标准</strong>：</p>
+<ul>
+<li>
+<p><strong>情境 (Context)</strong>：你现在在哪里，有什么工具？（例如，在办公室就处理“#办公室”的任务）</p>
+</li>
+<li>
+<p><strong>可用时间 (Time Available)</strong>：你有多少时间？（5分钟还是1小时？）</p>
+</li>
+<li>
+<p><strong>精力水平 (Energy Available)</strong>：你现在的精神状态如何？（是精力充沛还是疲惫不堪？）</p>
+</li>
+<li>
+<p><strong>优先级 (Priority)</strong>：综合以上三点后，哪项任务是最重要的？</p>
+</li>
+</ul>
+<h2 id="情境标签">  情境标签</h2>
+<p><strong>情境标签</strong>是你为“下一步行动”添加的分类，用来说明完成该任务所需的<strong>地点、工具或人物</strong>。这能让你在特定情境下，快速筛选出可以执行的任务。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>任务</th><th>情景标签</th></tr></thead><tbody><tr><td>购买猫粮。</td><td><strong>#商店</strong></td></tr><tr><td>制作去新加坡的旅行计划。</td><td><strong>#计算机 #家中</strong></td></tr><tr><td>对陌生人微笑</td><td><strong>#任何地方</strong></td></tr></tbody></table>
+<p>你需要多少情境标签取决于你的生活和工作方式。重要的是能够一目了然地根据你所处的位置和拥有的设备，评估可以采取的<strong>下一步行动</strong>。</p>
+<h2 id="每周回顾">  每周回顾</h2>
+<p>每周回顾是 GTD 成功的基石。这个至少花费 30 分钟的仪式，能确保你的系统始终保持最新状态，防止任何事项被遗忘。</p>
+<p><img alt="下周做什么呢？.png" loading="lazy" decoding="async"  width="1400" height="780" src="/_astro/59610706-ddd6-4577-92f3-906074b0d07f.CqNvrQuJ_1ev5WO.webp" ></p>
+<p><strong>回顾清单建议</strong>：</p>
+<ul>
+<li>
+<p>检查<strong>日程表</strong>中过去和未来的事件。</p>
+</li>
+<li>
+<p>确保每个<strong>项目</strong>都有明确的<strong>下一步行动</strong>。</p>
+</li>
+<li>
+<p>审视你的<strong>下一步行动清单</strong>，上面的每一项都是你下一周想做或必须做的事吗？如果不是，就把它移到<strong>某天/也许清单</strong>，或者如果你觉得自己永远不会做这件事——就彻底删除它。</p>
+</li>
+<li>
+<p>跟踪<strong>等待清单</strong>中委派任务的进展，判断是否需要发出提醒。</p>
+</li>
+<li>
+<p>浏览<strong>某天/也许清单</strong>，看看是否有项目或行动已经成熟，可以转移到<strong>项目清单</strong>或<strong>下一步行动清单</strong>中了。</p>
+</li>
+</ul>
+<h2 id="强化工具">  强化工具</h2>
+<p>两个额外的工具可以让你的 GTD 系统更加完善：</p>
+<ol>
+<li>
+<p><strong>提醒文件夹 (Tickler File)</strong> 这是一个由 43 个文件夹（12 个月份+31 个日期）组成的物理或电子系统。你可以将需要在未来特定某天处理的物品（如演出门票、会议议程、待支付账单）放入对应日期的文件夹，当天打开查看即可。它用于处理那些“在X月Y日提醒我”但又不适合放入日程表的事务。</p>
+</li>
+<li>
+<p><strong>阅读/回顾文件夹 (Read/Review Folder)</strong> 这是一个专门存放你打算阅读的文档、文章或报告的物理或电子文件夹。当你有时（例如排队、通勤时），就可以打开这个文件夹，将零碎时间变成高效的学习时光。</p>
+</li>
+</ol>
+<h2 id="总结">  总结</h2>
+<p>GTD不仅仅是一个任务管理系统——它是一种清空大脑、减少压力、高效完成工作的生活方式。通过建立可信赖的收集系统、持续的理清和整理工作，以及定期的回顾反思，你为高效思考和有目的的行动创造了空间。</p>
+<p>从今天开始，一步一步地实施这个系统。很快，你就会发现自己能够轻松管理各种任务，专注于真正重要的事情上。成功的关键不在于完美，而在于持续的实践和改进。</p>
+<h2 id="附录">   附录</h2>
+<p>参考链接：</p>
+<ul>
+<li>
+<p><a href="https://fourweekmba.com/getting-things-done-gtd/">Getting Things Done (GTD)</a></p>
+</li>
+<li>
+<p><a href="https://jaylenchen.com/life/GTD%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86">GTD 时间管理</a></p>
+</li>
+<li>
+<p><a href="https://hamberg.no/gtd">GTD in 15 minutes – A Pragmatic Guide to Getting Things Done</a></p>
+</li>
+<li>
+<p><a href="https://angjingxuanbiz.medium.com/getting-things-done-gtd-in-clickup-834c36ed0ee0">Getting Things Done (GTD) in ClickUp</a></p>
+</li>
+<li>
+<p><a href="https://www.float.com/resources/getting-things-done-method#some-tips-to-help-you-implement-the-gtd-system">The power of getting things done: the GTD method explained</a></p>
+</li>
+</ul> </div> <footer class="article-footer prose slide-enter-content">  <p class="terminal-line"> <span class="terminal-prompt">&gt;</span> <a href="/posts/">cd ..</a> </p> </footer> </article>  <footer class="site-footer" data-pagefind-ignore> <div class="page-shell"> <p class="footer-copy"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
+CC BY-NC-SA 4.0
+</a>
+2021-PRESENT © Vint </p> </div> </footer> </main> <div class="image-lightbox" data-image-lightbox hidden aria-hidden="true"> <div class="image-lightbox-backdrop" data-image-lightbox-close></div> <div class="image-lightbox-panel" data-image-lightbox-panel> <img class="image-lightbox-media" data-image-lightbox-media alt=""> <div class="image-lightbox-caption" data-image-lightbox-caption hidden></div> </div> </div> <script>
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxMedia = document.querySelector("[data-image-lightbox-media]");
+  const lightboxCaption = document.querySelector("[data-image-lightbox-caption]");
+  const zoomRoot = document.documentElement;
+  const zoomableSelector = ".prose img, img[data-lightbox-image]";
+
+  const isZoomableImage = (node) =>
+    node instanceof HTMLImageElement &&
+    !node.closest("[data-image-lightbox]") &&
+    (node.hasAttribute("data-lightbox-image") || (node.closest(".prose") && !node.closest("a[href]")));
+
+  const resolveZoomableImage = (target) => {
+    if (isZoomableImage(target)) {
+      return target;
+    }
+
+    if (!(target instanceof Element)) {
+      return null;
+    }
+
+    const triggerImage = target.closest("[data-lightbox-trigger]")?.querySelector("img");
+    return isZoomableImage(triggerImage) ? triggerImage : null;
+  };
+
+  const getCaption = (image) => {
+    const customCaption = image.dataset.lightboxCaption?.trim();
+    if (customCaption) return customCaption;
+
+    const figureCaption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    return figureCaption || image.getAttribute("alt") || image.getAttribute("title") || "";
+  };
+
+  const syncZoomableImages = () => {
+    document.querySelectorAll(zoomableSelector).forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      const zoomable = isZoomableImage(image);
+      const trigger = image.closest("[data-lightbox-trigger]");
+
+      image.classList.toggle("zoomable-media", zoomable);
+      trigger?.classList.toggle("zoomable-media", zoomable);
+
+      if (zoomable && !trigger) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", getCaption(image) || "Open image preview");
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("role");
+        image.removeAttribute("aria-label");
+      }
+    });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxMedia.removeAttribute("src");
+    lightboxMedia.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
+    zoomRoot.classList.remove("is-image-zoomed");
+  };
+
+  const openLightbox = (image) => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    const source = image.dataset.lightboxSrc || image.currentSrc || image.src;
+    const caption = getCaption(image);
+
+    if (!source) return;
+
+    lightboxMedia.src = source;
+    lightboxMedia.alt = image.alt || "";
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = !caption;
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    zoomRoot.classList.add("is-image-zoomed");
+  };
+
+  syncZoomableImages();
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-image-lightbox-close]")) {
+      closeLightbox();
+      return;
+    }
+
+    if (
+      !lightbox?.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-image-lightbox-media]") &&
+      !target.closest("[data-image-lightbox-caption]")
+    ) {
+      closeLightbox();
+      return;
+    }
+
+    const image = resolveZoomableImage(target);
+    if (!image) {
+      return;
+    }
+
+    if (target instanceof Element && target.closest("a[href]")?.contains(image)) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const image = resolveZoomableImage(event.target);
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+</script> <div class="search-shell" data-search-shell hidden> <div class="search-backdrop" data-search-close></div> <section class="search-panel" aria-label="Search" role="dialog" aria-modal="true"> <div class="search-panel-head"> <p class="search-panel-title">Search the archive</p> <button class="search-close" type="button" data-search-close aria-label="Close search">
+×
+</button> </div> <div class="search-status" data-search-status>
+Loading the search index...
+</div> <div id="search" class="pagefind-host"></div> </section> </div> <script>
+  const resolveSearchNodes = () => ({
+    shell: document.querySelector("[data-search-shell]"),
+    statusNode: document.querySelector("[data-search-status]"),
+    host: document.querySelector("#search")
+  });
+
+  const loadScript = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(script);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+  const loadStyle = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  const loadAssets = async () => {
+    if (!window.__searchAssetsPromise) {
+      window.__searchAssetsPromise = (async () => {
+        loadStyle("/pagefind/pagefind-ui.css");
+        await loadScript("/pagefind/pagefind-ui.js");
+
+        if (!window.PagefindUI) {
+          throw new Error("PagefindUI unavailable");
+        }
+      })();
+    }
+
+    return window.__searchAssetsPromise;
+  };
+
+  const initSearch = async () => {
+    const { host, statusNode } = resolveSearchNodes();
+
+    if (!host || !statusNode || host.dataset.searchInitialized === "true") {
+      return;
+    }
+
+    try {
+      await loadAssets();
+
+      new window.PagefindUI({
+        element: "#search",
+        showImages: false,
+        showSubResults: true,
+        excerptLength: 16,
+        resetStyles: false
+      });
+      statusNode.textContent = "Search across titles, tags, summaries, and article content.";
+      host.dataset.searchInitialized = "true";
+    } catch (error) {
+      statusNode.textContent =
+        "Search assets failed to load. Run npm run build to refresh the Pagefind bundle.";
+    }
+  };
+
+  const show = async () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = false;
+    document.documentElement.classList.add("is-search-open");
+    await initSearch();
+  };
+
+  const hide = () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = true;
+    document.documentElement.classList.remove("is-search-open");
+  };
+
+  const initializeSearchDialog = () => {
+    const { shell } = resolveSearchNodes();
+
+    if (shell?.hidden !== false) {
+      document.documentElement.classList.remove("is-search-open");
+    }
+  };
+
+  initializeSearchDialog();
+
+  if (window.__searchDialogListenersBound !== true) {
+    window.__searchDialogListenersBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest("[data-search-close]")) {
+        hide();
+        return;
+      }
+
+      if (target.closest("[data-search-open]")) {
+        void show();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hide();
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        void show();
+      }
+    });
+
+    document.addEventListener("astro:page-load", initializeSearchDialog);
+  }
+</script> </body></html>

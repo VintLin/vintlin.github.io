@@ -1,0 +1,586 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
+  !function () {
+    const storageKey = "vint-color-scheme";
+    const darkThemeColor = "#050505";
+    const lightThemeColor = "#fafaf9";
+
+    const resolveMode = () => localStorage.getItem(storageKey) || "dark";
+
+    const resolveIsDark = (mode) => {
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return mode === "dark" || (mode === "auto" && prefersDark);
+    };
+
+    const applyThemeToDocument = (doc, mode) => {
+      const isDark = resolveIsDark(mode);
+      doc.documentElement.classList.toggle("dark", isDark);
+      doc.documentElement.dataset.themeMode = mode;
+      const themeColor = doc.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+      }
+    };
+
+    applyThemeToDocument(document, resolveMode());
+
+    document.addEventListener("astro:before-swap", (event) => {
+      applyThemeToDocument(event.newDocument, resolveMode());
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+      applyThemeToDocument(document, resolveMode());
+    });
+  }();
+</script><title>如何规划个人目标并为之行动？ | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v6.0.6"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/icon_website.webp"><link rel="shortcut icon" href="/img/icon/icon_website.webp"><link rel="apple-touch-icon" href="/img/icon/icon_website.webp"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="如何规划个人目标并为之行动？ | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vinton.store/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="如何规划个人目标并为之行动？ | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vinton.store/og-default.svg"><link rel="canonical" href="https://vinton.store/posts/anti-wasteman-system/"><script defer data-domain="vinton.store" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何规划个人目标并为之行动？","datePublished":"2023-05-17T16:48:00.000Z","inLanguage":"zh-CN","url":"https://vinton.store/posts/anti-wasteman-system/","image":["https://vinton.store/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vinton.store/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmQZLfuR.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.CIAsUspC.css"></head> <body> <div class="noise-drift-background" aria-hidden="true" data-astro-cid-jhygxfeg> <canvas data-noise-drift-background data-astro-cid-jhygxfeg></canvas> </div> <script type="module">const Y=document.querySelector("[data-noise-drift-background]");if(Y){window.__noiseDriftBackground?.destroy?.();const g=Y,T=g.getContext("2d");if(T){let Z=function(n){let o=n>>>0;return()=>{o+=1831565813;let t=o;return t=Math.imul(t^t>>>15,t|1),t^=t+Math.imul(t^t>>>7,t|61),((t^t>>>14)>>>0)/4294967296}},B=function(n){const o=Z(n),t=new Uint8Array(512),c=new Uint8Array(256);for(let e=0;e<256;e+=1)c[e]=e;for(let e=255;e>0;e-=1){const i=Math.floor(o()*(e+1)),a=c[e];c[e]=c[i],c[i]=a}for(let e=0;e<512;e+=1)t[e]=c[e&255];const v=e=>e*e*e*(e*(e*6-15)+10),s=(e,i,a)=>e+(i-e)*a,r=(e,i,a,f)=>{const d=e&15,w=d<8?i:a,b=d<4?a:d===12||d===14?i:f;return((d&1)===0?w:-w)+((d&2)===0?b:-b)};return(e,i,a)=>{const f=Math.floor(e),d=Math.floor(i),w=Math.floor(a),b=f&255,I=d&255,A=w&255,l=e-f,u=i-d,h=a-w,E=v(l),W=v(u),ot=v(h),q=t[b]+I,U=t[q]+A,V=t[q+1]+A,j=t[b+1]+I,K=t[j]+A,X=t[j+1]+A;return(s(s(s(r(t[U],l,u,h),r(t[K],l-1,u,h),E),s(r(t[V],l,u-1,h),r(t[X],l-1,u-1,h),E),W),s(s(r(t[U+1],l,u,h-1),r(t[K+1],l-1,u,h-1),E),s(r(t[V+1],l,u-1,h-1),r(t[X+1],l-1,u-1,h-1),E),W),ot)+1)/2}},D=function(){const n=getComputedStyle(document.documentElement),o=n.getPropertyValue("--noise-dot-rgb").trim(),t=Number.parseFloat(n.getPropertyValue("--noise-dot-alpha").trim()),c=o.split(/\s+/).map(Number).filter(Number.isFinite).slice(0,3);c.length===3?P=[c[0],c[1],c[2]]:P=[24,24,27],z=Number.isFinite(t)?t:.22},J=function(){L=[];for(let n=-p/2;n<y+p;n+=p)for(let o=-p/2;o<M+p;o+=p)L.push({x:n,y:o,opacity:Math.random()*.5+.5})},S=function(){y=window.innerWidth,M=window.innerHeight;const n=window.devicePixelRatio||1;g.width=Math.round(y*n),g.height=Math.round(M*n),g.style.width=`${y}px`,g.style.height=`${M}px`,m.setTransform(n,0,0,n,0,0),J()},Q=function(n,o,t){return(N(n/x,o/x,t)-.5)*2*et},_=function(n){m.clearRect(0,0,y,M);const o=n/1e4,[t,c,v]=P;for(const s of L){const r=Q(s.x,s.y,o),e=(N(s.x/x,s.y/x,o*2)+.5)*tt,i=s.x+Math.cos(r)*e,a=s.y+Math.sin(r)*e,f=Math.cos(r)*k*.5,d=Math.sin(r)*k*.5,w=(Math.abs(Math.cos(r))*.5+.5)*s.opacity*z;m.strokeStyle=`rgba(${t}, ${c}, ${v}, ${w})`,m.lineWidth=.9,m.beginPath(),m.moveTo(i-f,a-d),m.lineTo(i+f,a+d),m.stroke()}F.matches||(C=window.requestAnimationFrame(_))},$=function(){window.cancelAnimationFrame(C),N=B(Date.now()),D(),S(),_(performance.now())};const m=T,x=200,tt=10,k=2.2,p=15,et=Math.PI*2,F=window.matchMedia("(prefers-reduced-motion: reduce)");let y=0,M=0,P=[24,24,27],z=.22,C=0,L=[],N=B(Date.now());const O=()=>S(),nt=()=>D(),R=()=>$(),G=new MutationObserver(nt),H=()=>{window.cancelAnimationFrame(C),window.removeEventListener("resize",O),F.removeEventListener("change",R),G.disconnect()};window.__noiseDriftBackground={destroy:H},$(),window.addEventListener("resize",O,{passive:!0}),F.addEventListener("change",R),G.observe(document.documentElement,{attributes:!0,attributeFilter:["class","style"]}),document.addEventListener("astro:before-swap",H,{once:!0})}}</script> <header class="site-header" data-pagefind-ignore data-astro-transition-persist="site-header"> <a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&#34;/img/icon/icon_web.svg&#34;)"> <span class="brand-mark-icon" aria-hidden="true"></span> </a> <nav class="site-nav" aria-label="Primary"> <div class="site-nav-spacer"></div> <div class="site-nav-links"> <a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/posts/&#34;,&#34;/notes/&#34;]"> Post </a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/photos/&#34;]"> Photo </a><a href="https://github.com/VintLin" target="_blank" rel="noreferrer" class="nav-link"> GitHub </a> <a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check> <i class="fa-solid fa-square-rss" aria-hidden="true"></i> </a> <button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="light" aria-label="Toggle color scheme"> <i class="fa-regular fa-sun light-mode" aria-hidden="true"></i> <i class="fa-regular fa-moon dark-mode" aria-hidden="true"></i> </button> <button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"> <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> </button> </div> </nav> </header> <script>
+  const storageKey = "vint-color-scheme";
+  const root = document.documentElement;
+  const themeTransitionTimings = {
+    light: {
+      duration: 720,
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+    },
+    dark: {
+      duration: 620,
+      easing: "cubic-bezier(0.7, 0, 0.22, 1)"
+    }
+  };
+
+  const normalizePathname = (pathname) => {
+    if (!pathname || pathname === "/") {
+      return "/";
+    }
+
+    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  };
+
+  const bindHeaderLinkGuards = () => {
+    const headerLinks = document.querySelectorAll("[data-header-nav-check]");
+
+    headerLinks.forEach((link) => {
+      if (link.dataset.headerNavBound === "true") {
+        return;
+      }
+
+      link.dataset.headerNavBound = "true";
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        const targetUrl = new URL(href, window.location.href);
+        const currentPath = normalizePathname(window.location.pathname);
+        const targetPath = normalizePathname(targetUrl.pathname);
+
+        if (targetUrl.origin === window.location.origin && currentPath === targetPath) {
+          event.preventDefault();
+        }
+      });
+    });
+  };
+
+  const syncHeaderActiveState = () => {
+    const currentPath = normalizePathname(window.location.pathname);
+    const homeLink = document.querySelector("[data-header-home-link]");
+    const navLinks = document.querySelectorAll("[data-header-nav-link]");
+
+    if (homeLink) {
+      if (currentPath === "/") {
+        homeLink.setAttribute("aria-current", "page");
+      } else {
+        homeLink.removeAttribute("aria-current");
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const rawMatches = link.getAttribute("data-nav-match");
+      const matches = rawMatches ? JSON.parse(rawMatches) : [];
+      const isActive = matches.some((href) => {
+        const normalizedHref = normalizePathname(href);
+        return normalizedHref === "/"
+          ? currentPath === normalizedHref
+          : currentPath.startsWith(normalizedHref);
+      });
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const bindThemeButtons = () => {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+
+    buttons.forEach((button) => {
+      if (button.dataset.themeBound === "true") {
+        return;
+      }
+
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(storageKey, next);
+        animateThemeTransition(button, next);
+      });
+    });
+  };
+
+  const initializeHeader = () => {
+    bindHeaderLinkGuards();
+    bindThemeButtons();
+    syncHeaderActiveState();
+  };
+
+  const applyTheme = (mode) => {
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+
+    root.classList.toggle("dark", isDark);
+    root.dataset.themeMode = mode;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("data-theme-state", isDark ? "dark" : "light");
+      button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    });
+  };
+
+  const resolveThemeTransitionOrigin = (button) => {
+    const rect = button.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+  };
+
+  const resolveThemeTransitionRadius = ({ x, y }) =>
+    Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+  const animateThemeTransition = (button, nextMode) => {
+    const supportsViewTransition =
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsViewTransition || !(button instanceof HTMLElement)) {
+      applyTheme(nextMode);
+      return;
+    }
+
+    const origin = resolveThemeTransitionOrigin(button);
+    const radius = resolveThemeTransitionRadius(origin);
+    const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
+    const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
+    const isExpanding = nextMode === "light";
+    const timing = themeTransitionTimings[nextMode];
+
+    button.disabled = true;
+
+    const transition = document.startViewTransition(() => {
+      applyTheme(nextMode);
+    });
+
+    transition.ready
+      .then(() =>
+        document.documentElement.animate(
+          {
+            clipPath: isExpanding ? [from, to] : [to, from]
+          },
+          {
+            duration: timing.duration,
+            easing: timing.easing,
+            fill: "both",
+            pseudoElement: isExpanding
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)"
+          }
+        ).finished
+      )
+      .catch(() => {})
+      .finally(() => {
+        button.disabled = false;
+      });
+  };
+
+  initializeHeader();
+
+  document.addEventListener("astro:page-load", initializeHeader);
+
+  const stored = localStorage.getItem(storageKey) || "dark";
+  applyTheme(stored);
+</script> <main class="page-main" data-pagefind-body>  <article class="page-shell page-section"> <header class="prose"> <h1 class="page-title slide-enter" data-pagefind-meta="title">如何规划个人目标并为之行动？</h1> <p class="article-meta slide-enter"> 2023年5月17日 · 4min ·
+中文 </p>  </header> <div class="prose slide-enter-content"> <p>反浪费系统（<a href="https://aliabdaal.notion.site/Anti-Wasteman-System-eff9249d3ede418c9e2b8abf039704e9">ANTI-WASTEMAN SYSTEM</a>）是 <a href="https://aliabdaal.com/links/">Ali Abdaal</a> 在他的视频 <a href="https://www.youtube.com/watch?v=pqUxibdbv38&#x26;t=2s">My PRODUCTIVE Bucket List (2021)</a> 中提及的 <strong>目标设定方法</strong>。这个方法通过九步来设置一个清晰且可执行的目标。</p>
+<h2 id="九步设定目标">九步设定目标</h2>
+<ol>
+<li>你的目标是什么？</li>
+<li>为什么要实现这个目标？</li>
+<li>让目标变得 S.M.A.R.T 。</li>
+<li>为了这个目标应该养成什么习惯？</li>
+<li>如果失败，会有多惊讶？（以1-10分评价）</li>
+<li>如果失败，原因是什么？（给出最有可能的3个原因）</li>
+<li>谁可以帮忙？</li>
+<li>如何增加成功的概率？</li>
+<li>开始你的行动。</li>
+</ol>
+<p><strong>接下来会以 Ali Abdaal 的视角来举例，如何通过这九步来获得一个清晰可执行的目标。</strong></p>
+<h2 id="第一步你的目标是什么">第一步：你的目标是什么？</h2>
+<p>首先，需要明确自己想要达成的目标是什么。</p>
+<p>Ali Abdaal 目标是想要<strong>写一本能让自己引以为豪的书</strong>。</p>
+<h2 id="第二步为什么要实现这个目标">第二步：为什么要实现这个目标？</h2>
+<p>达成目标，它会为我带来什么？通过这一步来思考目标的重要性。如果能够清晰的意识到这个目标是符合自身价值观的，会增加行动的动力和决心。</p>
+<p>对 Ali Abdaal 来说：</p>
+<ul>
+<li>写书是一件有趣的事。</li>
+<li>写书是我一直以来的愿望。</li>
+<li>作为一名 Youtuber ，出书可能是一个吸引新观众好办法。</li>
+<li>如果这本书很好，它将为我带来更多的可能性。</li>
+</ul>
+<h2 id="第三步让目标变得-smart">第三步：让目标变得 S.M.A.R.T</h2>
+<p>通过 <strong>具体的（Specific）</strong> 、 <strong>可衡量（Measurable）</strong> 、 <strong>可执行（Achievable）</strong> 、 <strong>现实的（Realistic）</strong> 和 <strong>有时间限制（Timely）</strong> 这五个标准来设定清晰的子目标。这可以使任务变得更加具体和可操作。</p>
+<p>设定几个 S.M.A.R.T 的子目标：</p>
+<ol>
+<li>2022年3月31日前完成初稿</li>
+<li>最终稿在2022年7月31日前发送给出版商</li>
+</ol>
+<h2 id="第四步为了这个目标应该养成什么习惯">第四步：为了这个目标应该养成什么习惯？</h2>
+<p>什么习惯会让目标更容易达成？让自己养成和目标相符的习惯，提高达到目标的成功率。</p>
+<p>为了写出一本书，应该养成的习惯：</p>
+<ul>
+<li>每天早上花3个小时写作</li>
+</ul>
+<h2 id="第五步如果失败会有多惊讶以1-10分评价">第五步：如果失败，会有多惊讶?（以1-10分评价）</h2>
+<p>按照 1-10 来给这个问题打分，1 表示完全不惊讶，10 表示非常惊讶。这可以帮助你评估任务的难易程度。</p>
+<ul>
+<li>我（Ali Abdaal）会打 7 分，因为如果我不能在规定的截止日期前完成，我会感到相当惊讶。</li>
+</ul>
+<h2 id="第六步如果失败原因是什么给出最有可能的3个原因">第六步：如果失败，原因是什么？（给出最有可能的3个原因）</h2>
+<p>事先考虑失败的原因可以帮助你制定应对措施，来减少失败的概率。</p>
+<p>对于无法写一本书可能的原因：</p>
+<ol>
+<li>没有腾出足够的时间写这本书。</li>
+<li>写书花的时间比预期的要长。</li>
+<li>“紧急”的事情总是层出不穷，导致我没法完成写书这件事。</li>
+</ol>
+<h2 id="第七步谁可以帮忙">第七步：谁可以帮忙？</h2>
+<p>不必独自努力。想办法利用周围的人和资源可以最大限度地提高成功率。</p>
+<p>对于写书这件事，可以给我（Ali Abdaal）提供帮助的人：</p>
+<ul>
+<li>写作教练</li>
+<li>书籍编辑</li>
+<li>代理商</li>
+<li>我的团队</li>
+<li>观众</li>
+</ul>
+<h2 id="第八步如何增加成功的概率">第八步：如何增加成功的概率?</h2>
+<p>确定可以增加成功概率的方法或策略。</p>
+<p>我（Ali Abdaal）会做以下的事情增加成功率。</p>
+<ul>
+<li>确保日程安排中有时间写书。</li>
+<li>告诉我的团队，我写书的时间段，以免在这个时间段打扰我。</li>
+<li>养成每日写作的习惯。</li>
+</ul>
+<h2 id="第九步开始你的行动">第九步：开始你的行动</h2>
+<p>准确列出你将如何确保你的目标成功，这类似于养成你的习惯，但更具体一点。</p>
+<p>我（Ali Abdaal）的第一步行动：</p>
+<ul>
+<li>在日历上规划每一天的写书时间并以此开始行动。</li>
+</ul>
+<h2 id="相关链接">相关链接</h2>
+<ul>
+<li><a href="https://aliabdaal.com/links/">Ali Abdaal Website</a></li>
+<li><a href="https://twitter.com/AliAbdaal/status/1536439293459279874">ANTI-WASTEMAN SYSTEM Twitter</a></li>
+<li><a href="https://www.youtube.com/watch?v=pqUxibdbv38&#x26;t=2s">My PRODUCTIVE Bucket List (2021)</a></li>
+<li><a href="https://aliabdaal.notion.site/Anti-Wasteman-System-eff9249d3ede418c9e2b8abf039704e9">ANTI-WASTEMAN SYSTEM Notion Example</a></li>
+</ul> </div> <footer class="article-footer prose slide-enter-content">  <p class="terminal-line"> <span class="terminal-prompt">&gt;</span> <a href="/posts/">cd ..</a> </p> </footer> </article>  <footer class="site-footer" data-pagefind-ignore> <div class="page-shell"> <p class="footer-copy"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
+CC BY-NC-SA 4.0
+</a>
+2021-PRESENT © Vint </p> </div> </footer> </main> <div class="image-lightbox" data-image-lightbox hidden aria-hidden="true"> <div class="image-lightbox-backdrop" data-image-lightbox-close></div> <div class="image-lightbox-panel" data-image-lightbox-panel> <img class="image-lightbox-media" data-image-lightbox-media alt=""> <div class="image-lightbox-caption" data-image-lightbox-caption hidden></div> </div> </div> <script>
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxMedia = document.querySelector("[data-image-lightbox-media]");
+  const lightboxCaption = document.querySelector("[data-image-lightbox-caption]");
+  const zoomRoot = document.documentElement;
+  const zoomableSelector = ".prose img, img[data-lightbox-image]";
+
+  const isZoomableImage = (node) =>
+    node instanceof HTMLImageElement &&
+    !node.closest("[data-image-lightbox]") &&
+    (node.hasAttribute("data-lightbox-image") || (node.closest(".prose") && !node.closest("a[href]")));
+
+  const resolveZoomableImage = (target) => {
+    if (isZoomableImage(target)) {
+      return target;
+    }
+
+    if (!(target instanceof Element)) {
+      return null;
+    }
+
+    const triggerImage = target.closest("[data-lightbox-trigger]")?.querySelector("img");
+    return isZoomableImage(triggerImage) ? triggerImage : null;
+  };
+
+  const getCaption = (image) => {
+    const customCaption = image.dataset.lightboxCaption?.trim();
+    if (customCaption) return customCaption;
+
+    const figureCaption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    return figureCaption || image.getAttribute("alt") || image.getAttribute("title") || "";
+  };
+
+  const syncZoomableImages = () => {
+    document.querySelectorAll(zoomableSelector).forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      const zoomable = isZoomableImage(image);
+      const trigger = image.closest("[data-lightbox-trigger]");
+
+      image.classList.toggle("zoomable-media", zoomable);
+      trigger?.classList.toggle("zoomable-media", zoomable);
+
+      if (zoomable && !trigger) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", getCaption(image) || "Open image preview");
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("role");
+        image.removeAttribute("aria-label");
+      }
+    });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxMedia.removeAttribute("src");
+    lightboxMedia.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
+    zoomRoot.classList.remove("is-image-zoomed");
+  };
+
+  const openLightbox = (image) => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    const source = image.dataset.lightboxSrc || image.currentSrc || image.src;
+    const caption = getCaption(image);
+
+    if (!source) return;
+
+    lightboxMedia.src = source;
+    lightboxMedia.alt = image.alt || "";
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = !caption;
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    zoomRoot.classList.add("is-image-zoomed");
+  };
+
+  syncZoomableImages();
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-image-lightbox-close]")) {
+      closeLightbox();
+      return;
+    }
+
+    if (
+      !lightbox?.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-image-lightbox-media]") &&
+      !target.closest("[data-image-lightbox-caption]")
+    ) {
+      closeLightbox();
+      return;
+    }
+
+    const image = resolveZoomableImage(target);
+    if (!image) {
+      return;
+    }
+
+    if (target instanceof Element && target.closest("a[href]")?.contains(image)) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const image = resolveZoomableImage(event.target);
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+</script> <div class="search-shell" data-search-shell hidden> <div class="search-backdrop" data-search-close></div> <section class="search-panel" aria-label="Search" role="dialog" aria-modal="true"> <div class="search-panel-head"> <p class="search-panel-title">Search the archive</p> <button class="search-close" type="button" data-search-close aria-label="Close search">
+×
+</button> </div> <div class="search-status" data-search-status>
+Loading the search index...
+</div> <div id="search" class="pagefind-host"></div> </section> </div> <script>
+  const resolveSearchNodes = () => ({
+    shell: document.querySelector("[data-search-shell]"),
+    statusNode: document.querySelector("[data-search-status]"),
+    host: document.querySelector("#search")
+  });
+
+  const loadScript = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(script);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+  const loadStyle = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  const loadAssets = async () => {
+    if (!window.__searchAssetsPromise) {
+      window.__searchAssetsPromise = (async () => {
+        loadStyle("/pagefind/pagefind-ui.css");
+        await loadScript("/pagefind/pagefind-ui.js");
+
+        if (!window.PagefindUI) {
+          throw new Error("PagefindUI unavailable");
+        }
+      })();
+    }
+
+    return window.__searchAssetsPromise;
+  };
+
+  const initSearch = async () => {
+    const { host, statusNode } = resolveSearchNodes();
+
+    if (!host || !statusNode || host.dataset.searchInitialized === "true") {
+      return;
+    }
+
+    try {
+      await loadAssets();
+
+      new window.PagefindUI({
+        element: "#search",
+        showImages: false,
+        showSubResults: true,
+        excerptLength: 16,
+        resetStyles: false
+      });
+      statusNode.textContent = "Search across titles, tags, summaries, and article content.";
+      host.dataset.searchInitialized = "true";
+    } catch (error) {
+      statusNode.textContent =
+        "Search assets failed to load. Run npm run build to refresh the Pagefind bundle.";
+    }
+  };
+
+  const show = async () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = false;
+    document.documentElement.classList.add("is-search-open");
+    await initSearch();
+  };
+
+  const hide = () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = true;
+    document.documentElement.classList.remove("is-search-open");
+  };
+
+  const initializeSearchDialog = () => {
+    const { shell } = resolveSearchNodes();
+
+    if (shell?.hidden !== false) {
+      document.documentElement.classList.remove("is-search-open");
+    }
+  };
+
+  initializeSearchDialog();
+
+  if (window.__searchDialogListenersBound !== true) {
+    window.__searchDialogListenersBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest("[data-search-close]")) {
+        hide();
+        return;
+      }
+
+      if (target.closest("[data-search-open]")) {
+        void show();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hide();
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        void show();
+      }
+    });
+
+    document.addEventListener("astro:page-load", initializeSearchDialog);
+  }
+</script> </body></html>

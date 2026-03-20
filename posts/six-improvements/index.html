@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
+  !function () {
+    const storageKey = "vint-color-scheme";
+    const darkThemeColor = "#050505";
+    const lightThemeColor = "#fafaf9";
+
+    const resolveMode = () => localStorage.getItem(storageKey) || "dark";
+
+    const resolveIsDark = (mode) => {
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return mode === "dark" || (mode === "auto" && prefersDark);
+    };
+
+    const applyThemeToDocument = (doc, mode) => {
+      const isDark = resolveIsDark(mode);
+      doc.documentElement.classList.toggle("dark", isDark);
+      doc.documentElement.dataset.themeMode = mode;
+      const themeColor = doc.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+      }
+    };
+
+    applyThemeToDocument(document, resolveMode());
+
+    document.addEventListener("astro:before-swap", (event) => {
+      applyThemeToDocument(event.newDocument, resolveMode());
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+      applyThemeToDocument(document, resolveMode());
+    });
+  }();
+</script><title>六项精进 | Vint</title><meta name="description" content="《六项精进》读书笔记"><meta name="generator" content="Astro v6.0.6"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/icon_website.webp"><link rel="shortcut icon" href="/img/icon/icon_website.webp"><link rel="apple-touch-icon" href="/img/icon/icon_website.webp"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="六项精进 | Vint"><meta property="og:description" content="《六项精进》读书笔记"><meta property="og:type" content="article"><meta property="og:image" content="https://vinton.store/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="六项精进 | Vint"><meta name="twitter:description" content="《六项精进》读书笔记"><meta name="twitter:image" content="https://vinton.store/og-default.svg"><link rel="canonical" href="https://vinton.store/posts/six-improvements/"><script defer data-domain="vinton.store" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"六项精进","description":"《六项精进》读书笔记","datePublished":"2024-09-10T12:03:15.000Z","inLanguage":"zh-CN","url":"https://vinton.store/posts/six-improvements/","image":["https://vinton.store/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vinton.store/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmQZLfuR.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.CIAsUspC.css"></head> <body> <div class="noise-drift-background" aria-hidden="true" data-astro-cid-jhygxfeg> <canvas data-noise-drift-background data-astro-cid-jhygxfeg></canvas> </div> <script type="module">const Y=document.querySelector("[data-noise-drift-background]");if(Y){window.__noiseDriftBackground?.destroy?.();const g=Y,T=g.getContext("2d");if(T){let Z=function(n){let o=n>>>0;return()=>{o+=1831565813;let t=o;return t=Math.imul(t^t>>>15,t|1),t^=t+Math.imul(t^t>>>7,t|61),((t^t>>>14)>>>0)/4294967296}},B=function(n){const o=Z(n),t=new Uint8Array(512),c=new Uint8Array(256);for(let e=0;e<256;e+=1)c[e]=e;for(let e=255;e>0;e-=1){const i=Math.floor(o()*(e+1)),a=c[e];c[e]=c[i],c[i]=a}for(let e=0;e<512;e+=1)t[e]=c[e&255];const v=e=>e*e*e*(e*(e*6-15)+10),s=(e,i,a)=>e+(i-e)*a,r=(e,i,a,f)=>{const d=e&15,w=d<8?i:a,b=d<4?a:d===12||d===14?i:f;return((d&1)===0?w:-w)+((d&2)===0?b:-b)};return(e,i,a)=>{const f=Math.floor(e),d=Math.floor(i),w=Math.floor(a),b=f&255,I=d&255,A=w&255,l=e-f,u=i-d,h=a-w,E=v(l),W=v(u),ot=v(h),q=t[b]+I,U=t[q]+A,V=t[q+1]+A,j=t[b+1]+I,K=t[j]+A,X=t[j+1]+A;return(s(s(s(r(t[U],l,u,h),r(t[K],l-1,u,h),E),s(r(t[V],l,u-1,h),r(t[X],l-1,u-1,h),E),W),s(s(r(t[U+1],l,u,h-1),r(t[K+1],l-1,u,h-1),E),s(r(t[V+1],l,u-1,h-1),r(t[X+1],l-1,u-1,h-1),E),W),ot)+1)/2}},D=function(){const n=getComputedStyle(document.documentElement),o=n.getPropertyValue("--noise-dot-rgb").trim(),t=Number.parseFloat(n.getPropertyValue("--noise-dot-alpha").trim()),c=o.split(/\s+/).map(Number).filter(Number.isFinite).slice(0,3);c.length===3?P=[c[0],c[1],c[2]]:P=[24,24,27],z=Number.isFinite(t)?t:.22},J=function(){L=[];for(let n=-p/2;n<y+p;n+=p)for(let o=-p/2;o<M+p;o+=p)L.push({x:n,y:o,opacity:Math.random()*.5+.5})},S=function(){y=window.innerWidth,M=window.innerHeight;const n=window.devicePixelRatio||1;g.width=Math.round(y*n),g.height=Math.round(M*n),g.style.width=`${y}px`,g.style.height=`${M}px`,m.setTransform(n,0,0,n,0,0),J()},Q=function(n,o,t){return(N(n/x,o/x,t)-.5)*2*et},_=function(n){m.clearRect(0,0,y,M);const o=n/1e4,[t,c,v]=P;for(const s of L){const r=Q(s.x,s.y,o),e=(N(s.x/x,s.y/x,o*2)+.5)*tt,i=s.x+Math.cos(r)*e,a=s.y+Math.sin(r)*e,f=Math.cos(r)*k*.5,d=Math.sin(r)*k*.5,w=(Math.abs(Math.cos(r))*.5+.5)*s.opacity*z;m.strokeStyle=`rgba(${t}, ${c}, ${v}, ${w})`,m.lineWidth=.9,m.beginPath(),m.moveTo(i-f,a-d),m.lineTo(i+f,a+d),m.stroke()}F.matches||(C=window.requestAnimationFrame(_))},$=function(){window.cancelAnimationFrame(C),N=B(Date.now()),D(),S(),_(performance.now())};const m=T,x=200,tt=10,k=2.2,p=15,et=Math.PI*2,F=window.matchMedia("(prefers-reduced-motion: reduce)");let y=0,M=0,P=[24,24,27],z=.22,C=0,L=[],N=B(Date.now());const O=()=>S(),nt=()=>D(),R=()=>$(),G=new MutationObserver(nt),H=()=>{window.cancelAnimationFrame(C),window.removeEventListener("resize",O),F.removeEventListener("change",R),G.disconnect()};window.__noiseDriftBackground={destroy:H},$(),window.addEventListener("resize",O,{passive:!0}),F.addEventListener("change",R),G.observe(document.documentElement,{attributes:!0,attributeFilter:["class","style"]}),document.addEventListener("astro:before-swap",H,{once:!0})}}</script> <header class="site-header" data-pagefind-ignore data-astro-transition-persist="site-header"> <a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&#34;/img/icon/icon_web.svg&#34;)"> <span class="brand-mark-icon" aria-hidden="true"></span> </a> <nav class="site-nav" aria-label="Primary"> <div class="site-nav-spacer"></div> <div class="site-nav-links"> <a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/posts/&#34;,&#34;/notes/&#34;]"> Post </a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/photos/&#34;]"> Photo </a><a href="https://github.com/VintLin" target="_blank" rel="noreferrer" class="nav-link"> GitHub </a> <a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check> <i class="fa-solid fa-square-rss" aria-hidden="true"></i> </a> <button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="light" aria-label="Toggle color scheme"> <i class="fa-regular fa-sun light-mode" aria-hidden="true"></i> <i class="fa-regular fa-moon dark-mode" aria-hidden="true"></i> </button> <button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"> <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> </button> </div> </nav> </header> <script>
+  const storageKey = "vint-color-scheme";
+  const root = document.documentElement;
+  const themeTransitionTimings = {
+    light: {
+      duration: 720,
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+    },
+    dark: {
+      duration: 620,
+      easing: "cubic-bezier(0.7, 0, 0.22, 1)"
+    }
+  };
+
+  const normalizePathname = (pathname) => {
+    if (!pathname || pathname === "/") {
+      return "/";
+    }
+
+    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  };
+
+  const bindHeaderLinkGuards = () => {
+    const headerLinks = document.querySelectorAll("[data-header-nav-check]");
+
+    headerLinks.forEach((link) => {
+      if (link.dataset.headerNavBound === "true") {
+        return;
+      }
+
+      link.dataset.headerNavBound = "true";
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        const targetUrl = new URL(href, window.location.href);
+        const currentPath = normalizePathname(window.location.pathname);
+        const targetPath = normalizePathname(targetUrl.pathname);
+
+        if (targetUrl.origin === window.location.origin && currentPath === targetPath) {
+          event.preventDefault();
+        }
+      });
+    });
+  };
+
+  const syncHeaderActiveState = () => {
+    const currentPath = normalizePathname(window.location.pathname);
+    const homeLink = document.querySelector("[data-header-home-link]");
+    const navLinks = document.querySelectorAll("[data-header-nav-link]");
+
+    if (homeLink) {
+      if (currentPath === "/") {
+        homeLink.setAttribute("aria-current", "page");
+      } else {
+        homeLink.removeAttribute("aria-current");
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const rawMatches = link.getAttribute("data-nav-match");
+      const matches = rawMatches ? JSON.parse(rawMatches) : [];
+      const isActive = matches.some((href) => {
+        const normalizedHref = normalizePathname(href);
+        return normalizedHref === "/"
+          ? currentPath === normalizedHref
+          : currentPath.startsWith(normalizedHref);
+      });
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const bindThemeButtons = () => {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+
+    buttons.forEach((button) => {
+      if (button.dataset.themeBound === "true") {
+        return;
+      }
+
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(storageKey, next);
+        animateThemeTransition(button, next);
+      });
+    });
+  };
+
+  const initializeHeader = () => {
+    bindHeaderLinkGuards();
+    bindThemeButtons();
+    syncHeaderActiveState();
+  };
+
+  const applyTheme = (mode) => {
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+
+    root.classList.toggle("dark", isDark);
+    root.dataset.themeMode = mode;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("data-theme-state", isDark ? "dark" : "light");
+      button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    });
+  };
+
+  const resolveThemeTransitionOrigin = (button) => {
+    const rect = button.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+  };
+
+  const resolveThemeTransitionRadius = ({ x, y }) =>
+    Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+  const animateThemeTransition = (button, nextMode) => {
+    const supportsViewTransition =
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsViewTransition || !(button instanceof HTMLElement)) {
+      applyTheme(nextMode);
+      return;
+    }
+
+    const origin = resolveThemeTransitionOrigin(button);
+    const radius = resolveThemeTransitionRadius(origin);
+    const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
+    const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
+    const isExpanding = nextMode === "light";
+    const timing = themeTransitionTimings[nextMode];
+
+    button.disabled = true;
+
+    const transition = document.startViewTransition(() => {
+      applyTheme(nextMode);
+    });
+
+    transition.ready
+      .then(() =>
+        document.documentElement.animate(
+          {
+            clipPath: isExpanding ? [from, to] : [to, from]
+          },
+          {
+            duration: timing.duration,
+            easing: timing.easing,
+            fill: "both",
+            pseudoElement: isExpanding
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)"
+          }
+        ).finished
+      )
+      .catch(() => {})
+      .finally(() => {
+        button.disabled = false;
+      });
+  };
+
+  initializeHeader();
+
+  document.addEventListener("astro:page-load", initializeHeader);
+
+  const stored = localStorage.getItem(storageKey) || "dark";
+  applyTheme(stored);
+</script> <main class="page-main" data-pagefind-body>  <article class="page-shell page-section"> <header class="prose"> <h1 class="page-title slide-enter" data-pagefind-meta="title">六项精进</h1> <p class="article-meta slide-enter"> 2024年9月10日 · 3min ·
+中文 </p> <p class="page-summary slide-enter" data-pagefind-meta="excerpt"> 《六项精进》读书笔记 </p> </header> <div class="prose slide-enter-content"> <h2 id="一付出不亚于任何人的努力">  一、付出不亚于任何人的努力</h2>
+<p><strong>拼命工作是一切生命都在承担的义务</strong>   刚有起色就像偷懒，想舒服，是人类才会有的浅薄想法。自然界的动植物，它们都在竭尽全力，拼命地求生存。</p>
+<p>“你是否在竭尽全力地工作？” “是的，我在努力工作”  “你是否付出了不亚于任何人的努力？” “你的工作方法是否不亚于任何人？”</p>
+<p>你自称是在努力工作，但实际上你的努力还远远不够，如果你不更加认真，更加努力，那么公司也好，个人的人生也好，都不会有理想的结果</p>
+<p><strong>全力投入工作就会产生创意</strong> 当你每天都聚精会神，全身心投入工作时，低效的，漫不经心的现象就会消失。只要喜欢上自己的工作，只要进入拼命努力的状态，他就会考虑，如何把工作做得更好，拼命工作的同时思考如何改进工作，那么你的每一天都会充满创意。今天要比昨天好，明天要比今天好。</p>
+<p>不竭尽全力，不专心工作，就谈不上发明创造。在消极的状态下即使你想寻找好的工作方法，创意也出不来。</p>
+<p><strong>拼命工作可以磨练灵魂</strong>  全身心投入工作，将心思集中到一点，抑制杂念狂想，不给他们作祟的空间，通过这样的修行，整理自己的心绪，磨练自己的心智，造就纯粹而优秀的人格。</p>
+<h2 id="二要谦虚不要骄傲">  二、要谦虚，不要骄傲</h2>
+<p>我认为，<strong>谦虚是最重要的人格要素</strong>。</p>
+<p>（为什么要谦虚？不谦虚就无法听到他人指出的你的不足，你就无法进步）</p>
+<h2 id="三要每天反省">  三、要每天反省</h2>
+<p>一天结束后，回顾一天，对照做人的准则，确认言行是否正确。</p>
+<p>自己的言行中，哪怕是只有一点点值得反省之处，也要改进。</p>
+<p>“竭尽全力，拼命工作”加上“天天反省”，我们的灵魂就会被净化，变得更美丽，更高尚。</p>
+<p>（为什么要每天反省？构建有效思维系统的必须，同时提供行为层面对个人习惯进行调整的机会。）</p>
+<p>抑制邪恶的自我，发展善良的自我。</p>
+<h2 id="四活着就要感谢">  四、活着，就要感谢</h2>
+<p>我们不可能单身一人活在这世界上，我们每个人都在周围环境的支持下才能生存。因此只要我们能健康的活着，就该自然而然地生出感谢之心，有了感谢之心，我们就能感受到人生的幸福。</p>
+<p>不要满腹牢骚，对现状表示感谢，在此之上，再朝着更高的目标努力奋斗。</p>
+<h2 id="五积善行思利他">  五、积善行、思利他</h2>
+<p>作者早年读过安冈正笃的《命运和立命》一书，相信世界上存在因果法则。</p>
+<p>在钱财上帮助别人，需要进行经营上的判断，有“大善”（劝导正对困难，接受教训）和“小善”（直接给钱，使他变得更加不负责任）</p>
+<h2 id="六不要有感性的烦恼">  六、不要有感性的烦恼</h2>
+<p><strong>反省之后，把过去的失败坚决忘掉，将精力投进新的工作。</strong></p>
+<p>担心、烦恼、失败等等，是人生的常事，总是因为曾经的失败而悔恨，毫无意义。要对过去的事实进行深刻的反省，但不要让已经过去的事再困扰自己，心里要想新的事情，新的想法要转移到新的行动上去，这一点很重要。</p> </div> <footer class="article-footer prose slide-enter-content">  <p class="terminal-line"> <span class="terminal-prompt">&gt;</span> <a href="/posts/">cd ..</a> </p> </footer> </article>  <footer class="site-footer" data-pagefind-ignore> <div class="page-shell"> <p class="footer-copy"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
+CC BY-NC-SA 4.0
+</a>
+2021-PRESENT © Vint </p> </div> </footer> </main> <div class="image-lightbox" data-image-lightbox hidden aria-hidden="true"> <div class="image-lightbox-backdrop" data-image-lightbox-close></div> <div class="image-lightbox-panel" data-image-lightbox-panel> <img class="image-lightbox-media" data-image-lightbox-media alt=""> <div class="image-lightbox-caption" data-image-lightbox-caption hidden></div> </div> </div> <script>
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxMedia = document.querySelector("[data-image-lightbox-media]");
+  const lightboxCaption = document.querySelector("[data-image-lightbox-caption]");
+  const zoomRoot = document.documentElement;
+  const zoomableSelector = ".prose img, img[data-lightbox-image]";
+
+  const isZoomableImage = (node) =>
+    node instanceof HTMLImageElement &&
+    !node.closest("[data-image-lightbox]") &&
+    (node.hasAttribute("data-lightbox-image") || (node.closest(".prose") && !node.closest("a[href]")));
+
+  const resolveZoomableImage = (target) => {
+    if (isZoomableImage(target)) {
+      return target;
+    }
+
+    if (!(target instanceof Element)) {
+      return null;
+    }
+
+    const triggerImage = target.closest("[data-lightbox-trigger]")?.querySelector("img");
+    return isZoomableImage(triggerImage) ? triggerImage : null;
+  };
+
+  const getCaption = (image) => {
+    const customCaption = image.dataset.lightboxCaption?.trim();
+    if (customCaption) return customCaption;
+
+    const figureCaption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    return figureCaption || image.getAttribute("alt") || image.getAttribute("title") || "";
+  };
+
+  const syncZoomableImages = () => {
+    document.querySelectorAll(zoomableSelector).forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      const zoomable = isZoomableImage(image);
+      const trigger = image.closest("[data-lightbox-trigger]");
+
+      image.classList.toggle("zoomable-media", zoomable);
+      trigger?.classList.toggle("zoomable-media", zoomable);
+
+      if (zoomable && !trigger) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", getCaption(image) || "Open image preview");
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("role");
+        image.removeAttribute("aria-label");
+      }
+    });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxMedia.removeAttribute("src");
+    lightboxMedia.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
+    zoomRoot.classList.remove("is-image-zoomed");
+  };
+
+  const openLightbox = (image) => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    const source = image.dataset.lightboxSrc || image.currentSrc || image.src;
+    const caption = getCaption(image);
+
+    if (!source) return;
+
+    lightboxMedia.src = source;
+    lightboxMedia.alt = image.alt || "";
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = !caption;
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    zoomRoot.classList.add("is-image-zoomed");
+  };
+
+  syncZoomableImages();
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-image-lightbox-close]")) {
+      closeLightbox();
+      return;
+    }
+
+    if (
+      !lightbox?.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-image-lightbox-media]") &&
+      !target.closest("[data-image-lightbox-caption]")
+    ) {
+      closeLightbox();
+      return;
+    }
+
+    const image = resolveZoomableImage(target);
+    if (!image) {
+      return;
+    }
+
+    if (target instanceof Element && target.closest("a[href]")?.contains(image)) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const image = resolveZoomableImage(event.target);
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+</script> <div class="search-shell" data-search-shell hidden> <div class="search-backdrop" data-search-close></div> <section class="search-panel" aria-label="Search" role="dialog" aria-modal="true"> <div class="search-panel-head"> <p class="search-panel-title">Search the archive</p> <button class="search-close" type="button" data-search-close aria-label="Close search">
+×
+</button> </div> <div class="search-status" data-search-status>
+Loading the search index...
+</div> <div id="search" class="pagefind-host"></div> </section> </div> <script>
+  const resolveSearchNodes = () => ({
+    shell: document.querySelector("[data-search-shell]"),
+    statusNode: document.querySelector("[data-search-status]"),
+    host: document.querySelector("#search")
+  });
+
+  const loadScript = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(script);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+  const loadStyle = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  const loadAssets = async () => {
+    if (!window.__searchAssetsPromise) {
+      window.__searchAssetsPromise = (async () => {
+        loadStyle("/pagefind/pagefind-ui.css");
+        await loadScript("/pagefind/pagefind-ui.js");
+
+        if (!window.PagefindUI) {
+          throw new Error("PagefindUI unavailable");
+        }
+      })();
+    }
+
+    return window.__searchAssetsPromise;
+  };
+
+  const initSearch = async () => {
+    const { host, statusNode } = resolveSearchNodes();
+
+    if (!host || !statusNode || host.dataset.searchInitialized === "true") {
+      return;
+    }
+
+    try {
+      await loadAssets();
+
+      new window.PagefindUI({
+        element: "#search",
+        showImages: false,
+        showSubResults: true,
+        excerptLength: 16,
+        resetStyles: false
+      });
+      statusNode.textContent = "Search across titles, tags, summaries, and article content.";
+      host.dataset.searchInitialized = "true";
+    } catch (error) {
+      statusNode.textContent =
+        "Search assets failed to load. Run npm run build to refresh the Pagefind bundle.";
+    }
+  };
+
+  const show = async () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = false;
+    document.documentElement.classList.add("is-search-open");
+    await initSearch();
+  };
+
+  const hide = () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = true;
+    document.documentElement.classList.remove("is-search-open");
+  };
+
+  const initializeSearchDialog = () => {
+    const { shell } = resolveSearchNodes();
+
+    if (shell?.hidden !== false) {
+      document.documentElement.classList.remove("is-search-open");
+    }
+  };
+
+  initializeSearchDialog();
+
+  if (window.__searchDialogListenersBound !== true) {
+    window.__searchDialogListenersBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest("[data-search-close]")) {
+        hide();
+        return;
+      }
+
+      if (target.closest("[data-search-open]")) {
+        void show();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hide();
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        void show();
+      }
+    });
+
+    document.addEventListener("astro:page-load", initializeSearchDialog);
+  }
+</script> </body></html>

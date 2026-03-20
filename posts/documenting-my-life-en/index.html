@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
+  !function () {
+    const storageKey = "vint-color-scheme";
+    const darkThemeColor = "#050505";
+    const lightThemeColor = "#fafaf9";
+
+    const resolveMode = () => localStorage.getItem(storageKey) || "dark";
+
+    const resolveIsDark = (mode) => {
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return mode === "dark" || (mode === "auto" && prefersDark);
+    };
+
+    const applyThemeToDocument = (doc, mode) => {
+      const isDark = resolveIsDark(mode);
+      doc.documentElement.classList.toggle("dark", isDark);
+      doc.documentElement.dataset.themeMode = mode;
+      const themeColor = doc.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+      }
+    };
+
+    applyThemeToDocument(document, resolveMode());
+
+    document.addEventListener("astro:before-swap", (event) => {
+      applyThemeToDocument(event.newDocument, resolveMode());
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+      applyThemeToDocument(document, resolveMode());
+    });
+  }();
+</script><title>Documenting My Life | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v6.0.6"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/icon_website.webp"><link rel="shortcut icon" href="/img/icon/icon_website.webp"><link rel="apple-touch-icon" href="/img/icon/icon_website.webp"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="Documenting My Life | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vinton.store/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Documenting My Life | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vinton.store/og-default.svg"><link rel="canonical" href="https://vinton.store/posts/documenting-my-life-en/"><script defer data-domain="vinton.store" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Documenting My Life","datePublished":"2023-05-31T00:29:00.000Z","inLanguage":"en","url":"https://vinton.store/posts/documenting-my-life-en/","image":["https://vinton.store/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vinton.store/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmQZLfuR.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.CIAsUspC.css"></head> <body> <div class="noise-drift-background" aria-hidden="true" data-astro-cid-jhygxfeg> <canvas data-noise-drift-background data-astro-cid-jhygxfeg></canvas> </div> <script type="module">const Y=document.querySelector("[data-noise-drift-background]");if(Y){window.__noiseDriftBackground?.destroy?.();const g=Y,T=g.getContext("2d");if(T){let Z=function(n){let o=n>>>0;return()=>{o+=1831565813;let t=o;return t=Math.imul(t^t>>>15,t|1),t^=t+Math.imul(t^t>>>7,t|61),((t^t>>>14)>>>0)/4294967296}},B=function(n){const o=Z(n),t=new Uint8Array(512),c=new Uint8Array(256);for(let e=0;e<256;e+=1)c[e]=e;for(let e=255;e>0;e-=1){const i=Math.floor(o()*(e+1)),a=c[e];c[e]=c[i],c[i]=a}for(let e=0;e<512;e+=1)t[e]=c[e&255];const v=e=>e*e*e*(e*(e*6-15)+10),s=(e,i,a)=>e+(i-e)*a,r=(e,i,a,f)=>{const d=e&15,w=d<8?i:a,b=d<4?a:d===12||d===14?i:f;return((d&1)===0?w:-w)+((d&2)===0?b:-b)};return(e,i,a)=>{const f=Math.floor(e),d=Math.floor(i),w=Math.floor(a),b=f&255,I=d&255,A=w&255,l=e-f,u=i-d,h=a-w,E=v(l),W=v(u),ot=v(h),q=t[b]+I,U=t[q]+A,V=t[q+1]+A,j=t[b+1]+I,K=t[j]+A,X=t[j+1]+A;return(s(s(s(r(t[U],l,u,h),r(t[K],l-1,u,h),E),s(r(t[V],l,u-1,h),r(t[X],l-1,u-1,h),E),W),s(s(r(t[U+1],l,u,h-1),r(t[K+1],l-1,u,h-1),E),s(r(t[V+1],l,u-1,h-1),r(t[X+1],l-1,u-1,h-1),E),W),ot)+1)/2}},D=function(){const n=getComputedStyle(document.documentElement),o=n.getPropertyValue("--noise-dot-rgb").trim(),t=Number.parseFloat(n.getPropertyValue("--noise-dot-alpha").trim()),c=o.split(/\s+/).map(Number).filter(Number.isFinite).slice(0,3);c.length===3?P=[c[0],c[1],c[2]]:P=[24,24,27],z=Number.isFinite(t)?t:.22},J=function(){L=[];for(let n=-p/2;n<y+p;n+=p)for(let o=-p/2;o<M+p;o+=p)L.push({x:n,y:o,opacity:Math.random()*.5+.5})},S=function(){y=window.innerWidth,M=window.innerHeight;const n=window.devicePixelRatio||1;g.width=Math.round(y*n),g.height=Math.round(M*n),g.style.width=`${y}px`,g.style.height=`${M}px`,m.setTransform(n,0,0,n,0,0),J()},Q=function(n,o,t){return(N(n/x,o/x,t)-.5)*2*et},_=function(n){m.clearRect(0,0,y,M);const o=n/1e4,[t,c,v]=P;for(const s of L){const r=Q(s.x,s.y,o),e=(N(s.x/x,s.y/x,o*2)+.5)*tt,i=s.x+Math.cos(r)*e,a=s.y+Math.sin(r)*e,f=Math.cos(r)*k*.5,d=Math.sin(r)*k*.5,w=(Math.abs(Math.cos(r))*.5+.5)*s.opacity*z;m.strokeStyle=`rgba(${t}, ${c}, ${v}, ${w})`,m.lineWidth=.9,m.beginPath(),m.moveTo(i-f,a-d),m.lineTo(i+f,a+d),m.stroke()}F.matches||(C=window.requestAnimationFrame(_))},$=function(){window.cancelAnimationFrame(C),N=B(Date.now()),D(),S(),_(performance.now())};const m=T,x=200,tt=10,k=2.2,p=15,et=Math.PI*2,F=window.matchMedia("(prefers-reduced-motion: reduce)");let y=0,M=0,P=[24,24,27],z=.22,C=0,L=[],N=B(Date.now());const O=()=>S(),nt=()=>D(),R=()=>$(),G=new MutationObserver(nt),H=()=>{window.cancelAnimationFrame(C),window.removeEventListener("resize",O),F.removeEventListener("change",R),G.disconnect()};window.__noiseDriftBackground={destroy:H},$(),window.addEventListener("resize",O,{passive:!0}),F.addEventListener("change",R),G.observe(document.documentElement,{attributes:!0,attributeFilter:["class","style"]}),document.addEventListener("astro:before-swap",H,{once:!0})}}</script> <header class="site-header" data-pagefind-ignore data-astro-transition-persist="site-header"> <a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&#34;/img/icon/icon_web.svg&#34;)"> <span class="brand-mark-icon" aria-hidden="true"></span> </a> <nav class="site-nav" aria-label="Primary"> <div class="site-nav-spacer"></div> <div class="site-nav-links"> <a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/posts/&#34;,&#34;/notes/&#34;]"> Post </a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/photos/&#34;]"> Photo </a><a href="https://github.com/VintLin" target="_blank" rel="noreferrer" class="nav-link"> GitHub </a> <a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check> <i class="fa-solid fa-square-rss" aria-hidden="true"></i> </a> <button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="light" aria-label="Toggle color scheme"> <i class="fa-regular fa-sun light-mode" aria-hidden="true"></i> <i class="fa-regular fa-moon dark-mode" aria-hidden="true"></i> </button> <button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"> <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> </button> </div> </nav> </header> <script>
+  const storageKey = "vint-color-scheme";
+  const root = document.documentElement;
+  const themeTransitionTimings = {
+    light: {
+      duration: 720,
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+    },
+    dark: {
+      duration: 620,
+      easing: "cubic-bezier(0.7, 0, 0.22, 1)"
+    }
+  };
+
+  const normalizePathname = (pathname) => {
+    if (!pathname || pathname === "/") {
+      return "/";
+    }
+
+    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  };
+
+  const bindHeaderLinkGuards = () => {
+    const headerLinks = document.querySelectorAll("[data-header-nav-check]");
+
+    headerLinks.forEach((link) => {
+      if (link.dataset.headerNavBound === "true") {
+        return;
+      }
+
+      link.dataset.headerNavBound = "true";
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        const targetUrl = new URL(href, window.location.href);
+        const currentPath = normalizePathname(window.location.pathname);
+        const targetPath = normalizePathname(targetUrl.pathname);
+
+        if (targetUrl.origin === window.location.origin && currentPath === targetPath) {
+          event.preventDefault();
+        }
+      });
+    });
+  };
+
+  const syncHeaderActiveState = () => {
+    const currentPath = normalizePathname(window.location.pathname);
+    const homeLink = document.querySelector("[data-header-home-link]");
+    const navLinks = document.querySelectorAll("[data-header-nav-link]");
+
+    if (homeLink) {
+      if (currentPath === "/") {
+        homeLink.setAttribute("aria-current", "page");
+      } else {
+        homeLink.removeAttribute("aria-current");
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const rawMatches = link.getAttribute("data-nav-match");
+      const matches = rawMatches ? JSON.parse(rawMatches) : [];
+      const isActive = matches.some((href) => {
+        const normalizedHref = normalizePathname(href);
+        return normalizedHref === "/"
+          ? currentPath === normalizedHref
+          : currentPath.startsWith(normalizedHref);
+      });
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const bindThemeButtons = () => {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+
+    buttons.forEach((button) => {
+      if (button.dataset.themeBound === "true") {
+        return;
+      }
+
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(storageKey, next);
+        animateThemeTransition(button, next);
+      });
+    });
+  };
+
+  const initializeHeader = () => {
+    bindHeaderLinkGuards();
+    bindThemeButtons();
+    syncHeaderActiveState();
+  };
+
+  const applyTheme = (mode) => {
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+
+    root.classList.toggle("dark", isDark);
+    root.dataset.themeMode = mode;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("data-theme-state", isDark ? "dark" : "light");
+      button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    });
+  };
+
+  const resolveThemeTransitionOrigin = (button) => {
+    const rect = button.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+  };
+
+  const resolveThemeTransitionRadius = ({ x, y }) =>
+    Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+  const animateThemeTransition = (button, nextMode) => {
+    const supportsViewTransition =
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsViewTransition || !(button instanceof HTMLElement)) {
+      applyTheme(nextMode);
+      return;
+    }
+
+    const origin = resolveThemeTransitionOrigin(button);
+    const radius = resolveThemeTransitionRadius(origin);
+    const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
+    const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
+    const isExpanding = nextMode === "light";
+    const timing = themeTransitionTimings[nextMode];
+
+    button.disabled = true;
+
+    const transition = document.startViewTransition(() => {
+      applyTheme(nextMode);
+    });
+
+    transition.ready
+      .then(() =>
+        document.documentElement.animate(
+          {
+            clipPath: isExpanding ? [from, to] : [to, from]
+          },
+          {
+            duration: timing.duration,
+            easing: timing.easing,
+            fill: "both",
+            pseudoElement: isExpanding
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)"
+          }
+        ).finished
+      )
+      .catch(() => {})
+      .finally(() => {
+        button.disabled = false;
+      });
+  };
+
+  initializeHeader();
+
+  document.addEventListener("astro:page-load", initializeHeader);
+
+  const stored = localStorage.getItem(storageKey) || "dark";
+  applyTheme(stored);
+</script> <main class="page-main" data-pagefind-body>  <article class="page-shell page-section"> <header class="prose"> <h1 class="page-title slide-enter" data-pagefind-meta="title">Documenting My Life</h1> <p class="article-meta slide-enter"> May 31, 2023 · 5min ·
+English </p>  </header> <div class="prose slide-enter-content"> <p>Regarding how I currently document my life, I would like to provide a comprehensive account.</p>
+<p>My daily recording mainly consists of two parts: accounting and weekly journal, both of which are recorded in Notion.</p>
+<h2 id="accounting">Accounting</h2>
+<p>Notion provides various ways to display data, making it convenient, easy, and efficient to view my data records.</p>
+<p>In terms of accounting, I do the following:</p>
+<ol>
+<li><strong>Daily (10 minutes)</strong>: I record daily expenses and income. Typically, I do this on my computer each morning. (Payment records come from AliPay or WeChat Pay).</li>
+<li><strong>Weekends (20-35 minutes)</strong>: I review the week’s expenses and income and make a weekly summary (total weekly expenses, consumption tendencies).</li>
+<li>Based on the <strong>summary</strong> in step two, I can selectively adjust my spending habits.</li>
+</ol>
+<p>Benefits of accounting for me:</p>
+<ol>
+<li><strong>Achieving Goals</strong>: By recording financial data and setting a reasonable budget, I can better track the progress of personal goals such as travel, home buying, education funds, etc.</li>
+<li><strong>Controlling Expenditure</strong>: By recording each expenditure, I can better understand my spending habits and tendencies, identify unnecessary expenses and spending leaks, and make corresponding adjustments.</li>
+</ol>
+<h4 id="account-overview">Account Overview</h4>
+<p>Usually, I select a date in the calendar section of the overview to record that day’s expenses and income.</p>
+<p><img alt="Bill" loading="lazy" decoding="async"  width="2900" height="4904" src="/_astro/bill.VWhjVG6k_ZA8BH7.webp" ></p>
+<h4 id="weekly-review">Weekly Review</h4>
+<p>Clicking on <strong>“Accounts”</strong> in the account overview displays all recorded account details.</p>
+<p>My current accounts mainly record several pieces of information: <strong>items</strong>, <strong>date</strong>, <strong>expenses</strong>, <strong>income</strong>, <strong>location</strong>.</p>
+<p>In Notion, I can select and query the entered data, thus easily viewing the <strong>“daily, weekly, monthly consumption”</strong> and <strong>“extra consumption”</strong> situations.</p>
+<p><img alt="Bill" loading="lazy" decoding="async"  width="2298" height="886" src="/_astro/bill_2.DuG4Mb6P_Z1Cqi0h.webp" ></p>
+<h2 id="weekly-journal">Weekly Journal</h2>
+<p>Regarding weekly journal, I do the following:</p>
+<ul>
+<li><strong>Daily</strong>: I open the weekly journal recording page when I turn on my computer. Since I spend most of my time in front of the computer each day, I jot down sudden thoughts, recently learned knowledge, daily activities, and the day’s mood in my weekly journals.</li>
+<li><strong>Weekends</strong>: I review the week and selectively adjust my future action strategy.</li>
+</ul>
+<p>Benefits of weekly journals for me:</p>
+<ul>
+<li><strong>Self-reflection and Growth</strong>: Weekly journals allow me to reflect on the past week’s experiences, actions, and decisions. By reviewing my actions and thoughts, I can better understand my behavioral patterns, habits, and preferences. This self-reflection promotes personal growth.</li>
+<li><strong>Goal Setting and Progress Evaluation</strong>: I use weekly journals to track and record my goal completion. This helps maintain clarity and motivation for goals, and the weekend summary provides an opportunity for continuous self-supervision and evaluation.</li>
+<li><strong>Retrospection</strong>: I can trace back previous thoughts to understand personal changes. This retrospection process might make me realize that some of my current habits or opinions originated from seemingly insignificant past events. Being able to see changes in myself more intuitively also increases my sense of self-efficacy.</li>
+</ul>
+<h4 id="weekly-journals-overview">Weekly Journals Overview</h4>
+<p>I generally create a new weekly journal document <strong>each week</strong> and record personal data in this document throughout the week.</p>
+<p><img alt="Bill" loading="lazy" decoding="async"  width="1779" height="1397" src="/_astro/live_1.Cc1li_ms_1TgRKP.webp" ></p>
+<h4 id="weekly-journal-1">Weekly Journal</h4>
+<p>Currently, I divide the content of my weekly journal into four sections:</p>
+<ul>
+<li><strong>Daily Records</strong>: Only record daily activities without outputting thoughts.
+<ul>
+<li>Study / Life / Work</li>
+</ul>
+</li>
+<li><strong>Thought Output</strong>: Record thoughts on daily activities as well as current emotional state.
+<ul>
+<li>Views / Life / Emotions</li>
+</ul>
+</li>
+<li><strong>Resource Input</strong>: Record useful information, tools, or significant news events.
+<ul>
+<li>Knowledge / Tools / Environment</li>
+</ul>
+</li>
+<li><strong>Summary</strong>: Record of weekend reviews, tracking of goal completion, current savings balance, and thoughts on the week.
+<ul>
+<li>Goals / Balance / Thoughts</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Due to the sensitive nature of the personal information included in my own weekly journal, I have entrusted ChatGPT to generate a revised version of the journal following the format. This revised journal is written from the perspective of an Urban working women.</p>
+</blockquote>
+<p><img alt="Bill" loading="lazy" decoding="async"  width="814" height="4743" src="/_astro/live_2.CS4PscbZ_1qMIN4.webp" ></p>
+<blockquote>
+<p>“In conclusion, mindful documentation of our lives isn’t just a reflection of where we stand, but an indispensable roadmap guiding us toward the person we aspire to be.</p>
+<p>By diligently maintaining a clear and organized account of our financial activity, we gain the ability to manage and shape our financial future with precision. Meanwhile, the practice of weekly note-taking offers an avenue for introspection and growth, allowing us to refine our goals and enhance our self-understanding.</p>
+<p>In this dynamic interplay between objective accounting and subjective introspection, we find a harmonious balance that drives personal improvement and cultivates an elevated sense of self-awareness.</p>
+<p>The power of this mindful documentation is not just its ability to capture the past or outline the present, but its potential to project and shape our future. To paraphrase the ancient wisdom of Lao Tzu, knowing others is wisdom, but knowing the self is enlightenment. Herein lies the profound beauty of this journey, a continuous cycle of self-discovery and self-improvement that propels us forward, navigating the intricate tapestry of life.”</p>
+<p>from ChatGPT 2023.05.31</p>
+</blockquote> </div> <footer class="article-footer prose slide-enter-content"> <p class="terminal-line"> <span class="terminal-prompt">&gt;</span>
+available in  <a href="/posts/documenting-my-life/"> 中文 </a>  </p> <p class="terminal-line"> <span class="terminal-prompt">&gt;</span> <a href="/posts/">cd ..</a> </p> </footer> </article>  <footer class="site-footer" data-pagefind-ignore> <div class="page-shell"> <p class="footer-copy"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
+CC BY-NC-SA 4.0
+</a>
+2021-PRESENT © Vint </p> </div> </footer> </main> <div class="image-lightbox" data-image-lightbox hidden aria-hidden="true"> <div class="image-lightbox-backdrop" data-image-lightbox-close></div> <div class="image-lightbox-panel" data-image-lightbox-panel> <img class="image-lightbox-media" data-image-lightbox-media alt=""> <div class="image-lightbox-caption" data-image-lightbox-caption hidden></div> </div> </div> <script>
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxMedia = document.querySelector("[data-image-lightbox-media]");
+  const lightboxCaption = document.querySelector("[data-image-lightbox-caption]");
+  const zoomRoot = document.documentElement;
+  const zoomableSelector = ".prose img, img[data-lightbox-image]";
+
+  const isZoomableImage = (node) =>
+    node instanceof HTMLImageElement &&
+    !node.closest("[data-image-lightbox]") &&
+    (node.hasAttribute("data-lightbox-image") || (node.closest(".prose") && !node.closest("a[href]")));
+
+  const resolveZoomableImage = (target) => {
+    if (isZoomableImage(target)) {
+      return target;
+    }
+
+    if (!(target instanceof Element)) {
+      return null;
+    }
+
+    const triggerImage = target.closest("[data-lightbox-trigger]")?.querySelector("img");
+    return isZoomableImage(triggerImage) ? triggerImage : null;
+  };
+
+  const getCaption = (image) => {
+    const customCaption = image.dataset.lightboxCaption?.trim();
+    if (customCaption) return customCaption;
+
+    const figureCaption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    return figureCaption || image.getAttribute("alt") || image.getAttribute("title") || "";
+  };
+
+  const syncZoomableImages = () => {
+    document.querySelectorAll(zoomableSelector).forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      const zoomable = isZoomableImage(image);
+      const trigger = image.closest("[data-lightbox-trigger]");
+
+      image.classList.toggle("zoomable-media", zoomable);
+      trigger?.classList.toggle("zoomable-media", zoomable);
+
+      if (zoomable && !trigger) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", getCaption(image) || "Open image preview");
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("role");
+        image.removeAttribute("aria-label");
+      }
+    });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxMedia.removeAttribute("src");
+    lightboxMedia.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
+    zoomRoot.classList.remove("is-image-zoomed");
+  };
+
+  const openLightbox = (image) => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    const source = image.dataset.lightboxSrc || image.currentSrc || image.src;
+    const caption = getCaption(image);
+
+    if (!source) return;
+
+    lightboxMedia.src = source;
+    lightboxMedia.alt = image.alt || "";
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = !caption;
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    zoomRoot.classList.add("is-image-zoomed");
+  };
+
+  syncZoomableImages();
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-image-lightbox-close]")) {
+      closeLightbox();
+      return;
+    }
+
+    if (
+      !lightbox?.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-image-lightbox-media]") &&
+      !target.closest("[data-image-lightbox-caption]")
+    ) {
+      closeLightbox();
+      return;
+    }
+
+    const image = resolveZoomableImage(target);
+    if (!image) {
+      return;
+    }
+
+    if (target instanceof Element && target.closest("a[href]")?.contains(image)) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const image = resolveZoomableImage(event.target);
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+</script> <div class="search-shell" data-search-shell hidden> <div class="search-backdrop" data-search-close></div> <section class="search-panel" aria-label="Search" role="dialog" aria-modal="true"> <div class="search-panel-head"> <p class="search-panel-title">Search the archive</p> <button class="search-close" type="button" data-search-close aria-label="Close search">
+×
+</button> </div> <div class="search-status" data-search-status>
+Loading the search index...
+</div> <div id="search" class="pagefind-host"></div> </section> </div> <script>
+  const resolveSearchNodes = () => ({
+    shell: document.querySelector("[data-search-shell]"),
+    statusNode: document.querySelector("[data-search-status]"),
+    host: document.querySelector("#search")
+  });
+
+  const loadScript = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(script);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+  const loadStyle = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  const loadAssets = async () => {
+    if (!window.__searchAssetsPromise) {
+      window.__searchAssetsPromise = (async () => {
+        loadStyle("/pagefind/pagefind-ui.css");
+        await loadScript("/pagefind/pagefind-ui.js");
+
+        if (!window.PagefindUI) {
+          throw new Error("PagefindUI unavailable");
+        }
+      })();
+    }
+
+    return window.__searchAssetsPromise;
+  };
+
+  const initSearch = async () => {
+    const { host, statusNode } = resolveSearchNodes();
+
+    if (!host || !statusNode || host.dataset.searchInitialized === "true") {
+      return;
+    }
+
+    try {
+      await loadAssets();
+
+      new window.PagefindUI({
+        element: "#search",
+        showImages: false,
+        showSubResults: true,
+        excerptLength: 16,
+        resetStyles: false
+      });
+      statusNode.textContent = "Search across titles, tags, summaries, and article content.";
+      host.dataset.searchInitialized = "true";
+    } catch (error) {
+      statusNode.textContent =
+        "Search assets failed to load. Run npm run build to refresh the Pagefind bundle.";
+    }
+  };
+
+  const show = async () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = false;
+    document.documentElement.classList.add("is-search-open");
+    await initSearch();
+  };
+
+  const hide = () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = true;
+    document.documentElement.classList.remove("is-search-open");
+  };
+
+  const initializeSearchDialog = () => {
+    const { shell } = resolveSearchNodes();
+
+    if (shell?.hidden !== false) {
+      document.documentElement.classList.remove("is-search-open");
+    }
+  };
+
+  initializeSearchDialog();
+
+  if (window.__searchDialogListenersBound !== true) {
+    window.__searchDialogListenersBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest("[data-search-close]")) {
+        hide();
+        return;
+      }
+
+      if (target.closest("[data-search-open]")) {
+        void show();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hide();
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        void show();
+      }
+    });
+
+    document.addEventListener("astro:page-load", initializeSearchDialog);
+  }
+</script> </body></html>

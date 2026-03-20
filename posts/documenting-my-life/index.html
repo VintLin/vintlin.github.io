@@ -1,0 +1,570 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
+  !function () {
+    const storageKey = "vint-color-scheme";
+    const darkThemeColor = "#050505";
+    const lightThemeColor = "#fafaf9";
+
+    const resolveMode = () => localStorage.getItem(storageKey) || "dark";
+
+    const resolveIsDark = (mode) => {
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return mode === "dark" || (mode === "auto" && prefersDark);
+    };
+
+    const applyThemeToDocument = (doc, mode) => {
+      const isDark = resolveIsDark(mode);
+      doc.documentElement.classList.toggle("dark", isDark);
+      doc.documentElement.dataset.themeMode = mode;
+      const themeColor = doc.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+      }
+    };
+
+    applyThemeToDocument(document, resolveMode());
+
+    document.addEventListener("astro:before-swap", (event) => {
+      applyThemeToDocument(event.newDocument, resolveMode());
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+      applyThemeToDocument(document, resolveMode());
+    });
+  }();
+</script><title>如何记录自己的生活？ | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v6.0.6"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/icon_website.webp"><link rel="shortcut icon" href="/img/icon/icon_website.webp"><link rel="apple-touch-icon" href="/img/icon/icon_website.webp"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="如何记录自己的生活？ | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vinton.store/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="如何记录自己的生活？ | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vinton.store/og-default.svg"><link rel="canonical" href="https://vinton.store/posts/documenting-my-life/"><script defer data-domain="vinton.store" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何记录自己的生活？","datePublished":"2023-05-31T00:29:00.000Z","inLanguage":"zh-CN","url":"https://vinton.store/posts/documenting-my-life/","image":["https://vinton.store/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vinton.store/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmQZLfuR.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.CIAsUspC.css"></head> <body> <div class="noise-drift-background" aria-hidden="true" data-astro-cid-jhygxfeg> <canvas data-noise-drift-background data-astro-cid-jhygxfeg></canvas> </div> <script type="module">const Y=document.querySelector("[data-noise-drift-background]");if(Y){window.__noiseDriftBackground?.destroy?.();const g=Y,T=g.getContext("2d");if(T){let Z=function(n){let o=n>>>0;return()=>{o+=1831565813;let t=o;return t=Math.imul(t^t>>>15,t|1),t^=t+Math.imul(t^t>>>7,t|61),((t^t>>>14)>>>0)/4294967296}},B=function(n){const o=Z(n),t=new Uint8Array(512),c=new Uint8Array(256);for(let e=0;e<256;e+=1)c[e]=e;for(let e=255;e>0;e-=1){const i=Math.floor(o()*(e+1)),a=c[e];c[e]=c[i],c[i]=a}for(let e=0;e<512;e+=1)t[e]=c[e&255];const v=e=>e*e*e*(e*(e*6-15)+10),s=(e,i,a)=>e+(i-e)*a,r=(e,i,a,f)=>{const d=e&15,w=d<8?i:a,b=d<4?a:d===12||d===14?i:f;return((d&1)===0?w:-w)+((d&2)===0?b:-b)};return(e,i,a)=>{const f=Math.floor(e),d=Math.floor(i),w=Math.floor(a),b=f&255,I=d&255,A=w&255,l=e-f,u=i-d,h=a-w,E=v(l),W=v(u),ot=v(h),q=t[b]+I,U=t[q]+A,V=t[q+1]+A,j=t[b+1]+I,K=t[j]+A,X=t[j+1]+A;return(s(s(s(r(t[U],l,u,h),r(t[K],l-1,u,h),E),s(r(t[V],l,u-1,h),r(t[X],l-1,u-1,h),E),W),s(s(r(t[U+1],l,u,h-1),r(t[K+1],l-1,u,h-1),E),s(r(t[V+1],l,u-1,h-1),r(t[X+1],l-1,u-1,h-1),E),W),ot)+1)/2}},D=function(){const n=getComputedStyle(document.documentElement),o=n.getPropertyValue("--noise-dot-rgb").trim(),t=Number.parseFloat(n.getPropertyValue("--noise-dot-alpha").trim()),c=o.split(/\s+/).map(Number).filter(Number.isFinite).slice(0,3);c.length===3?P=[c[0],c[1],c[2]]:P=[24,24,27],z=Number.isFinite(t)?t:.22},J=function(){L=[];for(let n=-p/2;n<y+p;n+=p)for(let o=-p/2;o<M+p;o+=p)L.push({x:n,y:o,opacity:Math.random()*.5+.5})},S=function(){y=window.innerWidth,M=window.innerHeight;const n=window.devicePixelRatio||1;g.width=Math.round(y*n),g.height=Math.round(M*n),g.style.width=`${y}px`,g.style.height=`${M}px`,m.setTransform(n,0,0,n,0,0),J()},Q=function(n,o,t){return(N(n/x,o/x,t)-.5)*2*et},_=function(n){m.clearRect(0,0,y,M);const o=n/1e4,[t,c,v]=P;for(const s of L){const r=Q(s.x,s.y,o),e=(N(s.x/x,s.y/x,o*2)+.5)*tt,i=s.x+Math.cos(r)*e,a=s.y+Math.sin(r)*e,f=Math.cos(r)*k*.5,d=Math.sin(r)*k*.5,w=(Math.abs(Math.cos(r))*.5+.5)*s.opacity*z;m.strokeStyle=`rgba(${t}, ${c}, ${v}, ${w})`,m.lineWidth=.9,m.beginPath(),m.moveTo(i-f,a-d),m.lineTo(i+f,a+d),m.stroke()}F.matches||(C=window.requestAnimationFrame(_))},$=function(){window.cancelAnimationFrame(C),N=B(Date.now()),D(),S(),_(performance.now())};const m=T,x=200,tt=10,k=2.2,p=15,et=Math.PI*2,F=window.matchMedia("(prefers-reduced-motion: reduce)");let y=0,M=0,P=[24,24,27],z=.22,C=0,L=[],N=B(Date.now());const O=()=>S(),nt=()=>D(),R=()=>$(),G=new MutationObserver(nt),H=()=>{window.cancelAnimationFrame(C),window.removeEventListener("resize",O),F.removeEventListener("change",R),G.disconnect()};window.__noiseDriftBackground={destroy:H},$(),window.addEventListener("resize",O,{passive:!0}),F.addEventListener("change",R),G.observe(document.documentElement,{attributes:!0,attributeFilter:["class","style"]}),document.addEventListener("astro:before-swap",H,{once:!0})}}</script> <header class="site-header" data-pagefind-ignore data-astro-transition-persist="site-header"> <a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&#34;/img/icon/icon_web.svg&#34;)"> <span class="brand-mark-icon" aria-hidden="true"></span> </a> <nav class="site-nav" aria-label="Primary"> <div class="site-nav-spacer"></div> <div class="site-nav-links"> <a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/posts/&#34;,&#34;/notes/&#34;]"> Post </a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&#34;/photos/&#34;]"> Photo </a><a href="https://github.com/VintLin" target="_blank" rel="noreferrer" class="nav-link"> GitHub </a> <a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check> <i class="fa-solid fa-square-rss" aria-hidden="true"></i> </a> <button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="light" aria-label="Toggle color scheme"> <i class="fa-regular fa-sun light-mode" aria-hidden="true"></i> <i class="fa-regular fa-moon dark-mode" aria-hidden="true"></i> </button> <button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"> <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> </button> </div> </nav> </header> <script>
+  const storageKey = "vint-color-scheme";
+  const root = document.documentElement;
+  const themeTransitionTimings = {
+    light: {
+      duration: 720,
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+    },
+    dark: {
+      duration: 620,
+      easing: "cubic-bezier(0.7, 0, 0.22, 1)"
+    }
+  };
+
+  const normalizePathname = (pathname) => {
+    if (!pathname || pathname === "/") {
+      return "/";
+    }
+
+    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  };
+
+  const bindHeaderLinkGuards = () => {
+    const headerLinks = document.querySelectorAll("[data-header-nav-check]");
+
+    headerLinks.forEach((link) => {
+      if (link.dataset.headerNavBound === "true") {
+        return;
+      }
+
+      link.dataset.headerNavBound = "true";
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        const targetUrl = new URL(href, window.location.href);
+        const currentPath = normalizePathname(window.location.pathname);
+        const targetPath = normalizePathname(targetUrl.pathname);
+
+        if (targetUrl.origin === window.location.origin && currentPath === targetPath) {
+          event.preventDefault();
+        }
+      });
+    });
+  };
+
+  const syncHeaderActiveState = () => {
+    const currentPath = normalizePathname(window.location.pathname);
+    const homeLink = document.querySelector("[data-header-home-link]");
+    const navLinks = document.querySelectorAll("[data-header-nav-link]");
+
+    if (homeLink) {
+      if (currentPath === "/") {
+        homeLink.setAttribute("aria-current", "page");
+      } else {
+        homeLink.removeAttribute("aria-current");
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const rawMatches = link.getAttribute("data-nav-match");
+      const matches = rawMatches ? JSON.parse(rawMatches) : [];
+      const isActive = matches.some((href) => {
+        const normalizedHref = normalizePathname(href);
+        return normalizedHref === "/"
+          ? currentPath === normalizedHref
+          : currentPath.startsWith(normalizedHref);
+      });
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const bindThemeButtons = () => {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+
+    buttons.forEach((button) => {
+      if (button.dataset.themeBound === "true") {
+        return;
+      }
+
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(storageKey, next);
+        animateThemeTransition(button, next);
+      });
+    });
+  };
+
+  const initializeHeader = () => {
+    bindHeaderLinkGuards();
+    bindThemeButtons();
+    syncHeaderActiveState();
+  };
+
+  const applyTheme = (mode) => {
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+
+    root.classList.toggle("dark", isDark);
+    root.dataset.themeMode = mode;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("data-theme-state", isDark ? "dark" : "light");
+      button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    });
+  };
+
+  const resolveThemeTransitionOrigin = (button) => {
+    const rect = button.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+  };
+
+  const resolveThemeTransitionRadius = ({ x, y }) =>
+    Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+  const animateThemeTransition = (button, nextMode) => {
+    const supportsViewTransition =
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsViewTransition || !(button instanceof HTMLElement)) {
+      applyTheme(nextMode);
+      return;
+    }
+
+    const origin = resolveThemeTransitionOrigin(button);
+    const radius = resolveThemeTransitionRadius(origin);
+    const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
+    const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
+    const isExpanding = nextMode === "light";
+    const timing = themeTransitionTimings[nextMode];
+
+    button.disabled = true;
+
+    const transition = document.startViewTransition(() => {
+      applyTheme(nextMode);
+    });
+
+    transition.ready
+      .then(() =>
+        document.documentElement.animate(
+          {
+            clipPath: isExpanding ? [from, to] : [to, from]
+          },
+          {
+            duration: timing.duration,
+            easing: timing.easing,
+            fill: "both",
+            pseudoElement: isExpanding
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)"
+          }
+        ).finished
+      )
+      .catch(() => {})
+      .finally(() => {
+        button.disabled = false;
+      });
+  };
+
+  initializeHeader();
+
+  document.addEventListener("astro:page-load", initializeHeader);
+
+  const stored = localStorage.getItem(storageKey) || "dark";
+  applyTheme(stored);
+</script> <main class="page-main" data-pagefind-body>  <article class="page-shell page-section"> <header class="prose"> <h1 class="page-title slide-enter" data-pagefind-meta="title">如何记录自己的生活？</h1> <p class="article-meta slide-enter"> 2023年5月31日 · 4min ·
+中文 </p>  </header> <div class="prose slide-enter-content"> <p>做生活记录已经快两年了。</p>
+<p>我的日常记录主要分为两大块：<strong>记账</strong> 和 <strong>周记</strong>，我都是在 Notion 这个应用中进行。</p>
+<h2 id="记账">记账</h2>
+<p>Notion 以其多样化的数据展示方式，让我能够便捷、简单且高效地管理我的财务记录。</p>
+<p>具体到记账，我的做法如下：</p>
+<ol>
+<li><strong>每日（10分钟）</strong>：我会记录前一日的收支情况。一般，我习惯在每天早晨用电脑完成这项工作（这里的支付记录主要来源于支付宝、微信支付、银行卡等）。</li>
+<li><strong>周末（20-35分钟）</strong>：我会回顾整个星期的收支，并做一个周汇总（包括总支出、消费趋势、存款等）。</li>
+<li>基于第二步的<strong>汇总</strong>信息，我可以有选择地调整我的消费模式。</li>
+</ol>
+<p>记账给我的好处包括：</p>
+<ol>
+<li><strong>实现目标</strong>：通过详细记录财务状况并设立合理的预算，我能更好地追踪个人目标（如旅行、购房、教育基金等）的实现进度。</li>
+<li><strong>控制开支</strong>：通过记录每一项支出，我能更清楚地认识到自己的消费习惯和模式，识别不必要的支出和漏洞，并据此进行调整。</li>
+</ol>
+<h4 id="账户概览">账户概览</h4>
+<p>通常情况下，我会在概览的日历中选择一个特定日期，来记录那天的收入和支出。</p>
+<p><img alt="Bill" loading="lazy" decoding="async"  width="2900" height="4904" src="/_astro/bill.VWhjVG6k_ZA8BH7.webp" ></p>
+<h4 id="每周回顾">每周回顾</h4>
+<p>在账户概览中点击 <strong>“账目”</strong> 会显示所有记录的账户详情。</p>
+<p>我当前的账户主要记录几个信息：<strong>事项</strong>、<strong>日期</strong>、<strong>分类</strong>、<strong>方式</strong>、<strong>支出</strong>、<strong>收入</strong>、<strong>地点</strong>。</p>
+<p>在 Notion 中，我可以选择和查询输入的数据，从而轻松查看 <strong>“每日、每周、每月消费”</strong> 和 <strong>“额外消费”</strong> 情况。</p>
+<p><img alt="账单" loading="lazy" decoding="async"  width="2298" height="886" src="/_astro/bill_2.DuG4Mb6P_Z1Cqi0h.webp" ></p>
+<h2 id="周记录">周记录</h2>
+<p>关于周记录，我具体会做：</p>
+<ul>
+<li><strong>每天</strong>：我每天打开电脑时就打开周记录页面。由于我每天大部分时间都在电脑前，所以我会在我的周记录中记下突然的想法、最近学到的知识、日常活动和当天的心情。</li>
+<li><strong>周末</strong>：我会通过周记录回顾这周，并有选择地调整我的未来行动策略。</li>
+</ul>
+<p>周记录对我来说的好处：</p>
+<ul>
+<li><strong>自我反思和成长</strong>：周记录让我反思过去一周的经历、行动和决策。通过回顾我的行为和思想，我可以更好地了解自己的行为模式、习惯和偏好。这种自我反思促进了个人成长。</li>
+<li><strong>目标设定和进度评估</strong>：我用周记录来跟踪和记录我的目标完成情况。这有助于保持对目标的清晰度和动力，并且周末的总结提供了持续自我监督和评估的机会。</li>
+<li><strong>回顾</strong>：我可以追溯之前的想法，以理解个人变化。这个回顾过程可能会让我意识到，我目前的一些习惯或观点源自看似微不足道的过去事件。能够更直观地看到自己的变化也增强了我的自我效能感。</li>
+</ul>
+<h4 id="周记录概览">周记录概览</h4>
+<p>我通常会 <strong>每周</strong> 创建一个新的周记录文档，并在这个文档中记录整周的个人数据。</p>
+<p><img alt="账单" loading="lazy" decoding="async"  width="1779" height="1397" src="/_astro/live_1.Cc1li_ms_1TgRKP.webp" ></p>
+<h4 id="周记录-1">周记录</h4>
+<p>目前，我将周记录的内容分为四个部分：</p>
+<ul>
+<li><strong>日常记录</strong>：只记录日常活动，不输出思考。
+<ul>
+<li>学习 / 生活 / 工作</li>
+</ul>
+</li>
+<li><strong>思考输出</strong>：记录关于日常活动的思考以及当前的情感状态。
+<ul>
+<li>观点 / 生活 / 情感</li>
+</ul>
+</li>
+<li><strong>资源输入</strong>：记录有用的信息、工具或重要新闻事件。
+<ul>
+<li>知识 / 工具 / 环境</li>
+</ul>
+</li>
+<li><strong>总结</strong>：记录周末回顾、目标完成情况跟踪、当前储蓄余额和对这周的想法。
+<ul>
+<li>目标 / 余额 / 想法</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>由于我每周记录中涉及许多敏感的个人信息，我请 ChatGPT 帮我重写了日记，保留了原有的格式。这篇重新编写的日记，展现了一位都市职场女性的视角。</p>
+</blockquote>
+<p><img alt="Bill" loading="lazy" decoding="async"  width="814" height="4743" src="/_astro/live_2.CS4PscbZ_1qMIN4.webp" ></p> </div> <footer class="article-footer prose slide-enter-content"> <p class="terminal-line"> <span class="terminal-prompt">&gt;</span>
+available in  <a href="/posts/documenting-my-life-en/"> English </a>  </p> <p class="terminal-line"> <span class="terminal-prompt">&gt;</span> <a href="/posts/">cd ..</a> </p> </footer> </article>  <footer class="site-footer" data-pagefind-ignore> <div class="page-shell"> <p class="footer-copy"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
+CC BY-NC-SA 4.0
+</a>
+2021-PRESENT © Vint </p> </div> </footer> </main> <div class="image-lightbox" data-image-lightbox hidden aria-hidden="true"> <div class="image-lightbox-backdrop" data-image-lightbox-close></div> <div class="image-lightbox-panel" data-image-lightbox-panel> <img class="image-lightbox-media" data-image-lightbox-media alt=""> <div class="image-lightbox-caption" data-image-lightbox-caption hidden></div> </div> </div> <script>
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxMedia = document.querySelector("[data-image-lightbox-media]");
+  const lightboxCaption = document.querySelector("[data-image-lightbox-caption]");
+  const zoomRoot = document.documentElement;
+  const zoomableSelector = ".prose img, img[data-lightbox-image]";
+
+  const isZoomableImage = (node) =>
+    node instanceof HTMLImageElement &&
+    !node.closest("[data-image-lightbox]") &&
+    (node.hasAttribute("data-lightbox-image") || (node.closest(".prose") && !node.closest("a[href]")));
+
+  const resolveZoomableImage = (target) => {
+    if (isZoomableImage(target)) {
+      return target;
+    }
+
+    if (!(target instanceof Element)) {
+      return null;
+    }
+
+    const triggerImage = target.closest("[data-lightbox-trigger]")?.querySelector("img");
+    return isZoomableImage(triggerImage) ? triggerImage : null;
+  };
+
+  const getCaption = (image) => {
+    const customCaption = image.dataset.lightboxCaption?.trim();
+    if (customCaption) return customCaption;
+
+    const figureCaption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    return figureCaption || image.getAttribute("alt") || image.getAttribute("title") || "";
+  };
+
+  const syncZoomableImages = () => {
+    document.querySelectorAll(zoomableSelector).forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      const zoomable = isZoomableImage(image);
+      const trigger = image.closest("[data-lightbox-trigger]");
+
+      image.classList.toggle("zoomable-media", zoomable);
+      trigger?.classList.toggle("zoomable-media", zoomable);
+
+      if (zoomable && !trigger) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", getCaption(image) || "Open image preview");
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("role");
+        image.removeAttribute("aria-label");
+      }
+    });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxMedia.removeAttribute("src");
+    lightboxMedia.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
+    zoomRoot.classList.remove("is-image-zoomed");
+  };
+
+  const openLightbox = (image) => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    const source = image.dataset.lightboxSrc || image.currentSrc || image.src;
+    const caption = getCaption(image);
+
+    if (!source) return;
+
+    lightboxMedia.src = source;
+    lightboxMedia.alt = image.alt || "";
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = !caption;
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    zoomRoot.classList.add("is-image-zoomed");
+  };
+
+  syncZoomableImages();
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-image-lightbox-close]")) {
+      closeLightbox();
+      return;
+    }
+
+    if (
+      !lightbox?.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-image-lightbox-media]") &&
+      !target.closest("[data-image-lightbox-caption]")
+    ) {
+      closeLightbox();
+      return;
+    }
+
+    const image = resolveZoomableImage(target);
+    if (!image) {
+      return;
+    }
+
+    if (target instanceof Element && target.closest("a[href]")?.contains(image)) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const image = resolveZoomableImage(event.target);
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+</script> <div class="search-shell" data-search-shell hidden> <div class="search-backdrop" data-search-close></div> <section class="search-panel" aria-label="Search" role="dialog" aria-modal="true"> <div class="search-panel-head"> <p class="search-panel-title">Search the archive</p> <button class="search-close" type="button" data-search-close aria-label="Close search">
+×
+</button> </div> <div class="search-status" data-search-status>
+Loading the search index...
+</div> <div id="search" class="pagefind-host"></div> </section> </div> <script>
+  const resolveSearchNodes = () => ({
+    shell: document.querySelector("[data-search-shell]"),
+    statusNode: document.querySelector("[data-search-status]"),
+    host: document.querySelector("#search")
+  });
+
+  const loadScript = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(script);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+  const loadStyle = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  const loadAssets = async () => {
+    if (!window.__searchAssetsPromise) {
+      window.__searchAssetsPromise = (async () => {
+        loadStyle("/pagefind/pagefind-ui.css");
+        await loadScript("/pagefind/pagefind-ui.js");
+
+        if (!window.PagefindUI) {
+          throw new Error("PagefindUI unavailable");
+        }
+      })();
+    }
+
+    return window.__searchAssetsPromise;
+  };
+
+  const initSearch = async () => {
+    const { host, statusNode } = resolveSearchNodes();
+
+    if (!host || !statusNode || host.dataset.searchInitialized === "true") {
+      return;
+    }
+
+    try {
+      await loadAssets();
+
+      new window.PagefindUI({
+        element: "#search",
+        showImages: false,
+        showSubResults: true,
+        excerptLength: 16,
+        resetStyles: false
+      });
+      statusNode.textContent = "Search across titles, tags, summaries, and article content.";
+      host.dataset.searchInitialized = "true";
+    } catch (error) {
+      statusNode.textContent =
+        "Search assets failed to load. Run npm run build to refresh the Pagefind bundle.";
+    }
+  };
+
+  const show = async () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = false;
+    document.documentElement.classList.add("is-search-open");
+    await initSearch();
+  };
+
+  const hide = () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = true;
+    document.documentElement.classList.remove("is-search-open");
+  };
+
+  const initializeSearchDialog = () => {
+    const { shell } = resolveSearchNodes();
+
+    if (shell?.hidden !== false) {
+      document.documentElement.classList.remove("is-search-open");
+    }
+  };
+
+  initializeSearchDialog();
+
+  if (window.__searchDialogListenersBound !== true) {
+    window.__searchDialogListenersBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest("[data-search-close]")) {
+        hide();
+        return;
+      }
+
+      if (target.closest("[data-search-open]")) {
+        void show();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hide();
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        void show();
+      }
+    });
+
+    document.addEventListener("astro:page-load", initializeSearchDialog);
+  }
+</script> </body></html>
