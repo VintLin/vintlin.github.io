@@ -3,8 +3,19 @@
     const storageKey = "vint-color-scheme";
     const darkThemeColor = "#050505";
     const lightThemeColor = "#fafaf9";
+    const validModes = new Set(["light", "dark", "auto"]);
 
-    const resolveMode = () => localStorage.getItem(storageKey) || "dark";
+    const normalizeMode = (mode) => validModes.has(mode) ? mode : "dark";
+
+    const readStoredMode = () => {
+      try {
+        return normalizeMode(localStorage.getItem(storageKey));
+      } catch {
+        return "dark";
+      }
+    };
+
+    const resolveMode = () => normalizeMode(window.__vintThemeMode || readStoredMode());
 
     const resolveIsDark = (mode) => {
       const prefersDark =
@@ -13,9 +24,11 @@
     };
 
     const applyThemeToDocument = (doc, mode) => {
-      const isDark = resolveIsDark(mode);
+      const normalizedMode = normalizeMode(mode);
+      const isDark = resolveIsDark(normalizedMode);
+      window.__vintThemeMode = normalizedMode;
       doc.documentElement.classList.toggle("dark", isDark);
-      doc.documentElement.dataset.themeMode = mode;
+      doc.documentElement.dataset.themeMode = normalizedMode;
       const themeColor = doc.querySelector('meta[name="theme-color"]');
       if (themeColor) {
         themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
@@ -24,17 +37,45 @@
 
     applyThemeToDocument(document, resolveMode());
 
-    document.addEventListener("astro:before-swap", (event) => {
-      applyThemeToDocument(event.newDocument, resolveMode());
-    });
+    if (!window.__vintThemeRouteSyncBound) {
+      window.__vintThemeRouteSyncBound = true;
+      document.addEventListener("astro:before-swap", (event) => {
+        applyThemeToDocument(event.newDocument, resolveMode());
+      });
 
-    document.addEventListener("astro:after-swap", () => {
-      applyThemeToDocument(document, resolveMode());
-    });
+      document.addEventListener("astro:after-swap", () => {
+        applyThemeToDocument(document, resolveMode());
+      });
+    }
+
+    if (!window.__vintThemePreferenceSyncBound) {
+      window.__vintThemePreferenceSyncBound = true;
+      const colorPreference = window.matchMedia?.("(prefers-color-scheme: dark)");
+      const notifyThemeChange = (mode) => {
+        document.dispatchEvent(new CustomEvent("vint:theme-change", { detail: { mode } }));
+      };
+
+      window.addEventListener("storage", (event) => {
+        if (event.key !== storageKey) return;
+        const mode = normalizeMode(event.newValue);
+        applyThemeToDocument(document, mode);
+        notifyThemeChange(mode);
+      });
+
+      colorPreference?.addEventListener("change", () => {
+        const mode = resolveMode();
+        if (mode !== "auto") return;
+        applyThemeToDocument(document, mode);
+        notifyThemeChange(mode);
+      });
+    }
   }();
-</script><title>如何在Github上发起一个 Pull Request ？ | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v7.2.7"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/favicon.png"><link rel="shortcut icon" href="/img/icon/favicon.png"><link rel="apple-touch-icon" href="/img/icon/favicon.png"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="如何在Github上发起一个 Pull Request ？ | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vintlin.com/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="如何在Github上发起一个 Pull Request ？ | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vintlin.com/og-default.svg"><link rel="canonical" href="https://vintlin.com/posts/how-to-pull-request-on-github/"><script defer data-domain="vintlin.com" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何在Github上发起一个 Pull Request ？","datePublished":"2023-05-11T14:20:00.000Z","inLanguage":"zh-CN","url":"https://vintlin.com/posts/how-to-pull-request-on-github/","image":["https://vintlin.com/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vintlin.com/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CYDbzu1r.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.B7_j-Wi6.css"></head><body data-background-visible="false"><div data-astro-transition-persist="astro-uhbqetr2-1" class="noise-drift-background" data-noise-drift-root aria-hidden="true" data-astro-cid-nd45e25i><canvas data-noise-drift-background data-astro-cid-nd45e25i></canvas></div><script type="module">var e=document.querySelector(`[data-noise-drift-root]`),t=e?.querySelector(`[data-noise-drift-background]`),n=()=>document.body?.dataset.backgroundVisible!==`false`;if(e&&t){let r=window.__noiseDriftBackground;if(r?.root===e)r.syncPageState();else{r?.destroy?.();let i=e,a=t,o=a.getContext(`2d`);if(o){let e=o,t=2.2,r=Math.PI*2,s=window.matchMedia(`(prefers-reduced-motion: reduce)`),c=0,l=0,u=[24,24,27],d=.22,f=0,p=!1,m=null,h=[];function g(e){let t=e>>>0;return()=>{t+=1831565813;let e=t;return e=Math.imul(e^e>>>15,e|1),e^=e+Math.imul(e^e>>>7,e|61),((e^e>>>14)>>>0)/4294967296}}function _(e){let t=g(e),n=new Uint8Array(512),r=new Uint8Array(256);for(let e=0;e<256;e+=1)r[e]=e;for(let e=255;e>0;--e){let n=Math.floor(t()*(e+1)),i=r[e];r[e]=r[n],r[n]=i}for(let e=0;e<512;e+=1)n[e]=r[e&255];let i=e=>e*e*e*(e*(e*6-15)+10),a=(e,t,n)=>e+(t-e)*n,o=(e,t,n,r)=>{let i=e&15,a=i<8?t:n,o=i<4?n:i===12||i===14?t:r;return(i&1?-a:a)+(i&2?-o:o)};return(e,t,r)=>{let s=Math.floor(e),c=Math.floor(t),l=Math.floor(r),u=s&255,d=c&255,f=l&255,p=e-s,m=t-c,h=r-l,g=i(p),_=i(m),v=i(h),y=n[u]+d,b=n[y]+f,x=n[y+1]+f,S=n[u+1]+d,C=n[S]+f,w=n[S+1]+f;return(a(a(a(o(n[b],p,m,h),o(n[C],p-1,m,h),g),a(o(n[x],p,m-1,h),o(n[w],p-1,m-1,h),g),_),a(a(o(n[b+1],p,m,h-1),o(n[C+1],p-1,m,h-1),g),a(o(n[x+1],p,m-1,h-1),o(n[w+1],p-1,m-1,h-1),g),_),v)+1)/2}}let v=_(Date.now());function y(){let e=getComputedStyle(document.documentElement),t=e.getPropertyValue(`--noise-dot-rgb`).trim(),n=Number.parseFloat(e.getPropertyValue(`--noise-dot-alpha`).trim()),r=t.split(/\s+/).map(Number).filter(Number.isFinite).slice(0,3);u=r.length===3?[r[0],r[1],r[2]]:[24,24,27],d=Number.isFinite(n)?n:.22}function b(){h=[];for(let e=-15/2;e<c+15;e+=15)for(let t=-15/2;t<l+15;t+=15)h.push({x:e,y:t,opacity:Math.random()*.5+.5})}function x(){c=window.innerWidth,l=window.innerHeight;let t=window.devicePixelRatio||1;a.width=Math.round(c*t),a.height=Math.round(l*t),a.style.width=`${c}px`,a.style.height=`${l}px`,e.setTransform(t,0,0,t,0,0),b()}function S(e,t,n){return(v(e/200,t/200,n)-.5)*2*r}function C(n){e.clearRect(0,0,c,l);let r=n/1e4,[i,a,o]=u;for(let n of h){let s=S(n.x,n.y,r),c=(v(n.x/200,n.y/200,r*2)+.5)*10,l=n.x+Math.cos(s)*c,u=n.y+Math.sin(s)*c,f=Math.cos(s)*t*.5,p=Math.sin(s)*t*.5,m=(Math.abs(Math.cos(s))*.5+.5)*n.opacity*d;e.strokeStyle=`rgba(${i}, ${a}, ${o}, ${m})`,e.lineWidth=.9,e.beginPath(),e.moveTo(l-f,u-p),e.lineTo(l+f,u+p),e.stroke()}p&&!s.matches&&(f=window.requestAnimationFrame(C))}function w(){p=!1,window.cancelAnimationFrame(f)}function T(){n()&&(w(),y(),x(),p=!s.matches,C(performance.now()))}function E(){let e=n();if(m===e){i.toggleAttribute(`data-hidden`,!e);return}m=e,e?(T(),i.removeAttribute(`data-hidden`)):(w(),i.setAttribute(`data-hidden`,``))}function D(){v=_(Date.now()),T()}let O=()=>{n()&&(x(),s.matches&&C(performance.now()))},k=()=>{n()&&(y(),C(performance.now()))},A=()=>D(),j=()=>E(),M=new MutationObserver(k);window.__noiseDriftBackground={root:i,destroy:()=>{w(),window.removeEventListener(`resize`,O),s.removeEventListener(`change`,A),document.removeEventListener(`astro:after-swap`,j),document.removeEventListener(`astro:page-load`,j),M.disconnect(),window.__noiseDriftBackground?.root===i&&delete window.__noiseDriftBackground},syncPageState:E},E(),window.addEventListener(`resize`,O,{passive:!0}),s.addEventListener(`change`,A),document.addEventListener(`astro:after-swap`,j),document.addEventListener(`astro:page-load`,j),M.observe(document.documentElement,{attributes:!0,attributeFilter:[`class`,`style`]})}}}</script><header data-astro-transition-persist="site-header" class="site-header" data-pagefind-ignore><a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&quot;/img/icon/icon_web.svg&quot;)"><span class="brand-mark-icon" aria-hidden="true"></span></a><nav class="site-nav" aria-label="Primary"><div class="site-nav-spacer"></div><div class="site-nav-links"><a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/posts/&quot;,&quot;/notes/&quot;]">Post</a><a href="/projects/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/projects/&quot;]">Project</a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/photos/&quot;]">Photo</a><a href="https://github.com/VintLin" target="_blank" rel="noreferrer" class="nav-link">GitHub</a><a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check><i class="fa-solid fa-square-rss" aria-hidden="true"></i></a><button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="light" aria-label="Toggle color scheme"><i class="fa-regular fa-sun light-mode" aria-hidden="true"></i><i class="fa-regular fa-moon dark-mode" aria-hidden="true"></i></button><button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button></div></nav></header><script>
+</script><title>如何在Github上发起一个 Pull Request ？ | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v7.2.7"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/favicon.png"><link rel="shortcut icon" href="/img/icon/favicon.png"><link rel="apple-touch-icon" href="/img/icon/favicon.png"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="如何在Github上发起一个 Pull Request ？ | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vintlin.com/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="如何在Github上发起一个 Pull Request ？ | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vintlin.com/og-default.svg"><link rel="canonical" href="https://vintlin.com/posts/how-to-pull-request-on-github/"><script defer data-domain="vintlin.com" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何在Github上发起一个 Pull Request ？","datePublished":"2023-05-11T14:20:00.000Z","inLanguage":"zh-CN","url":"https://vintlin.com/posts/how-to-pull-request-on-github/","image":["https://vintlin.com/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vintlin.com/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CYDbzu1r.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.CuGCBXvU.css"></head><body data-background-visible="false"><div data-astro-transition-persist="astro-uhbqetr2-1" class="noise-drift-background" data-noise-drift-root aria-hidden="true" data-astro-cid-nd45e25i><canvas data-noise-drift-background data-astro-cid-nd45e25i></canvas></div><script type="module" src="/_astro/NoiseDriftBackground.astro_astro_type_script_index_0_lang.rMH-Yipj.js"></script><header data-astro-transition-persist="site-header" class="site-header" data-pagefind-ignore><a class="brand-mark" href="/" aria-label="Vint home" data-header-nav-check data-header-home-link style="--brand-icon: url(&quot;/img/icon/icon_web.svg&quot;)"><span class="brand-mark-icon" aria-hidden="true"></span></a><nav class="site-nav" aria-label="Primary"><div class="site-nav-spacer"></div><div class="site-nav-links"><a href="/posts/" class="nav-link is-active" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/posts/&quot;,&quot;/notes/&quot;]">Post</a><a href="/projects/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/projects/&quot;]">Project</a><a href="/photos/" class="nav-link" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/photos/&quot;]">Photo</a><a href="https://github.com/VintLin" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" class="nav-link">GitHub</a><a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 136c0-13.3 10.7-24 24-24 137 0 248 111 248 248 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-110.5-89.5-200-200-200-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24 83.9 0 152 68.1 152 152 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-57.4-46.6-104-104-104-13.3 0-24-10.7-24-24zm0 120a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"></path></svg></a><button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="dark" aria-label="Switch to light theme"><svg class="light-mode" viewBox="0 -32 576 576" fill="currentColor" aria-hidden="true" focusable="false"><path d="M288-32c8 0 15.4 4 19.9 10.6l58.8 87.4 103.4-20.2c7.8-1.5 15.9.9 21.6 6.6s8.1 13.8 6.6 21.6L478 177.3 565.4 236.1C572 240.5 576 248 576 256s-4 15.4-10.6 19.9L478 334.7 498.2 438c1.5 7.8-.9 15.9-6.6 21.6s-13.8 8.1-21.6 6.6L366.7 446 307.9 533.4C303.4 540 296 544 288 544s-15.4-4-19.9-10.6L209.3 446 105.9 466.2c-7.8 1.5-15.9-.9-21.6-6.6s-8.1-13.8-6.6-21.6L98 334.7 10.6 275.9C4 271.4 0 264 0 256s4-15.4 10.6-19.9L98 177.3 77.8 73.9c-1.5-7.8.9-15.9 6.6-21.6s13.8-8.1 21.6-6.6l103.3 20.2 58.8-87.4 1.8-2.3C274.4-29 281-32 288-32zm-47.8 138c-5.4 8-15 12-24.5 10.2l-84-16.4 16.4 84c1.8 9.5-2.2 19.1-10.2 24.5L67 256l71 47.8c8 5.4 12 15 10.2 24.5l-16.4 84 84-16.4 3.5-.4c8.3-.4 16.3 3.6 21 10.6l47.8 71 47.8-71 2.2-2.8c5.6-6.1 14-9 22.3-7.3l84 16.4-16.4-84c-1.8-9.5 2.2-19.1 10.2-24.5l71-47.8-71-47.8c-8-5.4-12-15-10.2-24.5l16.4-84-84 16.4c-9.5 1.8-19.1-2.2-24.5-10.2l-47.8-71-47.8 71zM288 376a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm0-192a72 72 0 1 0 0 144 72 72 0 1 0 0-144z"></path></svg><svg class="dark-mode" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M239.3 48.7C132.2 57.2 48 146.8 48 256c0 114.9 93.1 208 208 208 33.3 0 64.7-7.8 92.6-21.7C245.2 418.9 168 326.5 168 216c0-65.8 27.4-125.1 71.3-167.3zM0 256C0 114.6 114.6 0 256 0c19.4 0 38.4 2.2 56.7 6.3 9.9 2.2 17.3 10.5 18.5 20.5s-4 19.8-13.1 24.4C257.5 81.4 216 143.9 216 216c0 101.6 82.4 184 184 184 5 0 9.9-.2 14.8-.6 10.1-.8 19.6 4.8 23.8 14.1s2 20.1-5.3 27.1C387.3 484.8 324.8 512 256 512 114.6 512 0 397.4 0 256z"></path></svg></button><button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></button></div></nav></header><script>
+  (() => {
   const storageKey = "vint-color-scheme";
   const root = document.documentElement;
+  const validThemeModes = new Set(["light", "dark", "auto"]);
+  const themeTransitionTimeout = 1600;
   const themeTransitionTimings = {
     light: {
       duration: 720,
@@ -44,6 +85,40 @@
       duration: 620,
       easing: "cubic-bezier(0.7, 0, 0.22, 1)"
     }
+  };
+  const themeTransitionState = window.__vintThemeTransitionState || {
+    generation: 0,
+    running: false,
+    transition: null,
+    animation: null,
+    timeoutHandle: null,
+    listenersBound: false
+  };
+  window.__vintThemeTransitionState = themeTransitionState;
+
+  const normalizeThemeMode = (mode) => validThemeModes.has(mode) ? mode : "dark";
+
+  const readThemeMode = () => {
+    if (window.__vintThemeMode) {
+      return normalizeThemeMode(window.__vintThemeMode);
+    }
+
+    try {
+      return normalizeThemeMode(localStorage.getItem(storageKey));
+    } catch {
+      return "dark";
+    }
+  };
+
+  const persistThemeMode = (mode) => {
+    const normalizedMode = normalizeThemeMode(mode);
+    window.__vintThemeMode = normalizedMode;
+
+    try {
+      localStorage.setItem(storageKey, normalizedMode);
+    } catch {}
+
+    return normalizedMode;
   };
 
   const normalizePathname = (pathname) => {
@@ -134,26 +209,32 @@
 
       button.dataset.themeBound = "true";
       button.addEventListener("click", () => {
+        if (themeTransitionState.running) {
+          return;
+        }
+
         const next = root.classList.contains("dark") ? "light" : "dark";
-        localStorage.setItem(storageKey, next);
-        animateThemeTransition(button, next);
+        animateThemeTransition(button, persistThemeMode(next));
       });
     });
   };
 
   const initializeHeader = () => {
+    applyTheme(readThemeMode());
     bindHeaderLinkGuards();
     bindThemeButtons();
     syncHeaderActiveState();
   };
 
   const applyTheme = (mode) => {
+    const normalizedMode = normalizeThemeMode(mode);
     const prefersDark =
       window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+    const isDark = normalizedMode === "dark" || (normalizedMode === "auto" && prefersDark);
 
+    window.__vintThemeMode = normalizedMode;
     root.classList.toggle("dark", isDark);
-    root.dataset.themeMode = mode;
+    root.dataset.themeMode = normalizedMode;
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
@@ -164,42 +245,115 @@
   };
 
   const resolveThemeTransitionOrigin = (button) => {
+    if (!button.isConnected) {
+      return null;
+    }
+
     const rect = button.getBoundingClientRect();
-    return {
+    const origin = {
       x: rect.left + rect.width / 2,
       y: rect.top + rect.height / 2
     };
+
+    return rect.width > 0 && rect.height > 0 && Number.isFinite(origin.x) && Number.isFinite(origin.y)
+      ? origin
+      : null;
   };
 
   const resolveThemeTransitionRadius = ({ x, y }) =>
     Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
 
+  const setThemeButtonsBusy = (busy) => {
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.disabled = false;
+      button.toggleAttribute("aria-disabled", busy);
+      button.toggleAttribute("aria-busy", busy);
+    });
+  };
+
+  const stopThemeTransition = () => {
+    themeTransitionState.generation += 1;
+    themeTransitionState.running = false;
+
+    try {
+      themeTransitionState.animation?.cancel();
+    } catch {}
+
+    try {
+      themeTransitionState.transition?.skipTransition();
+    } catch {}
+
+    window.clearTimeout(themeTransitionState.timeoutHandle);
+    themeTransitionState.animation = null;
+    themeTransitionState.transition = null;
+    themeTransitionState.timeoutHandle = null;
+    setThemeButtonsBusy(false);
+  };
+
+  const finishThemeTransition = (generation) => {
+    if (themeTransitionState.generation !== generation) {
+      return;
+    }
+
+    themeTransitionState.running = false;
+    window.clearTimeout(themeTransitionState.timeoutHandle);
+    themeTransitionState.animation = null;
+    themeTransitionState.transition = null;
+    themeTransitionState.timeoutHandle = null;
+    setThemeButtonsBusy(false);
+  };
+
   const animateThemeTransition = (button, nextMode) => {
     const supportsViewTransition =
       typeof document.startViewTransition === "function" &&
+      typeof root.animate === "function" &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const origin = resolveThemeTransitionOrigin(button);
 
-    if (!supportsViewTransition || !(button instanceof HTMLElement)) {
+    if (!supportsViewTransition || !(button instanceof HTMLElement) || !origin) {
       applyTheme(nextMode);
       return;
     }
 
-    const origin = resolveThemeTransitionOrigin(button);
     const radius = resolveThemeTransitionRadius(origin);
     const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
     const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
     const isExpanding = nextMode === "light";
     const timing = themeTransitionTimings[nextMode];
 
-    button.disabled = true;
+    const generation = themeTransitionState.generation + 1;
+    themeTransitionState.generation = generation;
+    themeTransitionState.running = true;
+    setThemeButtonsBusy(true);
 
-    const transition = document.startViewTransition(() => {
+    let transition;
+
+    try {
+      transition = document.startViewTransition(() => {
+        applyTheme(nextMode);
+      });
+      themeTransitionState.transition = transition;
+      themeTransitionState.timeoutHandle = window.setTimeout(() => {
+        if (themeTransitionState.generation !== generation) {
+          return;
+        }
+
+        applyTheme(nextMode);
+        stopThemeTransition();
+      }, themeTransitionTimeout);
+    } catch {
       applyTheme(nextMode);
-    });
+      finishThemeTransition(generation);
+      return;
+    }
 
     transition.ready
-      .then(() =>
-        document.documentElement.animate(
+      .then(() => {
+        if (themeTransitionState.generation !== generation) {
+          return;
+        }
+
+        const animation = root.animate(
           {
             clipPath: isExpanding ? [from, to] : [to, from]
           },
@@ -211,20 +365,37 @@
               ? "::view-transition-new(root)"
               : "::view-transition-old(root)"
           }
-        ).finished
-      )
-      .catch(() => {})
+        );
+        themeTransitionState.animation = animation;
+        return animation.finished;
+      })
+      .catch(() => {
+        if (themeTransitionState.generation !== generation) {
+          return;
+        }
+
+        applyTheme(nextMode);
+        try {
+          transition.skipTransition();
+        } catch {}
+      })
       .finally(() => {
-        button.disabled = false;
+        finishThemeTransition(generation);
       });
   };
 
+  if (!themeTransitionState.listenersBound) {
+    themeTransitionState.listenersBound = true;
+    document.addEventListener("astro:before-swap", stopThemeTransition);
+    document.addEventListener("astro:page-load", initializeHeader);
+    document.addEventListener("vint:theme-change", (event) => {
+      stopThemeTransition();
+      applyTheme(event.detail?.mode);
+    });
+  }
+
   initializeHeader();
-
-  document.addEventListener("astro:page-load", initializeHeader);
-
-  const stored = localStorage.getItem(storageKey) || "dark";
-  applyTheme(stored);
+  })();
 </script><main class="page-main" data-pagefind-body><div class="page-content"><article class="page-shell page-section"><header class="prose"><h1 class="page-title slide-enter" data-pagefind-meta="title">如何在Github上发起一个 Pull Request ？</h1><p class="article-meta slide-enter">2023年5月11日 · 3min ·中文</p></header><div class="prose slide-enter-content"><p>因为受到 <a href="https://antfu.me/posts/about-yak-shaving-zh">Yak Shaving</a> 的启发，打算为开源项目贡献一份力。以下是记录在 Github 上发起 Pull Request 时碰到的问题。</p>
 <h2 id="什么是-pull-request-">什么是 Pull Request ？</h2>
 <p>Pull Request 是向代码仓库贡献代码的方式。</p>
