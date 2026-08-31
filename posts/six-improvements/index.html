@@ -1,91 +1,70 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050505"><script>
   !function () {
     const storageKey = "vint-color-scheme";
     const darkThemeColor = "#050505";
     const lightThemeColor = "#fafaf9";
-    const validModes = new Set(["light", "dark", "auto"]);
+    const normalizeTheme = (theme) => theme === "light" ? "light" : "dark";
 
-    const normalizeMode = (mode) => validModes.has(mode) ? mode : "dark";
-
-    const readStoredMode = () => {
-      try {
-        return normalizeMode(localStorage.getItem(storageKey));
-      } catch {
-        return "dark";
-      }
-    };
-
-    const resolveMode = () => normalizeMode(window.__vintThemeMode || readStoredMode());
-
-    const resolveIsDark = (mode) => {
-      const prefersDark =
-        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      return mode === "dark" || (mode === "auto" && prefersDark);
-    };
-
-    const applyThemeToDocument = (doc, mode) => {
-      const normalizedMode = normalizeMode(mode);
-      const isDark = resolveIsDark(normalizedMode);
-      window.__vintThemeMode = normalizedMode;
-      doc.documentElement.classList.toggle("dark", isDark);
-      doc.documentElement.dataset.themeMode = normalizedMode;
-      const themeColor = doc.querySelector('meta[name="theme-color"]');
-      if (themeColor) {
-        themeColor.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
-      }
-    };
-
-    applyThemeToDocument(document, resolveMode());
-
-    if (!window.__vintThemeRouteSyncBound) {
-      window.__vintThemeRouteSyncBound = true;
-      document.addEventListener("astro:before-swap", (event) => {
-        applyThemeToDocument(event.newDocument, resolveMode());
-      });
-
-      document.addEventListener("astro:after-swap", () => {
-        applyThemeToDocument(document, resolveMode());
-      });
-    }
-
-    if (!window.__vintThemePreferenceSyncBound) {
-      window.__vintThemePreferenceSyncBound = true;
-      const colorPreference = window.matchMedia?.("(prefers-color-scheme: dark)");
-      const notifyThemeChange = (mode) => {
-        document.dispatchEvent(new CustomEvent("vint:theme-change", { detail: { mode } }));
+    const createThemeController = () => {
+      const read = () => {
+        try {
+          return normalizeTheme(localStorage.getItem(storageKey));
+        } catch {
+          return "dark";
+        }
       };
 
-      window.addEventListener("storage", (event) => {
-        if (event.key !== storageKey) return;
-        const mode = normalizeMode(event.newValue);
-        applyThemeToDocument(document, mode);
-        notifyThemeChange(mode);
+      const apply = (doc, theme) => {
+        const normalizedTheme = normalizeTheme(theme);
+        const isDark = normalizedTheme === "dark";
+        doc.documentElement.classList.toggle("dark", isDark);
+        doc
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+        doc.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+          button.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light theme" : "Switch to dark theme"
+          );
+        });
+      };
+
+      const persist = (theme) => {
+        const normalizedTheme = normalizeTheme(theme);
+
+        try {
+          localStorage.setItem(storageKey, normalizedTheme);
+        } catch {}
+
+        return normalizedTheme;
+      };
+
+      const controller = { apply, persist, read };
+
+      document.addEventListener("astro:before-swap", (event) => {
+        controller.apply(event.newDocument, controller.read());
       });
 
-      colorPreference?.addEventListener("change", () => {
-        const mode = resolveMode();
-        if (mode !== "auto") return;
-        applyThemeToDocument(document, mode);
-        notifyThemeChange(mode);
+      window.addEventListener("storage", (event) => {
+        if (event.key === storageKey) {
+          controller.apply(document, event.newValue);
+          document.dispatchEvent(new Event("vint:theme-storage-change"));
+        }
       });
-    }
+
+      return controller;
+    };
+
+    const theme = window.__vintTheme || createThemeController();
+    window.__vintTheme = theme;
+    theme.apply(document, theme.read());
   }();
-</script><title>六项精进 | Vint</title><meta name="description" content="《六项精进》读书笔记"><meta name="generator" content="Astro v7.2.7"><meta name="theme-color" content="#050505"><link rel="icon" href="/img/icon/favicon.png"><link rel="shortcut icon" href="/img/icon/favicon.png"><link rel="apple-touch-icon" href="/img/icon/favicon.png"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="六项精进 | Vint"><meta property="og:description" content="《六项精进》读书笔记"><meta property="og:type" content="article"><meta property="og:image" content="https://vintlin.com/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="六项精进 | Vint"><meta name="twitter:description" content="《六项精进》读书笔记"><meta name="twitter:image" content="https://vintlin.com/og-default.svg"><link rel="canonical" href="https://vintlin.com/posts/six-improvements/"><script defer data-domain="vintlin.com" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"六项精进","description":"《六项精进》读书笔记","datePublished":"2024-09-10T12:03:15.000Z","inLanguage":"zh-CN","url":"https://vintlin.com/posts/six-improvements/","image":["https://vintlin.com/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vintlin.com/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CYDbzu1r.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.DCJc6-LO.css"></head><body data-background-visible="false"><div data-astro-transition-persist="astro-uhbqetr2-1" class="noise-drift-background" data-noise-drift-root aria-hidden="true" data-astro-cid-nd45e25i><canvas data-noise-drift-background data-astro-cid-nd45e25i></canvas></div><script type="module" src="/_astro/NoiseDriftBackground.astro_astro_type_script_index_0_lang.DFukdKls.js"></script><header data-astro-transition-persist="site-header" class="site-header" data-pagefind-ignore><a class="brand-mark" href="/" aria-label="Vint home" data-astro-prefetch="viewport" data-header-nav-check data-header-home-link style="--brand-icon: url(&quot;/img/icon/icon_web.svg&quot;)"><span class="brand-mark-icon" aria-hidden="true"></span></a><nav class="site-nav" aria-label="Primary"><div class="site-nav-spacer"></div><div class="site-nav-links"><a href="/posts/" class="nav-link is-active" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/posts/&quot;,&quot;/notes/&quot;]">Post</a><a href="/projects/" class="nav-link" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/projects/&quot;]">Project</a><a href="/photos/" class="nav-link" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/photos/&quot;]">Photo</a><a href="https://github.com/VintLin" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" class="nav-link">GitHub</a><a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 136c0-13.3 10.7-24 24-24 137 0 248 111 248 248 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-110.5-89.5-200-200-200-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24 83.9 0 152 68.1 152 152 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-57.4-46.6-104-104-104-13.3 0-24-10.7-24-24zm0 120a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"></path></svg></a><button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle data-theme-state="dark" aria-label="Switch to light theme"><svg class="light-mode" viewBox="0 -32 576 576" fill="currentColor" aria-hidden="true" focusable="false"><path d="M288-32c8 0 15.4 4 19.9 10.6l58.8 87.4 103.4-20.2c7.8-1.5 15.9.9 21.6 6.6s8.1 13.8 6.6 21.6L478 177.3 565.4 236.1C572 240.5 576 248 576 256s-4 15.4-10.6 19.9L478 334.7 498.2 438c1.5 7.8-.9 15.9-6.6 21.6s-13.8 8.1-21.6 6.6L366.7 446 307.9 533.4C303.4 540 296 544 288 544s-15.4-4-19.9-10.6L209.3 446 105.9 466.2c-7.8 1.5-15.9-.9-21.6-6.6s-8.1-13.8-6.6-21.6L98 334.7 10.6 275.9C4 271.4 0 264 0 256s4-15.4 10.6-19.9L98 177.3 77.8 73.9c-1.5-7.8.9-15.9 6.6-21.6s13.8-8.1 21.6-6.6l103.3 20.2 58.8-87.4 1.8-2.3C274.4-29 281-32 288-32zm-47.8 138c-5.4 8-15 12-24.5 10.2l-84-16.4 16.4 84c1.8 9.5-2.2 19.1-10.2 24.5L67 256l71 47.8c8 5.4 12 15 10.2 24.5l-16.4 84 84-16.4 3.5-.4c8.3-.4 16.3 3.6 21 10.6l47.8 71 47.8-71 2.2-2.8c5.6-6.1 14-9 22.3-7.3l84 16.4-16.4-84c-1.8-9.5 2.2-19.1 10.2-24.5l71-47.8-71-47.8c-8-5.4-12-15-10.2-24.5l16.4-84-84 16.4c-9.5 1.8-19.1-2.2-24.5-10.2l-47.8-71-47.8 71zM288 376a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm0-192a72 72 0 1 0 0 144 72 72 0 1 0 0-144z"></path></svg><svg class="dark-mode" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M239.3 48.7C132.2 57.2 48 146.8 48 256c0 114.9 93.1 208 208 208 33.3 0 64.7-7.8 92.6-21.7C245.2 418.9 168 326.5 168 216c0-65.8 27.4-125.1 71.3-167.3zM0 256C0 114.6 114.6 0 256 0c19.4 0 38.4 2.2 56.7 6.3 9.9 2.2 17.3 10.5 18.5 20.5s-4 19.8-13.1 24.4C257.5 81.4 216 143.9 216 216c0 101.6 82.4 184 184 184 5 0 9.9-.2 14.8-.6 10.1-.8 19.6 4.8 23.8 14.1s2 20.1-5.3 27.1C387.3 484.8 324.8 512 256 512 114.6 512 0 397.4 0 256z"></path></svg></button><button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></button></div></nav></header><script>
+</script><title>六项精进 | Vint</title><meta name="description" content="《六项精进》读书笔记"><meta name="generator" content="Astro v7.2.7"><link rel="icon" href="/img/icon/favicon.png"><link rel="shortcut icon" href="/img/icon/favicon.png"><link rel="apple-touch-icon" href="/img/icon/favicon.png"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="六项精进 | Vint"><meta property="og:description" content="《六项精进》读书笔记"><meta property="og:type" content="article"><meta property="og:image" content="https://vintlin.com/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="六项精进 | Vint"><meta name="twitter:description" content="《六项精进》读书笔记"><meta name="twitter:image" content="https://vintlin.com/og-default.svg"><link rel="canonical" href="https://vintlin.com/posts/six-improvements/"><script defer data-domain="vintlin.com" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"六项精进","description":"《六项精进》读书笔记","datePublished":"2024-09-10T12:03:15.000Z","inLanguage":"zh-CN","url":"https://vintlin.com/posts/six-improvements/","image":["https://vintlin.com/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vintlin.com/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CYDbzu1r.js"></script><link rel="stylesheet" href="/_astro/BaseLayout.7xtaDOFe.css"></head><body data-background-visible="false"><div data-astro-transition-persist="astro-uhbqetr2-1" class="noise-drift-background" data-noise-drift-root aria-hidden="true" data-astro-cid-nd45e25i><canvas data-noise-drift-background data-astro-cid-nd45e25i></canvas></div><script type="module" src="/_astro/NoiseDriftBackground.astro_astro_type_script_index_0_lang.DFukdKls.js"></script><header data-astro-transition-persist="site-header" class="site-header" data-pagefind-ignore><a class="brand-mark" href="/" aria-label="Vint home" data-astro-prefetch="viewport" data-header-nav-check data-header-home-link style="--brand-icon: url(&quot;/img/icon/icon_web.svg&quot;)"><span class="brand-mark-icon" aria-hidden="true"></span></a><nav class="site-nav" aria-label="Primary"><div class="site-nav-spacer"></div><div class="site-nav-links"><a href="/posts/" class="nav-link is-active" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/posts/&quot;,&quot;/notes/&quot;]">Post</a><a href="/projects/" class="nav-link" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/projects/&quot;]">Project</a><a href="/photos/" class="nav-link" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/photos/&quot;]">Photo</a><a href="https://github.com/VintLin" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" class="nav-link">GitHub</a><a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 136c0-13.3 10.7-24 24-24 137 0 248 111 248 248 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-110.5-89.5-200-200-200-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24 83.9 0 152 68.1 152 152 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-57.4-46.6-104-104-104-13.3 0-24-10.7-24-24zm0 120a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"></path></svg></a><button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle aria-label="Switch to light theme"><svg class="light-mode" viewBox="0 -32 576 576" fill="currentColor" aria-hidden="true" focusable="false"><path d="M288-32c8 0 15.4 4 19.9 10.6l58.8 87.4 103.4-20.2c7.8-1.5 15.9.9 21.6 6.6s8.1 13.8 6.6 21.6L478 177.3 565.4 236.1C572 240.5 576 248 576 256s-4 15.4-10.6 19.9L478 334.7 498.2 438c1.5 7.8-.9 15.9-6.6 21.6s-13.8 8.1-21.6 6.6L366.7 446 307.9 533.4C303.4 540 296 544 288 544s-15.4-4-19.9-10.6L209.3 446 105.9 466.2c-7.8 1.5-15.9-.9-21.6-6.6s-8.1-13.8-6.6-21.6L98 334.7 10.6 275.9C4 271.4 0 264 0 256s4-15.4 10.6-19.9L98 177.3 77.8 73.9c-1.5-7.8.9-15.9 6.6-21.6s13.8-8.1 21.6-6.6l103.3 20.2 58.8-87.4 1.8-2.3C274.4-29 281-32 288-32zm-47.8 138c-5.4 8-15 12-24.5 10.2l-84-16.4 16.4 84c1.8 9.5-2.2 19.1-10.2 24.5L67 256l71 47.8c8 5.4 12 15 10.2 24.5l-16.4 84 84-16.4 3.5-.4c8.3-.4 16.3 3.6 21 10.6l47.8 71 47.8-71 2.2-2.8c5.6-6.1 14-9 22.3-7.3l84 16.4-16.4-84c-1.8-9.5 2.2-19.1 10.2-24.5l71-47.8-71-47.8c-8-5.4-12-15-10.2-24.5l16.4-84-84 16.4c-9.5 1.8-19.1-2.2-24.5-10.2l-47.8-71-47.8 71zM288 376a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm0-192a72 72 0 1 0 0 144 72 72 0 1 0 0-144z"></path></svg><svg class="dark-mode" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M239.3 48.7C132.2 57.2 48 146.8 48 256c0 114.9 93.1 208 208 208 33.3 0 64.7-7.8 92.6-21.7C245.2 418.9 168 326.5 168 216c0-65.8 27.4-125.1 71.3-167.3zM0 256C0 114.6 114.6 0 256 0c19.4 0 38.4 2.2 56.7 6.3 9.9 2.2 17.3 10.5 18.5 20.5s-4 19.8-13.1 24.4C257.5 81.4 216 143.9 216 216c0 101.6 82.4 184 184 184 5 0 9.9-.2 14.8-.6 10.1-.8 19.6 4.8 23.8 14.1s2 20.1-5.3 27.1C387.3 484.8 324.8 512 256 512 114.6 512 0 397.4 0 256z"></path></svg></button><button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></button></div></nav></header><script>
   (() => {
-  const storageKey = "vint-color-scheme";
   const root = document.documentElement;
-  const validThemeModes = new Set(["light", "dark", "auto"]);
+  const theme = window.__vintTheme;
   const themeTransitionTimeout = 1600;
-  const themeTransitionTimings = {
-    light: {
-      duration: 720,
-      easing: "linear"
-    },
-    dark: {
-      duration: 620,
-      easing: "linear"
-    }
-  };
+  const themeTransitionDurations = { light: 720, dark: 620 };
   const themeTransitionState = window.__vintThemeTransitionState || {
     generation: 0,
     running: false,
@@ -95,31 +74,6 @@
     listenersBound: false
   };
   window.__vintThemeTransitionState = themeTransitionState;
-
-  const normalizeThemeMode = (mode) => validThemeModes.has(mode) ? mode : "dark";
-
-  const readThemeMode = () => {
-    if (window.__vintThemeMode) {
-      return normalizeThemeMode(window.__vintThemeMode);
-    }
-
-    try {
-      return normalizeThemeMode(localStorage.getItem(storageKey));
-    } catch {
-      return "dark";
-    }
-  };
-
-  const persistThemeMode = (mode) => {
-    const normalizedMode = normalizeThemeMode(mode);
-    window.__vintThemeMode = normalizedMode;
-
-    try {
-      localStorage.setItem(storageKey, normalizedMode);
-    } catch {}
-
-    return normalizedMode;
-  };
 
   const normalizePathname = (pathname) => {
     if (!pathname || pathname === "/") {
@@ -214,34 +168,16 @@
         }
 
         const next = root.classList.contains("dark") ? "light" : "dark";
-        animateThemeTransition(button, persistThemeMode(next), event);
+        animateThemeTransition(button, theme.persist(next), event);
       });
     });
   };
 
   const initializeHeader = () => {
-    applyTheme(readThemeMode());
+    theme.apply(document, theme.read());
     bindHeaderLinkGuards();
     bindThemeButtons();
     syncHeaderActiveState();
-  };
-
-  const applyTheme = (mode) => {
-    const normalizedMode = normalizeThemeMode(mode);
-    const prefersDark =
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = normalizedMode === "dark" || (normalizedMode === "auto" && prefersDark);
-
-    window.__vintThemeMode = normalizedMode;
-    root.classList.toggle("dark", isDark);
-    root.dataset.themeMode = normalizedMode;
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", isDark ? "#050505" : "#fafaf9");
-    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.setAttribute("data-theme-state", isDark ? "dark" : "light");
-      button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
-    });
   };
 
   const resolveThemeTransitionOrigin = (button, event) => {
@@ -279,17 +215,9 @@
 
   const setThemeButtonsBusy = (busy) => {
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.disabled = false;
       button.toggleAttribute("aria-disabled", busy);
       button.toggleAttribute("aria-busy", busy);
     });
-  };
-
-  const clearThemeTransitionStyles = () => {
-    delete root.dataset.themeTransition;
-    root.style.removeProperty("--theme-transition-x");
-    root.style.removeProperty("--theme-transition-y");
-    root.style.removeProperty("--theme-transition-radius");
   };
 
   const stopThemeTransition = () => {
@@ -308,7 +236,6 @@
     themeTransitionState.animation = null;
     themeTransitionState.transition = null;
     themeTransitionState.timeoutHandle = null;
-    clearThemeTransitionStyles();
     setThemeButtonsBusy(false);
   };
 
@@ -322,7 +249,6 @@
     themeTransitionState.animation = null;
     themeTransitionState.transition = null;
     themeTransitionState.timeoutHandle = null;
-    clearThemeTransitionStyles();
     setThemeButtonsBusy(false);
   };
 
@@ -333,8 +259,8 @@
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const origin = resolveThemeTransitionOrigin(button, event);
 
-    if (!supportsViewTransition || !(button instanceof HTMLElement) || !origin) {
-      applyTheme(nextMode);
+    if (!supportsViewTransition || !origin) {
+      theme.apply(document, nextMode);
       return;
     }
 
@@ -342,22 +268,17 @@
     const from = `circle(0px at ${origin.x}px ${origin.y}px)`;
     const to = `circle(${radius}px at ${origin.x}px ${origin.y}px)`;
     const isExpanding = nextMode === "light";
-    const timing = themeTransitionTimings[nextMode];
 
     const generation = themeTransitionState.generation + 1;
     themeTransitionState.generation = generation;
     themeTransitionState.running = true;
     setThemeButtonsBusy(true);
-    root.dataset.themeTransition = isExpanding ? "expand" : "contract";
-    root.style.setProperty("--theme-transition-x", `${origin.x}px`);
-    root.style.setProperty("--theme-transition-y", `${origin.y}px`);
-    root.style.setProperty("--theme-transition-radius", `${radius}px`);
 
     let transition;
 
     try {
       transition = document.startViewTransition(() => {
-        applyTheme(nextMode);
+        theme.apply(document, nextMode);
       });
       themeTransitionState.transition = transition;
       themeTransitionState.timeoutHandle = window.setTimeout(() => {
@@ -365,11 +286,10 @@
           return;
         }
 
-        applyTheme(nextMode);
         stopThemeTransition();
       }, themeTransitionTimeout);
     } catch {
-      applyTheme(nextMode);
+      theme.apply(document, nextMode);
       finishThemeTransition(generation);
       return;
     }
@@ -385,8 +305,8 @@
             clipPath: isExpanding ? [from, to] : [to, from]
           },
           {
-            duration: timing.duration,
-            easing: timing.easing,
+            duration: themeTransitionDurations[nextMode],
+            easing: "linear",
             fill: "both",
             pseudoElement: isExpanding
               ? "::view-transition-new(root)"
@@ -401,7 +321,6 @@
           return;
         }
 
-        applyTheme(nextMode);
         try {
           transition.skipTransition();
         } catch {}
@@ -415,10 +334,7 @@
     themeTransitionState.listenersBound = true;
     document.addEventListener("astro:before-swap", stopThemeTransition);
     document.addEventListener("astro:page-load", initializeHeader);
-    document.addEventListener("vint:theme-change", (event) => {
-      stopThemeTransition();
-      applyTheme(event.detail?.mode);
-    });
+    document.addEventListener("vint:theme-storage-change", stopThemeTransition);
   }
 
   initializeHeader();
