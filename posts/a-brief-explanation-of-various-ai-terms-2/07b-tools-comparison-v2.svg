@@ -1,0 +1,66 @@
+<svg width="2667" height="1500" viewBox="0 0 2667 1500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#1f2328" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#e67e22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#4a72c4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#549e39" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#d9534f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="2667" height="1500" fill="#ffffff"/>
+  <text x="160" y="245" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" font-weight="600" font-style="italic" letter-spacing="4" fill="#1f2328">总结 <tspan dx="28" font-size="72" font-weight="500" fill="#9ca3af" letter-spacing="2">六种行动与扩展方式对比</tspan></text>
+  
+        
+    <rect x="180" y="390" width="720" height="430" rx="28" fill="#fdebd0" stroke="#e67e22" stroke-width="3.5"/>
+    <text x="236" y="495" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">Function-Calling</text>
+    <text x="236" y="575" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 模型端适配（返回 JSON）</text>
+<text x="236" y="643" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后厨比喻：递小纸条点菜</text>
+<text x="236" y="711" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适用：开发者自建专用工具</text>
+  
+        
+    <rect x="970" y="390" width="720" height="430" rx="28" fill="#e6f4df" stroke="#70ad47" stroke-width="3.5"/>
+    <text x="1026" y="495" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">MCP 协议</text>
+    <text x="1026" y="575" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 工具端通用插座标准</text>
+<text x="1026" y="643" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后厨比喻：外接标准厨具</text>
+<text x="1026" y="711" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适用：安全可控的企业/云端</text>
+  
+        
+    <rect x="1760" y="390" width="720" height="430" rx="28" fill="#dce4f7" stroke="#4a72c4" stroke-width="3.5"/>
+    <text x="1816" y="495" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">CLI 命令行</text>
+    <text x="1816" y="575" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 终端命令 + 管道符 | 串联</text>
+<text x="1816" y="643" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后厨比喻：自带瑞士军刀</text>
+<text x="1816" y="711" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适用：极省 Token 的本地操作</text>
+  
+
+        
+    <rect x="180" y="900" width="720" height="430" rx="28" fill="#d9f7f7" stroke="#38b2ac" stroke-width="3.5"/>
+    <text x="236" y="1005" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">Agent Skill</text>
+    <text x="236" y="1085" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- SKILL.md 三层按需加载</text>
+<text x="236" y="1153" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后厨比喻：招牌菜标准菜谱</text>
+<text x="236" y="1221" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适用：沉淀团队 SOP 规矩</text>
+  
+        
+    <rect x="970" y="900" width="720" height="430" rx="28" fill="#fdebd0" stroke="#e67e22" stroke-width="3.5"/>
+    <text x="1026" y="1005" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">Plugin 插件</text>
+    <text x="1026" y="1085" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- Skill + MCP + Hook 打包</text>
+<text x="1026" y="1153" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后厨比喻：厨具菜谱大礼盒</text>
+<text x="1026" y="1221" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适用：全套工作流一键安装</text>
+  
+        
+    <rect x="1760" y="900" width="720" height="430" rx="28" fill="#f3f4f6" stroke="#9ca3af" stroke-width="3.5"/>
+    <text x="1816" y="1005" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">Computer Use</text>
+    <text x="1816" y="1085" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 截屏定位 + 虚拟鼠标键盘</text>
+<text x="1816" y="1153" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后厨比喻：看着屏幕按按钮</text>
+<text x="1816" y="1221" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适用：无接口老旧软件兜底</text>
+  
+      
+</svg>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050505"><script>
+  !function () {
+    const storageKey = "vint-color-scheme";
+    const darkThemeColor = "#050505";
+    const lightThemeColor = "#fafaf9";
+    const normalizeTheme = (theme) => theme === "light" ? "light" : "dark";
+
+    const createThemeController = () => {
+      const read = () => {
+        try {
+          return normalizeTheme(localStorage.getItem(storageKey));
+        } catch {
+          return "dark";
+        }
+      };
+
+      const apply = (doc, theme) => {
+        const normalizedTheme = normalizeTheme(theme);
+        const isDark = normalizedTheme === "dark";
+        doc.documentElement.classList.toggle("dark", isDark);
+        doc
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", isDark ? darkThemeColor : lightThemeColor);
+        doc.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+          button.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light theme" : "Switch to dark theme"
+          );
+        });
+      };
+
+      const persist = (theme) => {
+        const normalizedTheme = normalizeTheme(theme);
+
+        try {
+          localStorage.setItem(storageKey, normalizedTheme);
+        } catch {}
+
+        return normalizedTheme;
+      };
+
+      const controller = { apply, persist, read };
+
+      document.addEventListener("astro:before-swap", (event) => {
+        controller.apply(event.newDocument, controller.read());
+      });
+
+      window.addEventListener("storage", (event) => {
+        if (event.key === storageKey) {
+          controller.apply(document, event.newValue);
+          document.dispatchEvent(new Event("vint:theme-storage-change"));
+        }
+      });
+
+      return controller;
+    };
+
+    const theme = window.__vintTheme || createThemeController();
+    window.__vintTheme = theme;
+    theme.apply(document, theme.read());
+  }();
+</script><title>一文理解各种 AI 名词（续） | Vint</title><meta name="description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="generator" content="Astro v7.4.7"><link rel="icon" href="/img/icon/favicon.png"><link rel="shortcut icon" href="/img/icon/favicon.png"><link rel="apple-touch-icon" href="/img/icon/favicon.png"><link rel="alternate" type="application/rss+xml" title="Vint RSS" href="/rss.xml"><meta property="og:title" content="一文理解各种 AI 名词（续） | Vint"><meta property="og:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta property="og:type" content="article"><meta property="og:image" content="https://vintlin.com/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="一文理解各种 AI 名词（续） | Vint"><meta name="twitter:description" content="记录工具、生活、阅读和自我校准。一个以中文内容为主、偶尔提供英文镜像的个人博客。"><meta name="twitter:image" content="https://vintlin.com/og-default.svg"><link rel="canonical" href="https://vintlin.com/posts/a-brief-explanation-of-various-ai-terms-2/"><script defer data-domain="vintlin.com" src="https://plausible.io/js/script.js"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"一文理解各种 AI 名词（续）","datePublished":"2026-10-27T14:00:00.000Z","inLanguage":"zh-CN","url":"https://vintlin.com/posts/a-brief-explanation-of-various-ai-terms-2/","image":["https://vintlin.com/og-default.svg"],"author":{"@type":"Person","name":"Vint","url":"https://vintlin.com/about/"},"publisher":{"@type":"Person","name":"Vint"}}</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CnDxeVtR.js"></script><link rel="stylesheet" href="/_astro/NoiseDriftBackground.CvW2sRxu.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body data-background-visible="false"><div data-astro-transition-persist="astro-uhbqetr2-1" class="noise-drift-background" data-noise-drift-root aria-hidden="true" data-astro-cid-nd45e25i><canvas data-noise-drift-background data-astro-cid-nd45e25i></canvas></div><script type="module" src="/_astro/NoiseDriftBackground.astro_astro_type_script_index_0_lang.DGK_Kses.js"></script><header data-astro-transition-persist="site-header" class="site-header" data-pagefind-ignore><a class="brand-mark" href="/" aria-label="Vint home" data-astro-prefetch="viewport" data-header-nav-check data-header-home-link style="--brand-icon: url(&quot;/img/icon/icon_web.svg&quot;)"><span class="brand-mark-icon" aria-hidden="true"></span></a><nav class="site-nav" aria-label="Primary"><div class="site-nav-spacer"></div><div class="site-nav-links"><a href="/projects/" class="nav-link" data-nav-icon="/icons/project.svg" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/projects/&quot;]"><span class="nav-link-label">Project</span><img class="nav-link-icon" src="/icons/project.svg" alt="" aria-hidden="true"></a><a href="/posts/" class="nav-link is-active" data-nav-icon="/icons/post.svg" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/posts/&quot;,&quot;/notes/&quot;]"><span class="nav-link-label">Post</span><img class="nav-link-icon" src="/icons/post.svg" alt="" aria-hidden="true"></a><a href="/photos/" class="nav-link" data-nav-icon="/icons/photo.svg" data-astro-prefetch="viewport" data-header-nav-check="true" data-header-nav-link="true" data-nav-match="[&quot;/photos/&quot;]"><span class="nav-link-label">Photo</span><img class="nav-link-icon" src="/icons/photo.svg" alt="" aria-hidden="true"></a><a href="https://github.com/VintLin" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" class="nav-link" data-nav-icon="/icons/github.svg"><span class="nav-link-label">GitHub</span><img class="nav-link-icon" src="/icons/github.svg" alt="" aria-hidden="true"></a><a class="nav-link nav-icon-link rss-icon" href="/rss.xml" aria-label="Subscribe to RSS" data-header-nav-check><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 136c0-13.3 10.7-24 24-24 137 0 248 111 248 248 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-110.5-89.5-200-200-200-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24 83.9 0 152 68.1 152 152 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-57.4-46.6-104-104-104-13.3 0-24-10.7-24-24zm0 120a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"></path></svg></a><button class="nav-link nav-icon-link theme-toggle mode-icon" type="button" data-theme-toggle aria-label="Switch to light theme"><svg class="light-mode" viewBox="0 -32 576 576" fill="currentColor" aria-hidden="true" focusable="false"><path d="M288-32c8 0 15.4 4 19.9 10.6l58.8 87.4 103.4-20.2c7.8-1.5 15.9.9 21.6 6.6s8.1 13.8 6.6 21.6L478 177.3 565.4 236.1C572 240.5 576 248 576 256s-4 15.4-10.6 19.9L478 334.7 498.2 438c1.5 7.8-.9 15.9-6.6 21.6s-13.8 8.1-21.6 6.6L366.7 446 307.9 533.4C303.4 540 296 544 288 544s-15.4-4-19.9-10.6L209.3 446 105.9 466.2c-7.8 1.5-15.9-.9-21.6-6.6s-8.1-13.8-6.6-21.6L98 334.7 10.6 275.9C4 271.4 0 264 0 256s4-15.4 10.6-19.9L98 177.3 77.8 73.9c-1.5-7.8.9-15.9 6.6-21.6s13.8-8.1 21.6-6.6l103.3 20.2 58.8-87.4 1.8-2.3C274.4-29 281-32 288-32zm-47.8 138c-5.4 8-15 12-24.5 10.2l-84-16.4 16.4 84c1.8 9.5-2.2 19.1-10.2 24.5L67 256l71 47.8c8 5.4 12 15 10.2 24.5l-16.4 84 84-16.4 3.5-.4c8.3-.4 16.3 3.6 21 10.6l47.8 71 47.8-71 2.2-2.8c5.6-6.1 14-9 22.3-7.3l84 16.4-16.4-84c-1.8-9.5 2.2-19.1 10.2-24.5l71-47.8-71-47.8c-8-5.4-12-15-10.2-24.5l16.4-84-84 16.4c-9.5 1.8-19.1-2.2-24.5-10.2l-47.8-71-47.8 71zM288 376a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm0-192a72 72 0 1 0 0 144 72 72 0 1 0 0-144z"></path></svg><svg class="dark-mode" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M239.3 48.7C132.2 57.2 48 146.8 48 256c0 114.9 93.1 208 208 208 33.3 0 64.7-7.8 92.6-21.7C245.2 418.9 168 326.5 168 216c0-65.8 27.4-125.1 71.3-167.3zM0 256C0 114.6 114.6 0 256 0c19.4 0 38.4 2.2 56.7 6.3 9.9 2.2 17.3 10.5 18.5 20.5s-4 19.8-13.1 24.4C257.5 81.4 216 143.9 216 216c0 101.6 82.4 184 184 184 5 0 9.9-.2 14.8-.6 10.1-.8 19.6 4.8 23.8 14.1s2 20.1-5.3 27.1C387.3 484.8 324.8 512 256 512 114.6 512 0 397.4 0 256z"></path></svg></button><button class="nav-link nav-icon-link search-icon" type="button" data-search-open aria-label="Search"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></button></div></nav></header><script>
+  (() => {
+  const root = document.documentElement;
+  const theme = window.__vintTheme;
+  const themeTransitionState = window.__vintThemeTransitionState || {
+    generation: 0,
+    running: false,
+    transition: null,
+    animation: null,
+    listenersBound: false
+  };
+  window.__vintThemeTransitionState = themeTransitionState;
+
+  const normalizePathname = (pathname) => {
+    if (!pathname || pathname === "/") {
+      return "/";
+    }
+
+    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  };
+
+  const bindHeaderLinkGuards = () => {
+    const headerLinks = document.querySelectorAll("[data-header-nav-check]");
+
+    headerLinks.forEach((link) => {
+      if (link.dataset.headerNavBound === "true") {
+        return;
+      }
+
+      link.dataset.headerNavBound = "true";
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        const targetUrl = new URL(href, window.location.href);
+        const currentPath = normalizePathname(window.location.pathname);
+        const targetPath = normalizePathname(targetUrl.pathname);
+
+        if (targetUrl.origin === window.location.origin && currentPath === targetPath) {
+          event.preventDefault();
+        }
+      });
+    });
+  };
+
+  const syncHeaderActiveState = () => {
+    const currentPath = normalizePathname(window.location.pathname);
+    const homeLink = document.querySelector("[data-header-home-link]");
+    const navLinks = document.querySelectorAll("[data-header-nav-link]");
+
+    if (homeLink) {
+      if (currentPath === "/") {
+        homeLink.setAttribute("aria-current", "page");
+      } else {
+        homeLink.removeAttribute("aria-current");
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const rawMatches = link.getAttribute("data-nav-match");
+      const matches = rawMatches ? JSON.parse(rawMatches) : [];
+      const isActive = matches.some((href) => {
+        const normalizedHref = normalizePathname(href);
+        return normalizedHref === "/"
+          ? currentPath === normalizedHref
+          : currentPath.startsWith(normalizedHref);
+      });
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const bindThemeButtons = () => {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+
+    buttons.forEach((button) => {
+      if (button.dataset.themeBound === "true") {
+        return;
+      }
+
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        if (themeTransitionState.running) {
+          return;
+        }
+
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        animateThemeTransition(button, theme.persist(next));
+      });
+    });
+  };
+
+  const initializeHeader = () => {
+    theme.apply(document, theme.read());
+    bindHeaderLinkGuards();
+    bindThemeButtons();
+    syncHeaderActiveState();
+  };
+
+  const resolveThemeTransitionOrigin = (button) => {
+    if (!button.isConnected) {
+      return null;
+    }
+
+    const rect = button.getBoundingClientRect();
+    const buttonCenter = {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+
+    return rect.width > 0 && rect.height > 0 && Number.isFinite(buttonCenter.x) && Number.isFinite(buttonCenter.y)
+      ? buttonCenter
+      : null;
+  };
+
+  const resolveThemeTransitionRadius = ({ x, y }) =>
+    Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+  const setThemeButtonsBusy = (busy) => {
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.toggleAttribute("aria-disabled", busy);
+      button.toggleAttribute("aria-busy", busy);
+    });
+  };
+
+  const setBackgroundTransitionPaused = (paused) => {
+    window.__noiseDriftBackground?.setTransitionPaused(paused);
+  };
+
+  const stopThemeTransition = () => {
+    themeTransitionState.generation += 1;
+    themeTransitionState.running = false;
+
+    try {
+      themeTransitionState.animation?.cancel();
+    } catch {}
+
+    try {
+      themeTransitionState.transition?.skipTransition();
+    } catch {}
+
+    setBackgroundTransitionPaused(false);
+    themeTransitionState.animation = null;
+    themeTransitionState.transition = null;
+    setThemeButtonsBusy(false);
+  };
+
+  const finishThemeTransition = (generation) => {
+    if (themeTransitionState.generation !== generation) {
+      return;
+    }
+
+    themeTransitionState.running = false;
+    setBackgroundTransitionPaused(false);
+    themeTransitionState.animation = null;
+    themeTransitionState.transition = null;
+    setThemeButtonsBusy(false);
+  };
+
+  const animateThemeTransition = (button, nextMode) => {
+    const supportsViewTransition = typeof document.startViewTransition === "function";
+    const origin = resolveThemeTransitionOrigin(button);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsViewTransition || !origin || reducedMotion) {
+      theme.apply(document, nextMode);
+      return;
+    }
+
+    const generation = themeTransitionState.generation + 1;
+    themeTransitionState.generation = generation;
+    themeTransitionState.running = true;
+    setThemeButtonsBusy(true);
+    setBackgroundTransitionPaused(true);
+
+    const radius = resolveThemeTransitionRadius(origin);
+    const originX = `${(origin.x / innerWidth) * 100}%`;
+    const originY = `${(origin.y / innerHeight) * 100}%`;
+    const from = `circle(0px at ${originX} ${originY})`;
+    const to = `circle(${radius}px at ${originX} ${originY})`;
+    const isExpanding = nextMode === "light";
+
+    let transition;
+    try {
+      transition = document.startViewTransition(() => theme.apply(document, nextMode));
+      themeTransitionState.transition = transition;
+    } catch {
+      theme.apply(document, nextMode);
+      finishThemeTransition(generation);
+      return;
+    }
+
+    transition.ready
+      .then(() => {
+        if (themeTransitionState.generation !== generation) return;
+        const animation = document.documentElement.animate(
+          { clipPath: isExpanding ? [from, to] : [to, from] },
+          {
+            duration: nextMode === "light" ? 400 : 370,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            composite: "replace",
+            fill: "both",
+            pseudoElement: isExpanding
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)"
+          }
+        );
+        themeTransitionState.animation = animation;
+        return Promise.all([animation.finished, transition.finished]);
+      })
+      .catch(() => {
+        try {
+          transition.skipTransition();
+        } catch {}
+      })
+      .finally(() => finishThemeTransition(generation));
+  };
+
+  if (!themeTransitionState.listenersBound) {
+    themeTransitionState.listenersBound = true;
+    document.addEventListener("astro:before-swap", stopThemeTransition);
+    document.addEventListener("astro:page-load", initializeHeader);
+    document.addEventListener("vint:theme-storage-change", stopThemeTransition);
+  }
+
+  initializeHeader();
+  })();
+</script><main class="page-main" data-pagefind-body><div class="page-content"><article class="page-shell page-section"><header class="prose"><h1 class="page-title slide-enter" data-pagefind-meta="title">一文理解各种 AI 名词（续）</h1><p class="article-meta slide-enter">2026年10月27日 · 36min ·中文</p></header><div class="prose slide-enter-content"><p>去年写完<a href="/posts/a-brief-explanation-of-various-ai-terms/">《一文理解各种 AI 名词》</a>之后，本来以为短期内已经把常见的 AI 概念梳理得差不多了。没想到这两年 AI 领域的变化实在太快，大家不再满足于在网页聊天框里和大模型一问一答，而是开始把 Claude Code、Codex 这类桌面工具直接装进电脑里，让它们进到项目文件夹里真正下场干活。</p>
+<p>随之而来的又是满天飞的新名词，什么 <code>Token</code>、<code>CLI</code>、<code>Agent Skill</code>、<code>Plugin</code>、<code>Computer Use</code>、<code>AGENTS.md</code>、<code>LLM-Wiki</code>、<code>SubAgent</code>、<code>Worktree</code>、<code>Hook</code>、<code>Sandbox</code>、<code>Harness Engineering</code>、<code>Eval</code>……听得人头又大了。所以最近我又花时间把自己的知识库笔记和看到的资料完整梳理了一遍，顺着上一篇的逻辑写了这篇续文，把这十组核心概念一个个拆开讲清楚。</p>
+<h2 id="大语言模型的底层补充">大语言模型的底层补充</h2>
+<p>在上一篇文章的开头，我们讲到大语言模型的原理是“通过计算概率来预测下一个词”，并且提到可以通过调整 <strong>温度（Temperature）</strong> 来控制输出的创意性。在聊后面的新工具之前，我们先补上大语言模型最底层的三个概念——因为后面几乎所有的新技术，都是为了解决“上下文不够用”和“输出不稳定”这两个底层问题。</p>
+<h3 id="文字压缩token-与-tokenizer">文字压缩——Token 与 Tokenizer</h3>
+<p>我们在聊天框里输入的是中文或英文，但大语言模型本质上是一个巨大的数学函数，它内部全是数字运算，根本不直接认识人类的文字。因此在我们和大语言模型之间，必须站着一位叫 <strong>Tokenizer（分词器）</strong> 的翻译官，负责把文字和数字互相转换。</p>
+<p><img alt="文字压缩——Token 与 Tokenizer" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/01-token-and-tokenizer-v2.DnLmO1Yi_1pYbKx.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>切分</strong>：当你输入一句话（比如“我喜欢人工智能”），Tokenizer 会先按照常见的词组规律，把这句话切成一个个最小的文本碎片，每一个碎片就叫做一个 <strong>Token</strong>（比如切成“我”、“喜欢”、“人工智能”三个 Token）。</p>
+</li>
+<li>
+<p><strong>映射编码</strong>：Tokenizer 查阅自带的词表，把每一个 Token 转换成对应的数字编号（<code>Token ID</code>），变成一串数字列表（如 <code>[2769, 4638, 912]</code>）发送给大语言模型。</p>
+</li>
+<li>
+<p><strong>模型运算</strong>：大语言模型接收这串数字，在内部经过一通概率计算，预测出下一个最可能出现的数字编号。</p>
+</li>
+<li>
+<p><strong>解码还原</strong>：Tokenizer 再次登场，把模型吐出来的数字编号查表翻译回人类的文字，显示在你的屏幕上。</p>
+</li>
+</ol>
+<h3 id="桌面大小context-window上下文窗口">桌面大小——Context Window（上下文窗口）</h3>
+<p>理解了 Token，你就能立刻明白什么是 <strong>Context Window（上下文窗口）</strong>。</p>
+<p>简单来说，<strong>Context</strong> 就是你发给大语言模型的所有输入内容（包括你的问题、历史对话、参考文档、可用工具列表等）；而 <strong>Context Window（上下文窗口）</strong> 则是指大模型单次最多能够处理的 Token 数量上限（比如 <code>200K</code> 或 <code>1M</code> 个 Token）。</p>
+<p><img alt="桌面大小——Context Window（上下文窗口）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/02-context-window-v2.H_pwQ0qH_Z2e4msR.webp"></p>
+<p>你可以把 <strong>Context Window</strong> 想象成大语言模型面前的<strong>一张办公桌</strong>。哪怕现在的办公桌已经造得很大（能装下好几本书），在实际干活时我们依然会遇到三个非常现实的瓶颈：</p>
+<ul>
+<li>
+<p><strong>容量终归有限</strong>：一旦让 Agent 连续干活，几十轮的工具执行结果和文件内容很快就会把桌子堆满，超出上限的早期重要信息就会被丢弃。</p>
+</li>
+<li>
+<p><strong>桌面太乱会让模型变笨</strong>：就算没超过桌子上限，如果你把几十页有用没用的资料一股脑全堆在桌上，模型也会被冗余信息干扰，抓不住重点，给出含糊其辞的回答。</p>
+</li>
+<li>
+<p><strong>桌上的东西越多越贵</strong>：大模型的调用账单是按 Token 数量计费的，塞进上下文窗口的东西越多，每一次问答消耗的真金白银就越多。</p>
+</li>
+</ul>
+<p>理解了“这张办公桌既昂贵、又怕乱、还会满”，你就能看懂后面为什么大家都在拼命给上下文“瘦身”了。</p>
+<h3 id="选词开关temperature-与-top-p">选词开关——Temperature 与 Top-p</h3>
+<p>上一篇我们提到，模型为了保持创意，不会每次都死板地只选第一名，而是从最相关的几个词里随机挑选。这个挑选过程其实是由 <strong>Temperature（温度）</strong> 和 <strong>Top-p（核采样）</strong> 两个旋钮配合完成的。</p>
+<p><img alt="选词开关——Temperature 与 Top-p" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/03-temperature-and-top-p-v2.UgKZAquY_1J8ao2.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>生成分数</strong>：大语言模型先把词表里的几万个词扫一遍，给每个词打一个原始分数（专业术语叫 <code>Logits</code>）。</p>
+</li>
+<li>
+<p><strong>Temperature 调节概率差距</strong>：系统通过函数把分数转换成百分比概率。这时 <strong>Temperature（温度）</strong> 负责调节高低分之间的差距：温度调得很低（如 <code>0.1</code>）时，第一名的概率优势会被放大到接近 100%，模型的回答就非常稳重保守；温度调高（如 <code>1.0</code>）时，各个词的概率差距被拉平，排在后面的词也有机会被选中，回答就更有创造力。</p>
+</li>
+<li>
+<p><strong>Top-p 划定入围候选池</strong>：光调温度还不够，因为哪怕排在末尾的生僻词概率只有 <code>0.01%</code>，只要去抽签就依然存在被抽中的可能，一旦抽中整句话就乱套了。<strong>Top-p</strong> 的作用就是<strong>画一条入围分数线</strong>：比如把 <code>Top-p</code> 设为 <code>0.9</code>，系统就会把所有词按概率从高到低排好队，从第一名开始往后累加概率，一旦加到 90% 就立刻拉起警戒线，把后面那 10% 不靠谱的词全部踢出局，只在入围的前排词里随机抽签。</p>
+</li>
+</ol>
+<p>简单来说，<strong>Temperature 决定了前排候选词之间的概率差距有多陡，而 Top-p 决定了先把多少陪跑的冷门词直接淘汰掉</strong>。</p>
+<h2 id="解决工具调用与办事经验的问题">解决工具调用与办事经验的问题</h2>
+<p>在上一篇文章里，我们介绍了让大模型调用外部工具的两种方式：模型端适配的 <strong>Function-Calling</strong> 和工具端适配的 <strong>MCP</strong>。</p>
+<p>但当大家真正在日常工作里挂上好几个 MCP 服务之后，很快就发现了三个新痛点：第一，<strong>MCP 的工具说明书太占上下文窗口了</strong>；第二，<strong>光有工具不懂办事规矩</strong>，模型拿到了数据却不知道按什么流程处理；第三，<strong>有些软件根本没有提供 MCP 接口</strong>。为了解决这些问题，业界演进出了 <strong>CLI</strong>、<strong>Agent Skill</strong>、<strong>Plugin</strong> 和 <strong>Computer Use</strong>。</p>
+<h3 id="化繁为简cli命令行工具">化繁为简——CLI（命令行工具）</h3>
+<p><strong>CLI（Command Line Interface，命令行工具）</strong> 就是程序员平时在终端黑框框里输入命令来操作电脑的程序（比如用 <code>git</code> 管理代码、用 <code>grep</code> 搜索文本、用 <code>ffmpeg</code> 处理视频）。最近越来越多开发者在使用 Agent 时，开始减少接入笨重的 MCP，转而让大模型直接调用 CLI 工具。</p>
+<p>为什么放着专门设计的 MCP 不用，反而用起命令行呢？因为 CLI <strong>既省 Token，执行效率又高</strong>。</p>
+<p><img alt="化繁为简——CLI（命令行工具）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/04-cli-vs-mcp-v2.LsDU3oKU_Z1688R.webp"></p>
+<p>首先看 Token 消耗：如果你接入一个官方的 GitHub MCP 服务，它里面包含 44 个工具。为了让大模型知道有哪些工具可用，代理程序每次都要把这 44 个工具的名称、描述、参数格式全部塞进上下文窗口，光这份工具说明书就有 1,683 行，足足占掉 <strong>14,268 个 Token</strong>。而如果换成 CLI，代理程序只需要给大模型提供一个叫 <code>bash</code>（执行命令行）的工具，说明书只有十几行；至于 <code>git</code>、<code>gh</code> 这些常见命令怎么写，大模型在训练阶段早就学会了，根本不用你塞说明书教它。</p>
+<p>再看执行效率，假设你的需求是“找出文件夹里所有的横版照片，加上水印，再上传到服务器”，CLI 的流程如下：</p>
+<ol>
+<li>
+<p><strong>用户提出请求</strong>：用户告诉 Agent 批量处理横版照片并上传。</p>
+</li>
+<li>
+<p><strong>模型生成一行组合命令</strong>：大语言模型不需要分四五步调工具，而是利用命令行的管道符 <code>|</code> 和逻辑符 <code>&#x26;&#x26;</code>，直接生成一条串联命令（筛选横版照片 → 加水印 → 上传服务器），发给代理程序。</p>
+</li>
+<li>
+<p><strong>本地一次性跑完</strong>：代理程序在本地终端里一口气把这三步全部自动跑完，中间过程完全不需要绕回大模型去思考。</p>
+</li>
+<li>
+<p><strong>返回最终结果</strong>：等所有照片上传完毕，代理程序只把最后“执行成功”的简短结果发回给大语言模型，模型再向用户汇报完成。</p>
+</li>
+</ol>
+<p>当然，MCP 也并没有被淘汰。因为 CLI 什么命令都能敲，万一文件名带了特殊引号容易报错，甚至万一模型失手敲出删除命令（<code>rm -rf</code>）就会闯祸；而 MCP 采用结构化的 JSON 传参，只能执行开发者允许的固定操作。因此：<strong>追求轻快省钱的个人与本地环境越来越偏爱 CLI，而追求安全可控的企业与云端环境依然离不开 MCP。</strong></p>
+<h3 id="按章办事agent-skill技能包">按章办事——Agent Skill（技能包）</h3>
+<p>不管是用 MCP 还是 CLI，它们解决的都只是“怎么拿数据、怎么调软件”的问题。但在真实工作里，我们往往有一套特定的办事规矩：比如写会议总结必须按“参会人员、议题、决定”的格式输出；聊到采购预算时必须核对《集团财务手册》；写完后还要运行脚本上传服务器。</p>
+<p>为了不把这些规矩每次都重复粘贴一遍，Anthropic 推出了 <strong>Agent Skill（技能包）</strong>，并迅速成为了各大 AI 工具支持的通用标准。</p>
+<p><img alt="按章办事——Agent Skill（技能包）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/05-agent-skill-v2.CDDSHOJe_24zOq6.webp"></p>
+<p>用最通俗的话讲，<strong>Agent Skill 就是一个放在特定文件夹里、供大模型随时翻阅的“办事说明文档（<code>SKILL.md</code>）+ 配套资源包”</strong>。它最精妙的设计叫做<strong>渐进式披露（按需加载）</strong>，把信息分成了三层，用多少拿多少：</p>
+<ul>
+<li>
+<p><strong>第一层：元数据层（Metadata，常驻目录）</strong>：<code>SKILL.md</code> 文件最开头的几行只写这个技能的名称（<code>name</code>）和一句话描述（<code>description</code>）。平时大模型只能看到这一层，哪怕你装了十几个 Skill，占用的空间也只相当于一页薄薄的目录。</p>
+</li>
+<li>
+<p><strong>第二层：指令层（Instruction，按需加载的正文）</strong>：<code>SKILL.md</code> 剩下的正文部分，详细写着办事步骤和输出模板。只有当大模型觉得当前任务用得上这个 Skill 时，才会把它读进上下文。</p>
+</li>
+<li>
+<p><strong>第三层：资源层（Resource，按需中的按需）</strong>：文件夹里还可以附带两样东西：一是 <strong>Reference（参考资料）</strong>，比如长篇的 <code>集团财务手册.md</code>，只有会议内容真的聊到“花钱”时才会去读取，平时躺在硬盘里不占一个 Token；二是 <strong>Script（可执行脚本）</strong>，比如写好的 <code>upload.py</code> 上传代码，代理程序只会<strong>直接运行它拿结果，根本不会把代码内容读进大模型脑子里</strong>，哪怕脚本有一万行，消耗的上下文也是零。</p>
+</li>
+</ul>
+<p>使用 Agent Skill 的完整流程如下：</p>
+<ol>
+<li>
+<p><strong>发送请求与目录</strong>：用户发送“帮我总结这段会议录音并上传”，代理程序把请求连同所有 Skill 的名称和一句话描述（第一层目录）发给大语言模型。</p>
+</li>
+<li>
+<p><strong>命中并加载正文</strong>：大模型扫了一眼目录，发现这件事归“会议总结助手”管，于是通知代理程序读取对应的 <code>SKILL.md</code> 正文（第二层指令）发给自己。</p>
+</li>
+<li>
+<p><strong>按条件查阅参考资料</strong>：大模型按照正文规矩总结时，发现录音里提到了订酒店的费用，触发了财务规则，于是请求读取 <code>集团财务手册.md</code>（第三层 Reference），核对后在总结里加上财务超标提醒。</p>
+</li>
+<li>
+<p><strong>直接执行脚本</strong>：总结写好后，大模型按照规则通知代理程序直接运行文件夹里的 <code>upload.py</code> 脚本（第三层 Script），完成服务器上传。</p>
+</li>
+<li>
+<p><strong>返回最终结果</strong>：代理程序将总结正文和上传成功的信息展示给用户。</p>
+</li>
+</ol>
+<h3 id="一键安装plugin插件">一键安装——Plugin（插件）</h3>
+<p>当你陆陆续续攒了好几个好用的 Agent Skill、配好了对应的 MCP 工具、还设置了自动化规则之后，如果你想把这套“前端设计工作流”或“数据分析工作流”分享给同事，让他自己去一个个建文件夹、配环境还是太折腾了。</p>
+<p>于是就有了 <strong>Plugin（插件）</strong>。你可以把 <strong>Plugin 想象成电脑上的 <code>.dmg</code> 或 <code>.exe</code> 全家桶安装包</strong>：它把完成某一个领域任务所需的 <strong>Agent Skill（办事手册）、MCP（外部工具连接器）、SubAgent（子代理）和 Hook（自动化钩子）</strong> 全部打包在一起。</p>
+<p><img alt="一键安装——Plugin（插件）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/06-plugin-v2.9HAJ_-9l_Z9hUy9.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>开发者打包</strong>：开发者把配好的一整套 Skill、MCP 配置和预设规则封装成一个 Plugin 发布到插件市场。</p>
+</li>
+<li>
+<p><strong>用户一键安装</strong>：用户在自己的 Agent 工具（如 Claude Code 或 Codex）里打开插件目录，选中需要的插件点击安装。</p>
+</li>
+<li>
+<p><strong>自动挂载能力</strong>：代理程序自动将插件里包含的所有工具、技能目录和配置注册就绪，无需人工手动配置。</p>
+</li>
+<li>
+<p><strong>直接投入使用</strong>：用户直接开口提需求，Agent 就能立刻调用插件里的全套工具和办事流程完成任务。</p>
+</li>
+</ol>
+<h3 id="看着屏幕干活computer-use电脑操控">看着屏幕干活——Computer Use（电脑操控）</h3>
+<p>前面不管是 Function-Calling、MCP 还是 CLI，都有一个共同前提：目标软件得提供接口或者命令行。可现实中有很多老旧的办公软件、网页后台或者桌面程序，既没有开放接口，也不能用命令行操作，这时候该怎么办呢？</p>
+<p>这就催生了 <strong>Computer Use（电脑操控，也常被称为 GUI Agent）</strong>。它的思路非常直接：既然没有内部通道，那就让大模型像真人一样“用眼睛看屏幕、用手移动鼠标和敲键盘”。</p>
+<p><img alt="看着屏幕干活——Computer Use（电脑操控）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/07-computer-use-v2.CmwXXtLX_Z2cyLwd.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>用户下达指令</strong>：用户提出请求，例如“帮我在某个没有接口的后台系统里填报今天的表单”。</p>
+</li>
+<li>
+<p><strong>截取当前屏幕</strong>：代理程序直接对当前电脑桌面或浏览器窗口截一张图，发送给具备视觉理解能力的大语言模型。</p>
+</li>
+<li>
+<p><strong>视觉定位与决策</strong>：大语言模型像人眼一样看图分析，找到“输入框在屏幕坐标 <code>(x=420, y=310)</code> 的位置”，并生成下一步的操作指令（如“移动鼠标到该坐标点击，并输入文字”）。</p>
+</li>
+<li>
+<p><strong>操控虚拟键鼠</strong>：代理程序调用操作系统的底层接口，控制虚拟鼠标移过去点击、用虚拟键盘敲入文字。</p>
+</li>
+<li>
+<p><strong>再次截图确认</strong>：操作完成后，代理程序再截一张最新的屏幕画面发给大模型，模型确认填报成功后再继续下一步，直到任务全部完成。</p>
+</li>
+</ol>
+<h3 id="function-calling-vs-mcp-vs-cli-vs-agent-skill-vs-plugin-vs-computer-use">Function-Calling vs MCP vs CLI vs Agent Skill vs Plugin vs Computer Use</h3>
+<p>这六个和“动手干活”有关的名词放在一起很容易混淆，我们不妨用“<strong>请一位厨师来餐厅后厨干活</strong>”来打个比方，一下子就清楚了：</p>
+<p><img alt="总结：六种行动与扩展方式对比" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/07b-tools-comparison-v2.RlTGsh5b_2rWoTA.webp"></p>
+<ul>
+<li>
+<p><strong>Function-Calling（函数调用）</strong>：是厨师具备的<strong>基础沟通本能</strong>——懂得“开结构化单子去调用外部设备”，而不是只会站在原地跟你清谈。</p>
+</li>
+<li>
+<p><strong>MCP（模型上下文协议）</strong>：是后厨墙上的<strong>统一标准插座与供货通道</strong>——不管连的是外部数据库还是第三方软件，插上就能安全可控地把食材（数据）取进来。</p>
+</li>
+<li>
+<p><strong>CLI（命令行工具）</strong>：是厨师随手拎着的<strong>轻便瑞士军刀</strong>——在本地熟悉的操作台上，不用走繁琐的外部协议，切菜、串菜（管道 <code>|</code>）一行命令当场搞定，省空间又极快。</p>
+</li>
+<li>
+<p><strong>Agent Skill（技能包）</strong>：是压在案板下的<strong>招牌菜标准菜谱（SOP）</strong>——正如 Anthropic 所说，<em>“MCP 把模型连接到数据，而 Skill 教模型拿到数据后怎么干活”</em>，而且平时只看菜名目录，点到哪道菜才翻哪一页。</p>
+</li>
+<li>
+<p><strong>Plugin（插件）</strong>：是总部发给分店的<strong>一键开业大礼包</strong>——把配好的供货接口（MCP）和成套菜谱（Skill）装进一个箱子里，一键安装就能直接开张。</p>
+</li>
+<li>
+<p><strong>Computer Use（电脑操控）</strong>：则是当遇到一台没有任何智能接口的老式灶台时，厨师直接<strong>用眼睛看着仪表盘、亲手去拧旋钮和按键</strong>的兜底本事。</p>
+</li>
+</ul>
+<h2 id="解决跨对话失忆与知识沉淀的问题">解决跨对话失忆与知识沉淀的问题</h2>
+<p>当 Agent 学会了用工具和看菜谱之后，一旦我们和它日复一日地合作同一个长期项目，第二个大痛点就冒出来了：<strong>为什么每次新开一个对话窗口，我之前交代过的项目规矩它就忘得一干二净？为什么给它塞了几百篇资料，它还是没法把知识攒下来？</strong></p>
+<p>这就需要用 <strong><code>AGENTS.md</code> / <code>CLAUDE.md</code></strong> 和 <strong>LLM-Wiki</strong> 来改造 Agent 的记忆与知识库。</p>
+<h3 id="立下家规agentsmd--claudemd项目规则文件">立下家规——AGENTS.md / CLAUDE.md（项目规则文件）</h3>
+<p>在上一篇里我们讲过，Agent 拥有长期记忆（Memory），现在很多 AI 软件也会在后台自动记住你的习惯。但很快大家就发现，光靠软件自带的 <strong>Memory</strong> 根本管不住严肃的项目开发。</p>
+<p>因为自动 Memory 记下的大多是你聊天时流露出的<strong>隐式偏好</strong>（比如“我习惯用中文”、“我喜欢简短的回答”），它是系统在后台悄悄总结的，你很难核对它到底记全了没有。而在项目开发里，有很多规矩是“一旦违反就会惹祸”的（比如“不准主动提交 git”、“写代码前必须先画草图确认”、“运行测试用哪条命令”）。</p>
+<p>为了立下铁打的显式规矩，业界形成了一个新习惯：在项目文件夹的根目录下，放一个叫 <strong><code>AGENTS.md</code></strong>（在 Claude Code 里叫 <strong><code>CLAUDE.md</code></strong>）的文档。</p>
+<p><img alt="立下家规——AGENTS.md / CLAUDE.md（项目规则文件）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/08-agents-md-v2.4xcZv1x8_13lJJs.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>编写项目目录与家规</strong>：开发者在项目根目录下创建 <code>AGENTS.md</code>，写明本项目的核心禁令、常用命令，以及各个详细文档存放在哪个子文件夹里。</p>
+</li>
+<li>
+<p><strong>启动时自动加载</strong>：每当用户在这个项目里新开一个对话窗口，代理程序都会在后台自动读取这份 <code>AGENTS.md</code>，把它作为默认背景连同用户的问题一起发给大语言模型。</p>
+</li>
+<li>
+<p><strong>按图索骥查细节</strong>：这里有一个来自 OpenAI 实战的重要经验——千万不要把所有资料塞进一个几千行的超大 <code>AGENTS.md</code> 里（就像新员工入职第一天直接砸给他一本字典厚的员工手册，模型反而抓不住重点，文档也很快会过时）。最科学的做法是把 <code>AGENTS.md</code> 控制在 100 行左右，只当成一张<strong>导航地图</strong>，大模型看完地图后，需要改哪块再去读对应文件夹里的详细文档。</p>
+</li>
+<li>
+<p><strong>随项目共同演进</strong>：每当 Agent 在项目里犯了一次典型的错误，开发者就把这条避坑规则补进 <code>AGENTS.md</code> 里并随代码库保存。从此以后，无论是你还是团队同事新开对话，Agent 都绝不会再犯同一个错误。</p>
+</li>
+</ol>
+<h3 id="读书做笔记llm-wiki编译型知识库">读书做笔记——LLM-Wiki（编译型知识库）</h3>
+<p>在上一篇里，我们介绍了用 <strong>RAG（检索增强生成）</strong> 来查外部知识库。但用久了你会发现，传统 RAG 有一个天生的局限：<strong>它每次都是在“临时翻原书”，完全没有“做笔记积累”的过程。</strong></p>
+<p>比如你往向量数据库里丢了 100 篇行业文章，每次你提问时，RAG 都是临时去把这 100 篇文章切成的碎片搜一遍，捞出最相似的几段塞给模型；等这次回答结束，刚才好不容易梳理出来的脉络就消失了，下次提问还得从零去捞碎片。</p>
+<p>为了解决这个痛点，前特斯拉 AI 总监 Andrej Karpathy 提出了一种全新的知识管理模式——<strong>LLM-Wiki（编译型知识库）</strong>。它的核心理念是：<strong>用文件系统代替向量检索，让大模型平时就像人类学者做卡片笔记一样，先把原始资料“编译”成结构化的知识卡片库。</strong></p>
+<p><img alt="读书做笔记——LLM-Wiki（编译型知识库）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/09-llm-wiki-v2.DTuklKQ3_Y7DtE.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>收集原始资料（<code>Raw Sources</code>）</strong>：用户把收集到的文章、会议记录或论文放进只读保存的原始资料文件夹中。</p>
+</li>
+<li>
+<p><strong>消化与编译（<code>Ingest</code>）</strong>：大语言模型通读原始资料，按照预设的整理规则（<code>Schema</code>），把里面的核心概念、论证逻辑和事实提炼成一张张结构清晰的 Markdown 笔记页面（Wiki 层），并用双向链接 <code>[[...]]</code> 把新卡片和已有的旧卡片串联起来。</p>
+</li>
+<li>
+<p><strong>按导航链查询（<code>Query</code>）</strong>：当用户需要写文章或做分析时，Agent 不需要去海量碎片里盲目检索，而是直接顺着 Wiki 的“主题入口 → 核心问题 → 观点卡片”读取已经编译好的高密度知识。</p>
+</li>
+<li>
+<p><strong>定期健康检查（<code>Lint</code>）</strong>：每隔一段时间，让脚本和模型自动巡检整座知识库，修复断掉的链接、合并重复的卡片、更新过时的结论，让知识库越用越扎实。</p>
+</li>
+</ol>
+<h3 id="memory-vs-agentsmd-vs-rag-vs-llm-wiki">Memory vs AGENTS.md vs RAG vs LLM-Wiki</h3>
+<p>把这四个和“记忆与知识”相关的词放在一起对比，它们在 Agent 系统里的分工就一清二楚了：</p>
+<p><img alt="总结：Memory vs AGENTS.md vs RAG vs LLM-Wiki" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/09b-memory-comparison-v2.D7TuPThP_FTxHR.webp"></p>
+<ul>
+<li>
+<p><strong>Memory（自动记忆）</strong>：像老搭档在日常相处中摸清的<strong>隐式个人习惯</strong>（比如你爱喝什么口味的咖啡、喜欢什么样的汇报语气），省心但不够精确。</p>
+</li>
+<li>
+<p><strong><code>AGENTS.md</code> / <code>CLAUDE.md</code>（项目规则文件）</strong>：像贴在工作室墙上的<strong>显式家规与科室地图</strong>，每次进门必看，专门管那些“绝对不能做错”的纪律和去哪找资料的路线。</p>
+</li>
+<li>
+<p><strong>RAG（检索增强生成）</strong>：像开卷考试时手边放着的<strong>几十本厚词典</strong>，平时不读，遇到具体问题时按关键词临时翻出几段参考，适合应付几万条客服问答、海量接口文档这类大而杂的资料。</p>
+</li>
+<li>
+<p><strong>LLM-Wiki（编译型知识库）</strong>：则像你平时花功夫读完十本书后，亲手整理出来的<strong>结构化读书笔记与错题卡片盒</strong>，知识在入库时就已经被消化、串联好了，随翻随用，越攒越厚。在实际工程里，这四者常常是互相配合使用的。</p>
+</li>
+</ul>
+<h2 id="解决长任务混乱与失控的问题">解决长任务混乱与失控的问题</h2>
+<p>当 Agent 有了趁手的工具（CLI / MCP）、有了办事手册（Skill）、也有了家规和知识库（<code>AGENTS.md</code> / Wiki），我们自然会放心大胆地把越来越长、越来越复杂的任务交给它。但紧接着，最让人头疼的场面就出现了：</p>
+<p>一是<strong>上下文被中间废料撑爆了</strong>（比如让它审查一个大项目，读了几十个文件后主对话直接卡死变笨）；二是<strong>多个任务并行时互相踩脚</strong>（两个 Agent 同时改同一份文件直接撞车）；三是<strong>模型不听劝乱跑</strong>（忘了家规或者误删重要文件）。</p>
+<p>为了解决这三个问题，业界搬出了四件工程利器：<strong>SubAgent</strong>、<strong>Worktree</strong>、<strong>Hook</strong> 和 <strong>Sandbox</strong>。</p>
+<h3 id="派分身干活subagent子智能体">派分身干活——SubAgent（子智能体）</h3>
+<p>前面我们聊过 Agent Skill，但 Skill 有一个硬伤：<strong>它是在你当前的主对话窗口里执行的</strong>。如果你让 Skill 去排查一个有几万行代码的项目故障，它翻看的每一个文件、每一行报错日志都会塞进你的主对话上下文里，很快就会把主对话撑爆。</p>
+<p>为了保护主对话的“桌面”干净，我们引入了 <strong>SubAgent（子智能体）</strong>。它其实就是一个<strong>拥有自己独立的上下文窗口、独立的工具列表和独立 Skill 的分身 Agent</strong>。</p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>主 Agent 接收并拆解任务</strong>：你在主对话里提出“帮我全面排查一下项目里的安全隐患，并修改登录页样式”。主 Agent 判断“排查安全隐患”需要翻看大量文件，于是决定召唤专门负责代码审查的 SubAgent。</p>
+</li>
+<li>
+<p><strong>开辟独立小房间干活</strong>：代理程序为这个 SubAgent 开启一个全新的独立对话窗口（甚至可以限制它只有“只读权限”，防止它乱改文件）。SubAgent 在自己的独立窗口里翻阅了 50 个文件、做了大段中间分析，这些过程全都留在它自己的小房间里，绝不占用主对话的一个 Token。</p>
+</li>
+<li>
+<p><strong>只向主对话汇报结论</strong>：当 SubAgent 排查完毕后，它的独立窗口任务结束，只把最后浓缩出的几十行审查结论交给主 Agent。</p>
+</li>
+<li>
+<p><strong>主 Agent 汇总推进</strong>：主 Agent 拿着干干净净的结论继续帮你修改登录页样式，整个主对话始终保持清爽敏捷。</p>
+</li>
+</ol>
+<p>因此，<strong>Agent Skill 与 SubAgent 最大的区别就在于对上下文的处理方式</strong>：需要结合当前聊天背景、且不怎么占地方的活（比如写每日总结），交给 <strong>Skill</strong> 在主窗口里干；而相对独立、且中间过程会产生大量垃圾信息的活（比如全库搜索、独立代码审查），就派 <strong>SubAgent</strong> 去隔壁房间干。</p>
+<h3 id="隔离工作间worktree独立工作区">隔离工作间——Worktree（独立工作区）</h3>
+<p>有了分身之后，你可能希望让两个 Agent 同时干活：一个去开发新功能，另一个去修老 Bug。但如果它们俩在同一个项目文件夹里同时修改代码，你改一半、我改一半，文件立刻就会互相覆盖冲突。</p>
+<p>为了解决这个问题，现在的桌面 Agent（如 Codex、Claude Code）引入了 Git 的 <strong>Worktree（独立工作树 / 独立工作区）</strong> 机制。</p>
+<p><img alt="分身与隔离——SubAgent 与 Worktree（独立工作区）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/10-subagent-and-worktree-v2.BEmAXJuT_feMx1.webp"></p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>发起并行任务</strong>：用户同时派发两个修改代码的任务，并选择在 Worktree 模式下运行。</p>
+</li>
+<li>
+<p><strong>创建隔离目录副本</strong>：代理程序在后台自动基于当前项目，复制出两个相互独立的 Worktree 文件夹和分支。</p>
+</li>
+<li>
+<p><strong>各自在平行时空修改</strong>：两个 Agent 分别进到各自的 Worktree 文件夹里改代码、装依赖、跑测试，两边的文件完全隔离，谁也不会踩到谁的脚。</p>
+</li>
+<li>
+<p><strong>审查与合并</strong>：等两边都干完活并通过测试后，用户检查无误，再把改动一键合并回主项目，并归档清理掉临时的 Worktree 目录。</p>
+</li>
+</ol>
+<h3 id="强制触发器hook钩子">强制触发器——Hook（钩子）</h3>
+<p>即便我们在 <code>AGENTS.md</code> 里写好了“每次改完代码必须格式化”、“千万别删生产配置”，大语言模型毕竟是个概率模型，忙中出错或者忘了规矩是常有的事。</p>
+<p>怎么把“请模型自觉记住”变成“百分之百强制执行”？这就用到了 <strong>Hook（生命周期钩子）</strong>。它允许开发者在“工具使用前（<code>PreToolUse</code>）”、“工具使用后（<code>PostToolUse</code>）”或“任务结束时”等固定节点，设置一段由系统自动运行的程序逻辑。</p>
+<p>流程如下：</p>
+<ol>
+<li>
+<p><strong>配置触发时机与规则</strong>：用户在配置里设定好 Hook，比如“每当模型使用 <code>Edit</code>（编辑文件）工具之后，自动运行代码格式化命令”，或者“每当模型使用 <code>bash</code> 工具之前，检查命令是否包含高危删库操作”。</p>
+</li>
+<li>
+<p><strong>事前硬拦截（<code>PreToolUse Hook</code>）</strong>：当大语言模型生成了一条调用命令发给代理程序时，如果触发了事前 Hook 的禁令（例如试图强推代码或修改 <code>.env</code> 密钥），Hook 会在命令执行前直接将其拦下并报错，根本不给模型闯祸的机会。</p>
+</li>
+<li>
+<p><strong>事后自动执行（<code>PostToolUse Hook</code>）</strong>：当模型顺利编辑并保存了一个代码文件后，事后 Hook 立刻在后台自动运行格式化工具和语法检查（Linter）。</p>
+</li>
+<li>
+<p><strong>异常自动打回</strong>：如果 Hook 跑检查时发现了语法错误，代理程序会直接把报错信息塞回给大语言模型，逼着它当场修好才能继续往下走。</p>
+</li>
+</ol>
+<h3 id="安全隔离笼sandbox沙盒">安全隔离笼——Sandbox（沙盒）</h3>
+<p>除了用 Hook 盯住单个操作之外，为了防止大模型在执行命令行（CLI）或运行脚本时把你的电脑系统搞坏，代理程序还会在最外层套上一个 <strong>Sandbox（安全沙盒）</strong>。</p>
+<p><img alt="强制护栏——Hook（钩子）与 Sandbox（沙盒）" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/11-hook-and-sandbox-v2.CToCgO9s_Z18EKr7.webp"></p>
+<p>你可以把 <strong>Sandbox</strong> 想象成操作系统给 Agent 划定的<strong>物理隔离笼</strong>。在沙盒开启的状态下：</p>
+<ul>
+<li>
+<p><strong>限制文件读写范围</strong>：规定 Agent 只允许读写当前这一个项目文件夹里的文件，外面的系统目录、桌面私人文件一律碰不到。</p>
+</li>
+<li>
+<p><strong>限制网络与系统权限</strong>：规定 Agent 不能随意向未知的外部服务器发送数据，也不能修改电脑的系统级设置。</p>
+</li>
+</ul>
+<p>这样一来，哪怕大模型在某个瞬间出现了严重幻觉，或者读到了别人藏在网页里的恶意诱导指令，它折腾出来的最大破坏也被死死锁在沙盒这口笼子里，不会伤及你的电脑和生产环境。</p>
+<h2 id="给-agent-套上缰绳与验收harness-与-eval">给 Agent 套上缰绳与验收——Harness 与 Eval</h2>
+<p>把前面讲到的所有组件（<code>AGENTS.md</code>、工具、Skill、SubAgent、Worktree、Hook、Sandbox）全部拼在一起，我们就终于走到了当下 AI 领域最重要的一组系统概念：<strong>Harness Engineering（挽具工程）</strong> 与 <strong>Eval（评测验收）</strong>。</p>
+<h3 id="套上缰绳harness-engineering挽具工程">套上缰绳——Harness Engineering（挽具工程）</h3>
+<p><code>Harness</code> 这个单词的本意是套在马身上的<strong>马具（包括缰绳、马鞍、笼头等）</strong>。</p>
+<p>为什么要拿马具来比喻呢？因为今天的大语言模型就像一匹力大无穷的千里马，能干的事情太多了；但如果你不给它套上马具、任由它脱缰狂奔，它很快就会偏离跑道、重复犯错，根本没法稳定交付结果。因此，<strong>在 Agent 系统里，用来控制、引导和约束大语言模型的整套外围系统，就叫做 Harness</strong>。</p>
+<p>业界用了一个非常巧妙的公式来定义它：</p>
+<blockquote>
+<p><strong>Harness = Agent - Model</strong>（或者写为：<strong>Agent = Model + Harness</strong>）</p>
+</blockquote>
+<p>也就是说，<strong>一个完整的 Agent 减去最核心的大语言模型，剩下的所有东西全都是 Harness</strong>。而 <strong>Harness Engineering（挽具工程）</strong>，就是一门专门研究“除了大模型本身不研究，其他外围系统全都要研究”的工程技术。</p>
+<p>在 OpenAI 用 AI 自主编写近百万行代码的实战分享中，一个成熟的 Harness 工程主要围绕三件事运转：</p>
+<ol>
+<li>
+<p><strong>提供结构化的信息环境</strong>：把分散在聊天记录或人脑子里的规则统一搬进代码仓库，并用 100 行左右的轻量级 <code>AGENTS.md</code> 做好目录导航，让 Agent 随时能查到准确的背景知识。</p>
+</li>
+<li>
+<p><strong>构建自动验证与反馈闭环</strong>：给 Agent 配齐浏览器调试器、日志查看器、架构检查器（Linter）和自动化测试。Agent 每改完一处代码，系统立刻自动检测并把报错反馈给它，让它“自己看到问题、自己原地修复”，直到所有检查全绿为止。</p>
+</li>
+<li>
+<p><strong>后台定期清理技术债</strong>：因为 AI 大量写代码难免会留下重复代码或过时文档，Harness 系统还会配置后台定时任务（Automation），每天像扫地机器人一样自动扫描全库，把偏离规范的代码和过时的文档自动修正提交。</p>
+</li>
+</ol>
+<p>到了这一步，人类工程师和 AI 的关系就彻底变成了：<strong>“人类负责掌舵，Agent 负责干活（Humans steer, agents execute）”</strong>——人不再亲自去写每一行琐碎的代码，而是专门负责设计这套“马具系统”，让 Agent 在跑道里安全狂奔。</p>
+<h3 id="独立质检员eval评测">独立质检员——Eval（评测）</h3>
+<p>虽然 Harness 能让 Agent 跑得很稳，但在任务结束交工的那一刻，还有一个致命的陷阱：<strong>千万不能只让干活的 Agent 自己评价自己的成果。</strong></p>
+<p>Anthropic 在实验里发现，如果让同一个 Agent 既负责写代码、又负责给自己打分验收（自评），本质上就是“王婆卖瓜，自卖自夸”——模型对自己写出来的东西天然带有滤镜，哪怕界面布局乱成一团、功能还有明显 Bug，它也会粗略看一眼就自信满满地宣布“完美收工”，甚至有时为了通过测试，偷偷把报错的测试题给删掉。</p>
+<p>为了彻底解决“自评护短”的问题，必须引入独立的 <strong>Eval（Evaluation，质量评测机制）</strong>，把“干活的人”和“验货的人”拆开。在 Anthropic 的经典三角色架构里，完整流程如下：</p>
+<p><img alt="套上缰绳与验收——Harness Engineering 与 Eval" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/12-harness-and-eval-v2.DAJZ0JVw_2vqhBO.webp"></p>
+<ol>
+<li>
+<p><strong>Planner（规划者）拆解清单</strong>：用户提出一句话需求后，先由 Planner Agent 把这句模糊的需求拆解成一份详尽的功能点列表。</p>
+</li>
+<li>
+<p><strong>Generator（生成者）对齐标准</strong>：负责干活的 Generator Agent 领到功能点后，先不急着动手，而是先和负责验收的质检员讨论商定“这个功能到底做到什么程度才算合格”的交付标准。</p>
+</li>
+<li>
+<p><strong>Generator 动手实现</strong>：标准对齐后，Generator 开始调用工具编写代码实现功能，并在完成后提交给质检员。</p>
+</li>
+<li>
+<p><strong>Evaluator（独立评估者）挑刺验收</strong>：作为独立第三方的 Evaluator Agent（这种让独立大模型按标准打分挑刺的方式也叫 <strong>LLM-as-a-Judge</strong>）绝不替生成者护短，它会严格用自动化工具和交付标准去检验成果。</p>
+</li>
+<li>
+<p><strong>打回重修直至通过</strong>：只要 Evaluator 发现不达标，就会列出问题清单打回给 Generator 重新修改；两边循环往复，直到独立质检员真正点头放行，才算完成交付。</p>
+</li>
+</ol>
+<p>而在日常衡量一个 Agent 系统到底靠不靠谱时，Eval 还会区分两个常用指标：<strong><code>pass@k</code></strong>（尝试 k 次只要成功 1 次就算过，用来看模型的<strong>能力上限与灵感</strong>）和 <strong><code>pass^k</code></strong>（连续运行 k 次必须每一次都成功，用来看系统能不能真正放心上线的<strong>稳定性</strong>）。</p>
+<h3 id="提示词工程-vs-上下文工程-vs-挽具工程">提示词工程 vs 上下文工程 vs 挽具工程</h3>
+<p>最后，我们把从上一篇文章延续到这一篇的三个“工程”放在一起做个总结对比，你就能看清这几年 AI 技术演进的全景主线了：</p>
+<p><img alt="总结：提示词工程 vs 上下文工程 vs 挽具工程" loading="lazy" decoding="async" width="2667" height="1500" src="/_astro/13-three-engineerings-v2.P7Wjy5zU_Zz4NLe.webp"></p>
+<ul>
+<li>
+<p><strong>提示词工程（Prompt Engineering）</strong>：核心是“<strong>怎么问问题</strong>”。它只关注单次发给大模型的那一句话怎么写得更清楚、更准确。</p>
+</li>
+<li>
+<p><strong>上下文工程（Context Engineering）</strong>：核心是“<strong>怎么给信息</strong>”。它把关注点扩大到了模型的整个输入窗口（Context Window），研究怎么通过检索选择、按需披露和上下文压缩，在恰当的时机把最有用的背景资料喂给模型。</p>
+</li>
+<li>
+<p><strong>挽具工程（Harness Engineering）</strong>：核心是“<strong>怎么搭系统</strong>”。它直接跳出了文本输入的范畴，把模型外围的规则地图（<code>AGENTS.md</code>）、技能手册（Skill）、分身隔离（SubAgent / Worktree）、强制护栏（Hook / Sandbox）以及独立质检闭环（Eval）组装成一整套运行环境，让大模型这匹千里马真正能拉着马车跑完长途。</p>
+</li>
+</ul>
+<h2 id="核心名词表">核心名词表</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>名词</strong></th><th><strong>解释</strong></th></tr></thead><tbody><tr><td><strong>Token &#x26; Tokenizer</strong></td><td>大模型读写与计费的最小文本碎片单位；Tokenizer（分词器）负责把人类文字与数字编号（<code>Token ID</code>）互相转换。</td></tr><tr><td><strong>Context Window</strong></td><td>上下文窗口，大模型单次能够处理的最大 Token 数量上限，好比大模型面前的办公桌大小。</td></tr><tr><td><strong>Temperature &#x26; Top-p</strong></td><td>控制大模型选词随机性的两个旋钮：Temperature 调节候选词之间的概率差距，Top-p 划定入围线以淘汰尾部低概率词。</td></tr><tr><td><strong>CLI</strong></td><td>命令行工具，让 Agent 直接通过终端命令和管道符组合操作软件，比 MCP 更省 Token 且本地执行效率更高。</td></tr><tr><td><strong>Agent Skill</strong></td><td>技能包，以 <code>SKILL.md</code> 为核心的办事说明文档与配套资源（Reference 参考文档 / Script 可执行脚本），通过三层按需加载教 Agent 按规矩干活。</td></tr><tr><td><strong>Plugin</strong></td><td>插件，把完成某类任务所需的 Agent Skill、MCP、SubAgent 和 Hook 打包在一起的全家桶安装包，支持一键安装复用。</td></tr><tr><td><strong>Computer Use</strong></td><td>电脑操控（GUI Agent），在软件没有接口或命令行时，让大模型通过看屏幕截图和操控虚拟鼠标键盘来完成操作。</td></tr><tr><td><strong><code>AGENTS.md</code> / <code>CLAUDE.md</code></strong></td><td>放在项目根目录下的显式项目家规与目录导航地图，每次启动必读，与记录隐式个人偏好的自动 Memory 互补。</td></tr><tr><td><strong>LLM-Wiki</strong></td><td>编译型知识库，让大模型平时先把原始资料消化整理成结构化的双向链接笔记卡片，与临时检索文档碎片的 RAG 互补。</td></tr><tr><td><strong>SubAgent</strong></td><td>子智能体，拥有独立上下文窗口的分身 Agent，在独立窗口里处理耗时占地方的支线任务并只回传最终结论，保护主对话不被撑爆。</td></tr><tr><td><strong>Worktree</strong></td><td>独立工作区（Git Worktree），为同时干活的多个 Agent 复制相互隔离的项目文件夹副本，防止并行修改文件时互相冲突。</td></tr><tr><td><strong>Hook</strong></td><td>生命周期钩子，在 Agent 调用工具前后由系统强制触发的自动逻辑（如事前拦截危险命令、事后自动格式化代码），把软提醒变成硬约束。</td></tr><tr><td><strong>Sandbox</strong></td><td>安全沙盒，在操作系统层面限制 Agent 的文件读写范围与网络权限，把模型出错或失控的破坏半径锁在笼子里。</td></tr><tr><td><strong>Harness Engineering</strong></td><td>挽具工程，研究如何围绕大模型搭建整套外围运行与控制系统（<code>Harness = Agent - Model</code>），实现“人类掌舵，Agent 干活”。</td></tr><tr><td><strong>Eval（评测）</strong></td><td>独立的质量验收机制，通过将生成者（Generator）与独立评估者（Evaluator / LLM-as-a-Judge）分离，并用 <code>pass@k</code> 与 <code>pass^k</code> 衡量可靠性，确保交付质量。</td></tr></tbody></table></div><footer class="article-footer prose slide-enter-content"><p class="terminal-line"><span class="terminal-prompt">&gt;</span><a href="/posts/">cd ..</a></p></footer></article></div><footer class="site-footer" data-pagefind-ignore><div class="page-shell"><p class="footer-copy"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 4.0</a>2021-PRESENT © Vint</p></div></footer></main><div class="image-lightbox" data-image-lightbox hidden aria-hidden="true"><div class="image-lightbox-backdrop" data-image-lightbox-close></div><div class="image-lightbox-panel" data-image-lightbox-panel><img class="image-lightbox-media" data-image-lightbox-media alt=""><div class="image-lightbox-caption" data-image-lightbox-caption hidden></div></div></div><script>
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxMedia = document.querySelector("[data-image-lightbox-media]");
+  const lightboxCaption = document.querySelector("[data-image-lightbox-caption]");
+  const zoomRoot = document.documentElement;
+  const zoomableSelector = ".prose img, img[data-lightbox-image]";
+
+  const isZoomableImage = (node) =>
+    node instanceof HTMLImageElement &&
+    !node.closest("[data-image-lightbox]") &&
+    (node.hasAttribute("data-lightbox-image") || (node.closest(".prose") && !node.closest("a[href]")));
+
+  const resolveZoomableImage = (target) => {
+    if (isZoomableImage(target)) {
+      return target;
+    }
+
+    if (!(target instanceof Element)) {
+      return null;
+    }
+
+    const triggerImage = target.closest("[data-lightbox-trigger]")?.querySelector("img");
+    return isZoomableImage(triggerImage) ? triggerImage : null;
+  };
+
+  const getCaption = (image) => {
+    const customCaption = image.dataset.lightboxCaption?.trim();
+    if (customCaption) return customCaption;
+
+    const figureCaption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
+    return figureCaption || image.getAttribute("alt") || image.getAttribute("title") || "";
+  };
+
+  const syncZoomableImages = () => {
+    document.querySelectorAll(zoomableSelector).forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      const zoomable = isZoomableImage(image);
+      const trigger = image.closest("[data-lightbox-trigger]");
+
+      image.classList.toggle("zoomable-media", zoomable);
+      trigger?.classList.toggle("zoomable-media", zoomable);
+
+      if (zoomable && !trigger) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", getCaption(image) || "Open image preview");
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("role");
+        image.removeAttribute("aria-label");
+      }
+    });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxMedia.removeAttribute("src");
+    lightboxMedia.alt = "";
+    lightboxCaption.textContent = "";
+    lightboxCaption.hidden = true;
+    zoomRoot.classList.remove("is-image-zoomed");
+  };
+
+  const openLightbox = (image) => {
+    if (!lightbox || !lightboxMedia || !lightboxCaption) return;
+
+    const source = image.dataset.lightboxSrc || image.currentSrc || image.src;
+    const caption = getCaption(image);
+
+    if (!source) return;
+
+    lightboxMedia.src = source;
+    lightboxMedia.alt = image.alt || "";
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = !caption;
+    lightbox.hidden = false;
+    lightbox.setAttribute("aria-hidden", "false");
+    zoomRoot.classList.add("is-image-zoomed");
+  };
+
+  syncZoomableImages();
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-image-lightbox-close]")) {
+      closeLightbox();
+      return;
+    }
+
+    if (
+      !lightbox?.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-image-lightbox-media]") &&
+      !target.closest("[data-image-lightbox-caption]")
+    ) {
+      closeLightbox();
+      return;
+    }
+
+    const image = resolveZoomableImage(target);
+    if (!image) {
+      return;
+    }
+
+    if (target instanceof Element && target.closest("a[href]")?.contains(image)) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const image = resolveZoomableImage(event.target);
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(image);
+  });
+</script><div class="search-shell" data-search-shell hidden><div class="search-backdrop" data-search-close></div><section class="search-panel" aria-label="Search" role="dialog" aria-modal="true"><div class="search-panel-head"><p class="search-panel-title">Search the archive</p><button class="search-close" type="button" data-search-close aria-label="Close search">×</button></div><div class="search-status" data-search-status>Loading the search index...</div><div id="search" class="pagefind-host"></div></section></div><script>
+  const resolveSearchNodes = () => ({
+    shell: document.querySelector("[data-search-shell]"),
+    statusNode: document.querySelector("[data-search-status]"),
+    host: document.querySelector("#search")
+  });
+
+  const loadScript = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(script);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+  const loadStyle = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  const loadAssets = async () => {
+    if (!window.__searchAssetsPromise) {
+      window.__searchAssetsPromise = (async () => {
+        loadStyle("/pagefind/pagefind-ui.css");
+        await loadScript("/pagefind/pagefind-ui.js");
+
+        if (!window.PagefindUI) {
+          throw new Error("PagefindUI unavailable");
+        }
+      })();
+    }
+
+    return window.__searchAssetsPromise;
+  };
+
+  const initSearch = async () => {
+    const { host, statusNode } = resolveSearchNodes();
+
+    if (!host || !statusNode || host.dataset.searchInitialized === "true") {
+      return;
+    }
+
+    try {
+      await loadAssets();
+
+      new window.PagefindUI({
+        element: "#search",
+        showImages: false,
+        showSubResults: true,
+        excerptLength: 16,
+        resetStyles: false
+      });
+      statusNode.textContent = "Search across titles, tags, summaries, and article content.";
+      host.dataset.searchInitialized = "true";
+    } catch (error) {
+      statusNode.textContent =
+        "Search assets failed to load. Run npm run build to refresh the Pagefind bundle.";
+    }
+  };
+
+  const show = async () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = false;
+    document.documentElement.classList.add("is-search-open");
+    await initSearch();
+  };
+
+  const hide = () => {
+    const { shell } = resolveSearchNodes();
+    if (!shell) return;
+
+    shell.hidden = true;
+    document.documentElement.classList.remove("is-search-open");
+  };
+
+  const initializeSearchDialog = () => {
+    const { shell } = resolveSearchNodes();
+
+    if (shell?.hidden !== false) {
+      document.documentElement.classList.remove("is-search-open");
+    }
+  };
+
+  initializeSearchDialog();
+
+  if (window.__searchDialogListenersBound !== true) {
+    window.__searchDialogListenersBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest("[data-search-close]")) {
+        hide();
+        return;
+      }
+
+      if (target.closest("[data-search-open]")) {
+        void show();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hide();
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        void show();
+      }
+    });
+
+    document.addEventListener("astro:page-load", initializeSearchDialog);
+  }
+</script></body></html>

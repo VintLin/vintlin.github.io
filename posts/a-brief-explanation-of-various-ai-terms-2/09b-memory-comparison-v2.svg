@@ -1,0 +1,62 @@
+<svg width="2667" height="1500" viewBox="0 0 2667 1500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#1f2328" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#e67e22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#4a72c4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#549e39" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#d9534f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="2667" height="1500" fill="#ffffff"/>
+  <text x="160" y="245" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" font-weight="600" font-style="italic" letter-spacing="4" fill="#1f2328">总结 <tspan dx="28" font-size="72" font-weight="500" fill="#9ca3af" letter-spacing="2">Memory vs AGENTS.md vs RAG vs LLM-Wiki</tspan></text>
+  
+        <!-- Vertical Axis -->
+        <line x1="480" y1="1120" x2="480" y2="520" stroke="#1f2328" stroke-width="4.5" marker-end="url(#arrow-dark)"/>
+        <text x="385" y="760" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="600" fill="#1f2328" writing-mode="tb">外部知识库</text>
+        <text x="320" y="760" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="34" fill="#6b7280" writing-mode="tb">海量资料如何查阅与沉淀？</text>
+
+        <!-- Horizontal Axis -->
+        <line x1="900" y1="1310" x2="1880" y2="1310" stroke="#1f2328" stroke-width="4.5" marker-end="url(#arrow-dark)"/>
+        <text x="1390" y="1380" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="600" fill="#1f2328">结构化与显式程度</text>
+        <text x="1390" y="1435" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="34" fill="#6b7280">从零散碎片 → 编译整理成体系</text>
+
+        <!-- 2x2 Grid -->
+        
+    <rect x="580" y="380" width="780" height="410" rx="28" fill="#dce4f7" stroke="#4a72c4" stroke-width="3.5"/>
+    <text x="636" y="485" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">RAG</text>
+    <text x="636" y="565" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 临时检索原始文档碎片</text>
+<text x="636" y="633" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 像开卷考翻厚词典</text>
+<text x="636" y="701" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 适合海量动态资料即查即用</text>
+  
+        
+    <rect x="1420" y="380" width="780" height="410" rx="28" fill="#d9f7f7" stroke="#38b2ac" stroke-width="3.5"/>
+    <text x="1476" y="485" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">LLM-Wiki</text>
+    <text x="1476" y="565" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 平时预先编译成结构化笔记</text>
+<text x="1476" y="633" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 双向链接串联概念脉络</text>
+<text x="1476" y="701" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 像把书读薄的学者卡片盒</text>
+  
+        
+    <rect x="580" y="830" width="780" height="410" rx="28" fill="#fdebd0" stroke="#e67e22" stroke-width="3.5"/>
+    <text x="636" y="935" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">Memory</text>
+    <text x="636" y="1015" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 后台自动记录隐式个人偏好</text>
+<text x="636" y="1083" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 像老搭档摸清日常语气习惯</text>
+<text x="636" y="1151" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 省心但难以精确管控</text>
+  
+        
+    <rect x="1420" y="830" width="780" height="410" rx="28" fill="#e6f4df" stroke="#70ad47" stroke-width="3.5"/>
+    <text x="1476" y="935" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">AGENTS.md</text>
+    <text x="1476" y="1015" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 开发者手写显式项目家规</text>
+<text x="1476" y="1083" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- ~100 行目录地图，启动必读</text>
+<text x="1476" y="1151" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 严守工程纪律与常用命令</text>
+  
+      
+</svg>

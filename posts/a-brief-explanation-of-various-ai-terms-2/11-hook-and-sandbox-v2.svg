@@ -1,0 +1,53 @@
+<svg width="2667" height="1500" viewBox="0 0 2667 1500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#1f2328" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#e67e22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#4a72c4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#549e39" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 2 L 10 6 L 1 10" fill="none" stroke="#d9534f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="2667" height="1500" fill="#ffffff"/>
+  <text x="160" y="245" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" font-weight="600" font-style="italic" letter-spacing="4" fill="#1f2328">强制护栏 <tspan dx="28" font-size="72" font-weight="500" fill="#9ca3af" letter-spacing="2">钩子与沙盒 Hook &amp; Sandbox</tspan></text>
+  
+        <rect x="200" y="380" width="2260" height="900" rx="40" fill="#f7fee7" stroke="#70ad47" stroke-width="5" stroke-dasharray="22,14"/>
+        <text x="270" y="475" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="48" font-weight="600" font-style="italic" fill="#2e7d32">Sandbox 安全沙盒（限制文件读写目录与外部网络权限）</text>
+
+        
+    <rect x="280" y="580" width="620" height="520" rx="28" fill="#fadbd8" stroke="#d9534f" stroke-width="3.5"/>
+    <text x="336" y="685" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">PreToolUse Hook</text>
+    <text x="336" y="765" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 工具执行前硬性拦截</text>
+<text x="336" y="833" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 阻止高危删库或改密钥</text>
+<text x="336" y="901" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 不给模型闯祸机会</text>
+  
+
+        <line x1="930" y1="840" x2="1015" y2="840" stroke="#549e39" stroke-width="4.5" stroke-dasharray="16,14" marker-end="url(#arrow-emerald)"/>
+
+        
+    <rect x="1040" y="580" width="580" height="520" rx="28" fill="#dce4f7" stroke="#4a72c4" stroke-width="3.5"/>
+    <text x="1096" y="685" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">Tool Execution</text>
+    <text x="1096" y="765" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 合规命令正常放行</text>
+<text x="1096" y="833" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 编辑代码 / 运行脚本</text>
+<text x="1096" y="901" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 锁在沙盒隔离笼内</text>
+  
+
+        <line x1="1650" y1="840" x2="1735" y2="840" stroke="#4a72c4" stroke-width="4.5" stroke-dasharray="16,14" marker-end="url(#arrow-blue)"/>
+
+        
+    <rect x="1760" y="580" width="620" height="520" rx="28" fill="#fdebd0" stroke="#e67e22" stroke-width="3.5"/>
+    <text x="1816" y="685" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="600" font-style="italic" fill="#111827">PostToolUse Hook</text>
+    <text x="1816" y="765" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 工具执行后自动触发</text>
+<text x="1816" y="833" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 100% 自动格式化代码</text>
+<text x="1816" y="901" font-family="PingFang SC, Hiragino Sans GB, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-style="italic" fill="#6b7280">- 语法报错当场打回重修</text>
+  
+      
+</svg>
